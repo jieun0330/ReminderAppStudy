@@ -12,7 +12,7 @@ class ToDoViewController: BaseViewController {
     
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .white
         view.layer.cornerRadius = 10
         
 //        view.style = .plain
@@ -43,9 +43,9 @@ class ToDoViewController: BaseViewController {
     
     override func configureConstraints() {
         tableView.snp.makeConstraints {
-            $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-            $0.height.equalTo(70)
+            $0.edges.equalToSuperview()
+//            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+//            $0.height.equalTo(200)
         }
     }
     
@@ -72,20 +72,21 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     
 
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 4
-//    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return titleList.count
+    }
     
 //    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
 //        return ""
 //    }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if section == 0 {
-//            return 2
-//        } else {
+        if section == 0 {
+            return 2
+        } else {
             return 1
-//        }
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
