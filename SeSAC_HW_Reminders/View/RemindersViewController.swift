@@ -16,7 +16,7 @@ class RemindersViewController: BaseViewController {
         view.register(RemindersCollectionViewCell.self, forCellWithReuseIdentifier: RemindersCollectionViewCell.identifier)
         return view
     }()
-    
+
 //    let toolbar: UIToolbar() = {
 //        let bar = UIToolbar
 //        return bar
@@ -97,7 +97,10 @@ class RemindersViewController: BaseViewController {
     
     @objc func plusButtonClicked() {
 //        print("click")
-        let vc = ToDoViewController()
+        let vc = UINavigationController(rootViewController: ToDoViewController()) 
+        
+//        navigationController?.pushViewController(vc, animated: true)
+//        navigationController?.popToViewController(vc, animated: true)
         present(vc, animated: true)
     }
 //    

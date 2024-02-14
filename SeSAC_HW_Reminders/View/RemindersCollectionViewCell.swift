@@ -35,6 +35,8 @@ class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     override func configureView() {
+        
+        
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true
