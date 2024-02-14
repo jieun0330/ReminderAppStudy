@@ -17,21 +17,28 @@ class RemindersViewController: BaseViewController {
         return view
     }()
     
-    var plusButton: UIBarButtonItem = {
-        let button = UIBarButtonItem()
-        button.title = "새로운 미리 알림"
+//    let toolbar: UIToolbar() = {
+//        let bar = UIToolbar
+//        return bar
+//    }()
+    
+    lazy var plusButton: UIBarButtonItem = {
+        var button = UIBarButtonItem()
+        button = UIBarButtonItem(title: "새로운 미리 알림", style: .plain, target: self, action: #selector(plusButtonClicked))
+
         return button
     }()
+
     
     var addListButton: UIBarButtonItem = {
-        let button = UIBarButtonItem()
-        button.title = "목록 추가"
+        var button = UIBarButtonItem()
+
+//        button = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: #selector(addListButtonClicked))
+
         return button
     }()
     
-    // 버튼들 사이에 간격을 지정하기 위해서는 flexibleSpace가 필요하다
-    let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-    var items = [UIBarButtonItem]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +65,17 @@ class RemindersViewController: BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        configureToolBar()
+
+        
+
+        
+    }
+    
+    func configureToolBar() {
+        // 버튼들 사이에 간격을 지정하기 위해서는 flexibleSpace가 필요하다
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        var items = [UIBarButtonItem]()
         // ToolBar는 UINavigationController에 속해있고 기본적으로 숨겨져있어서 -> false
         self.navigationController?.isToolbarHidden = false
         // 아 중간에 넣어주라고~
@@ -65,7 +83,27 @@ class RemindersViewController: BaseViewController {
             items.append($0)
         }
         self.toolbarItems = items
+        
+
+       
     }
+    
+//    override func setToolbarItems(_ toolbarItems: [UIBarButtonItem]?, animated: Bool) {
+//        
+//    }
+//    open func setToolbarItems(_ toolbarItems: [UIBarButtonItem]?, animated: Bool)
+
+    
+    
+    @objc func plusButtonClicked() {
+//        print("click")
+        let vc = ToDoViewController()
+        present(vc, animated: true)
+    }
+//    
+//    @objc func addListButtonClicked() {
+//        
+//    }
     
     // 🚨static을 써야 저 위에 쓸 수 있는건가
     static func configureCollectionViewLayout() -> UICollectionViewLayout {
@@ -75,7 +113,7 @@ class RemindersViewController: BaseViewController {
         layout.itemSize = CGSize(width: cellWidth / 2, height: cellWidth / 3 - 40)
         layout.minimumLineSpacing = spacing // 셀 좌우 간격
         layout.minimumInteritemSpacing = spacing // 셀 상하 간격
-        layout.scrollDirection = .horizontal
+        layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         return layout
@@ -90,8 +128,8 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RemindersCollectionViewCell.identifier, for: indexPath) as! RemindersCollectionViewCell
         
-        cell.layer.borderColor = UIColor.red.cgColor
-        cell.layer.borderWidth = 1        
+//        cell.layer.borderColor = UIColor.red.cgColor
+//        cell.layer.borderWidth = 1        
         
         return cell
     }

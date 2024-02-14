@@ -20,6 +20,7 @@
 		C2996A072B7C90C00067D397 /* RemindersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */; };
 		C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2996A082B7C91810067D397 /* BaseCollectionViewCell.swift */; };
 		C2996A0C2B7C94F80067D397 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2996A0B2B7C94F80067D397 /* Protocol.swift */; };
+		C2E7FE382B7CAC0100004FC7 /* ToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE372B7CAC0100004FC7 /* ToDoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2996A082B7C91810067D397 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2996A0B2B7C94F80067D397 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		C2E7FE372B7CAC0100004FC7 /* ToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */,
 				C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */,
+				C2E7FE372B7CAC0100004FC7 /* ToDoViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */,
 				C29969FC2B7C8EF10067D397 /* RemindersViewController.swift in Sources */,
 				C2996A0C2B7C94F80067D397 /* Protocol.swift in Sources */,
+				C2E7FE382B7CAC0100004FC7 /* ToDoViewController.swift in Sources */,
 				C2996A072B7C90C00067D397 /* RemindersCollectionViewCell.swift in Sources */,
 				C29969EC2B7C8E5A0067D397 /* ViewController.swift in Sources */,
 				C29969E82B7C8E5A0067D397 /* AppDelegate.swift in Sources */,
