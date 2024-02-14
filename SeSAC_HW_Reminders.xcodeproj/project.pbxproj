@@ -13,6 +13,13 @@
 		C29969EF2B7C8E5A0067D397 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29969ED2B7C8E5A0067D397 /* Main.storyboard */; };
 		C29969F12B7C8E5C0067D397 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29969F02B7C8E5C0067D397 /* Assets.xcassets */; };
 		C29969F42B7C8E5C0067D397 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29969F22B7C8E5C0067D397 /* LaunchScreen.storyboard */; };
+		C29969FC2B7C8EF10067D397 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */; };
+		C2996A002B7C8F200067D397 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29969FF2B7C8F200067D397 /* BaseViewController.swift */; };
+		C2996A032B7C90360067D397 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C2996A022B7C90360067D397 /* SnapKit */; };
+		C2996A052B7C90360067D397 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C2996A042B7C90360067D397 /* SnapKit-Dynamic */; };
+		C2996A072B7C90C00067D397 /* RemindersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */; };
+		C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2996A082B7C91810067D397 /* BaseCollectionViewCell.swift */; };
+		C2996A0C2B7C94F80067D397 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2996A0B2B7C94F80067D397 /* Protocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,11 @@
 		C29969F02B7C8E5C0067D397 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C29969F32B7C8E5C0067D397 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C29969F52B7C8E5C0067D397 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
+		C29969FF2B7C8F200067D397 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersCollectionViewCell.swift; sourceTree = "<group>"; };
+		C2996A082B7C91810067D397 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		C2996A0B2B7C94F80067D397 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2996A032B7C90360067D397 /* SnapKit in Frameworks */,
+				C2996A052B7C90360067D397 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +70,9 @@
 		C29969E62B7C8E5A0067D397 /* SeSAC_HW_Reminders */ = {
 			isa = PBXGroup;
 			children = (
+				C2996A0A2B7C94F10067D397 /* Protocol */,
+				C29969FE2B7C8F1A0067D397 /* Base */,
+				C29969FD2B7C8F120067D397 /* View */,
 				C29969E72B7C8E5A0067D397 /* AppDelegate.swift */,
 				C29969E92B7C8E5A0067D397 /* SceneDelegate.swift */,
 				C29969EB2B7C8E5A0067D397 /* ViewController.swift */,
@@ -65,6 +82,32 @@
 				C29969F52B7C8E5C0067D397 /* Info.plist */,
 			);
 			path = SeSAC_HW_Reminders;
+			sourceTree = "<group>";
+		};
+		C29969FD2B7C8F120067D397 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */,
+				C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C29969FE2B7C8F1A0067D397 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C29969FF2B7C8F200067D397 /* BaseViewController.swift */,
+				C2996A082B7C91810067D397 /* BaseCollectionViewCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C2996A0A2B7C94F10067D397 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C2996A0B2B7C94F80067D397 /* Protocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +126,10 @@
 			dependencies = (
 			);
 			name = SeSAC_HW_Reminders;
+			packageProductDependencies = (
+				C2996A022B7C90360067D397 /* SnapKit */,
+				C2996A042B7C90360067D397 /* SnapKit-Dynamic */,
+			);
 			productName = SeSAC_HW_Reminders;
 			productReference = C29969E42B7C8E5A0067D397 /* SeSAC_HW_Reminders.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +158,9 @@
 				Base,
 			);
 			mainGroup = C29969DB2B7C8E5A0067D397;
+			packageReferences = (
+				C2996A012B7C90360067D397 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = C29969E52B7C8E5A0067D397 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,6 +188,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2996A002B7C8F200067D397 /* BaseViewController.swift in Sources */,
+				C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */,
+				C29969FC2B7C8EF10067D397 /* RemindersViewController.swift in Sources */,
+				C2996A0C2B7C94F80067D397 /* Protocol.swift in Sources */,
+				C2996A072B7C90C00067D397 /* RemindersCollectionViewCell.swift in Sources */,
 				C29969EC2B7C8E5A0067D397 /* ViewController.swift in Sources */,
 				C29969E82B7C8E5A0067D397 /* AppDelegate.swift in Sources */,
 				C29969EA2B7C8E5A0067D397 /* SceneDelegate.swift in Sources */,
@@ -363,6 +418,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C2996A012B7C90360067D397 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C2996A022B7C90360067D397 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2996A012B7C90360067D397 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		C2996A042B7C90360067D397 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2996A012B7C90360067D397 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C29969DC2B7C8E5A0067D397 /* Project object */;
 }
