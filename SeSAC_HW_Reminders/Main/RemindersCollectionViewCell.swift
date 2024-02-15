@@ -16,12 +16,25 @@ class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         return icon
     }()
     
+    let cellTitle: UILabel = {
+        let title = UILabel()
+        title.text = "전체"
+        title.font = UIFont.systemFont(ofSize: 12)
+        return title
+    }()
+    
+    let count: UILabel = {
+        let number = UILabel()
+        number.text = "0"
+        return number
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
     override func configureHierarchy() {
-        [circleIcon].forEach {
+        [circleIcon, cellTitle, count].forEach {
             contentView.addSubview($0)
         }
     }
@@ -30,6 +43,16 @@ class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         circleIcon.snp.makeConstraints {
             $0.leading.top.equalTo(contentView).inset(10)
             $0.size.equalTo(30)
+        }
+        cellTitle.snp.makeConstraints {
+            $0.centerX.equalTo(circleIcon.snp.centerX)
+            $0.top.equalTo(circleIcon.snp.bottom).offset(5)
+            $0.height.equalTo(10)
+        }
+        
+        count.snp.makeConstraints {
+            $0.trailing.equalTo(contentView).inset(10)
+            $0.top.equalTo(contentView).offset(15)
         }
     }
     
