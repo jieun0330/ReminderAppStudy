@@ -15,12 +15,21 @@ class RemindersViewController: BaseViewController {
         return button
     }()
     
+    let entireText: UILabel = {
+        let entire = UILabel()
+        entire.text = "전체"
+        entire.font = UIFont.boldSystemFont(ofSize: 20)
+        return entire
+    }()
+    
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.backgroundColor = .systemGray6
         view.register(RemindersCollectionViewCell.self, forCellWithReuseIdentifier: RemindersCollectionViewCell.identifier)
         return view
     }()
+    
+    let cellImage = ["sportscourt.circle", "calendar.circle.fill", "archivebox.circle.fill", "flag.circle.fill", "checkmark.circle.fill"]
     
     lazy var leftToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
@@ -41,15 +50,20 @@ class RemindersViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [collectionView].forEach {
+        [entireText, collectionView].forEach {
             view.addSubview($0)
         }
     }
     
     override func configureConstraints() {
-        collectionView.snp.makeConstraints {
+        entireText.snp.makeConstraints {
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+        }
+        
+        collectionView.snp.makeConstraints {
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.top.equalTo(entireText.snp.bottom).offset(20)
             $0.height.equalTo(400)
         }
     }
@@ -110,6 +124,8 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RemindersCollectionViewCell.identifier, for: indexPath) as! RemindersCollectionViewCell
+        
+        cell.circleIcon.image = UIImage(systemName: cellImage[indexPath.item])
         
         return cell
     }
