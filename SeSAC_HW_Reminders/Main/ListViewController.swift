@@ -11,6 +11,7 @@ import RealmSwift
 
 class ListViewController: BaseViewController {
 
+    let realm = try! Realm()
     var list: Results<ReminderModel>!
     
     lazy var tableView: UITableView = {
@@ -46,16 +47,18 @@ class ListViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = rightButton
-        
-        let realm = try! Realm()
-        list = realm.objects(ReminderModel.self).where {
-            $0.tag == "F"
-        }
-        
+        list = realm.objects(ReminderModel.self)
     }
     
     @objc func rightBarButtonClicked() {
-        let upcomingDate = UIAction(title: "마감일순", handler: { _ in print("마감일순") })
+        // 마감일순을 눌렀을 때 sort가 되어야되는구나 위에꺼 가져와야징
+        let upcomingDate = UIAction(title: "마감일순", handler: { _ in
+            self.list = self.realm.objects(ReminderModel.self).sorted(byKeyPath: "date", ascending: true)
+            self.tableView.reloadData()
+//            print("마감일순")
+        })
+        
+        
         let title = UIAction(title: "제목순", handler: { _ in print("제목순") })
         let lowPriority = UIAction(title: "우선순위 낮음", handler: { _ in print("우선순위 낮음") })
         rightButton.menu = UIMenu(options: .displayInline, children: [upcomingDate, title, lowPriority])
