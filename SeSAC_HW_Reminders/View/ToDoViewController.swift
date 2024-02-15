@@ -8,6 +8,29 @@
 import UIKit
 import SnapKit
 
+enum toDoCase: String {
+    case memo = "메모"
+    case date = "마감일"
+    case tag = "태그"
+    case priority = "우선순위"
+    case image = "이미지 추천"
+    
+    var index: Int {
+        switch self {
+        case .memo:
+            return 0
+        case .date:
+            return 1
+        case .tag:
+            return 2
+        case .priority:
+            return 3
+        case .image:
+            return 4
+        }
+    }
+}
+
 class ToDoViewController: BaseViewController {
     
     lazy var tableView: UITableView = {
@@ -23,7 +46,7 @@ class ToDoViewController: BaseViewController {
         
     var receivedDate = ""
     var receivedTextField = ""
-    
+        
     var memoList: [String] = ["제목", "메모"]
     var todoList: [String] = ["마감일", "태그", "우선 순위", "이미지 추가"]
     
@@ -87,7 +110,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0 {
+        if indexPath.section == toDoCase.memo.index {
             let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as! MemoTableViewCell
             cell.titleTextField.placeholder = "제목"
             
@@ -97,11 +120,13 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.title.text = todoList[indexPath.section-1]
             
-            if indexPath.section == 1 {
+            if indexPath.section == toDoCase.date.index {
                 cell.receivedTitle.text = receivedDate
 
-            } else {
+            } else if indexPath.section == toDoCase.tag.index {
                 cell.receivedTitle.text = receivedTextField
+            } else {
+                
             }
             
             // 5. receivedDate에 담아줬으니까 cell에 보여줄수 있게 되었어!!
@@ -115,7 +140,7 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         print(indexPath)
 
         
-        if indexPath.section == 1 {
+        if indexPath.section == toDoCase.date.index {
             let vc = DateViewController()
             navigationController?.pushViewController(vc, animated: true)
             
@@ -128,10 +153,13 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
             }
 
             
-        } else if indexPath.section == 2 {
+        } else if indexPath.section == toDoCase.tag.index {
             let vc = TagViewController()
             navigationController?.pushViewController(vc, animated: true)
             
+        } else if indexPath.section == toDoCase.priority.index {
+            let vc = PriorityViewController()
+            navigationController?.pushViewController(vc, animated: true)
         } else {
             
         }

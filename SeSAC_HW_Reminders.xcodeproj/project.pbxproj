@@ -26,6 +26,7 @@
 		C2E7FE3E2B7CD81E00004FC7 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3D2B7CD81E00004FC7 /* DateViewController.swift */; };
 		C2E7FE402B7CDEAB00004FC7 /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3F2B7CDEAB00004FC7 /* MemoTableViewCell.swift */; };
 		C2E7FE502B7DFE3D00004FC7 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */; };
+		C2E7FE522B7E0E6600004FC7 /* PriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		C2E7FE3D2B7CD81E00004FC7 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
 		C2E7FE3F2B7CDEAB00004FC7 /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
+		C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +88,8 @@
 				C29969FE2B7C8F1A0067D397 /* Base */,
 				C2E7FE442B7D074000004FC7 /* Main */,
 				C29969FD2B7C8F120067D397 /* View */,
-				C2E7FE462B7D078300004FC7 /* Cell */,
 				C2E7FE452B7D075F00004FC7 /* Detail */,
+				C2E7FE462B7D078300004FC7 /* Cell */,
 				C29969E72B7C8E5A0067D397 /* AppDelegate.swift */,
 				C29969E92B7C8E5A0067D397 /* SceneDelegate.swift */,
 				C29969EB2B7C8E5A0067D397 /* ViewController.swift */,
@@ -103,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				C2E7FE372B7CAC0100004FC7 /* ToDoViewController.swift */,
-				C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				C2E7FE3D2B7CD81E00004FC7 /* DateViewController.swift */,
+				C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */,
+				C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				C29969EA2B7C8E5A0067D397 /* SceneDelegate.swift in Sources */,
 				C2E7FE3A2B7CCF3600004FC7 /* ToDoTableViewCell.swift in Sources */,
 				C2E7FE502B7DFE3D00004FC7 /* TagViewController.swift in Sources */,
+				C2E7FE522B7E0E6600004FC7 /* PriorityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
