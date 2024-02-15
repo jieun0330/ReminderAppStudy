@@ -10,6 +10,11 @@ import SnapKit
 
 class RemindersViewController: BaseViewController {
     
+    lazy var rightBarButtonItem: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
+        return button
+    }()
+    
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.backgroundColor = .systemGray6
@@ -17,16 +22,16 @@ class RemindersViewController: BaseViewController {
         return view
     }()
     
-    lazy var leftBarButton: UIBarButtonItem = {
+    lazy var leftToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
-        button = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(plusButtonClicked))
+        button = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(leftToolBarButtonClicked))
         
         return button
     }()
     
-    lazy var rightBarButton: UIBarButtonItem = {
+    lazy var rightToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
-        button = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: #selector(addListButtonClicked))
+        button = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: #selector(rightToolBarButtonClicked))
         return button
     }()
     
@@ -54,6 +59,10 @@ class RemindersViewController: BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         configureToolBar()
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    
+    @objc func rightBarButtonItemClicked() {
         
     }
     
@@ -64,18 +73,18 @@ class RemindersViewController: BaseViewController {
         // ToolBar는 UINavigationController에 속해있고 기본적으로 숨겨져있어서 -> false
         self.navigationController?.isToolbarHidden = false
         // 아 중간에 넣어주라고~
-        [leftBarButton, flexibleSpace, rightBarButton].forEach {
+        [leftToolBarButton, flexibleSpace, rightToolBarButton].forEach {
             items.append($0)
         }
         self.toolbarItems = items
     }
     
-    @objc func plusButtonClicked() {
+    @objc func leftToolBarButtonClicked() {
         let vc = UINavigationController(rootViewController: ToDoViewController())
         present(vc, animated: true)
     }
     
-    @objc func addListButtonClicked() {
+    @objc func rightToolBarButtonClicked() {
         
     }
     
