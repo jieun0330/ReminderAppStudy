@@ -30,6 +30,7 @@
 		C2E7FE552B7E23F500004FC7 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE542B7E23F500004FC7 /* RealmModel.swift */; };
 		C2E7FE582B7E243E00004FC7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C2E7FE572B7E243E00004FC7 /* Realm */; };
 		C2E7FE5A2B7E243E00004FC7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2E7FE592B7E243E00004FC7 /* RealmSwift */; };
+		C2E7FE5C2B7E2D6600004FC7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
 		C2E7FE542B7E23F500004FC7 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 			children = (
 				C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */,
 				C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */,
+				C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2E7FE5C2B7E2D6600004FC7 /* ListViewController.swift in Sources */,
 				C2996A002B7C8F200067D397 /* BaseViewController.swift in Sources */,
 				C2E7FE402B7CDEAB00004FC7 /* MemoTableViewCell.swift in Sources */,
 				C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */,

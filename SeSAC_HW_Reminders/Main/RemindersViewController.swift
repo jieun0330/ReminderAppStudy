@@ -103,4 +103,9 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = ListViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
