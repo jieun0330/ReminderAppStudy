@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 enum toDoCase: String, CaseIterable {
     case memo = "메모"
@@ -42,6 +43,11 @@ class ToDoViewController: BaseViewController {
         view.register(ToDoTableViewCell.self, forCellReuseIdentifier: ToDoTableViewCell.identifier)
         view.register(MemoTableViewCell.self, forCellReuseIdentifier: MemoTableViewCell.identifier)
         return view
+    }()
+    
+    lazy var rightButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(rightBarButtonClicked))
+        return button
     }()
         
     var receivedDate = ""
@@ -79,6 +85,7 @@ class ToDoViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = .white
         navigationItem.title = "새로운 할 일"
+        navigationItem.rightBarButtonItem = self.rightButton
     }
     
     @objc func tagReceivedNotification(notification: NSNotification) {
@@ -92,6 +99,23 @@ class ToDoViewController: BaseViewController {
             tableView.reloadData()
         }
     }
+    
+    @objc func rightBarButtonClicked() {
+        
+        let realm = try! Realm()
+        print(realm.configuration.fileURL)
+        
+        let data = ReminderModel(title: "", memo: "", date: receivedDate, tag: receivedTextField, priority: "")
+        
+        try! realm.write {
+            realm.add(data)
+            print("real created")
+        }
+        
+        dismiss(animated: true)
+        
+    }
+    
 }
 
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
@@ -137,8 +161,6 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
-
         
         if indexPath.section == toDoCase.date.index {
             let vc = DateViewController()
