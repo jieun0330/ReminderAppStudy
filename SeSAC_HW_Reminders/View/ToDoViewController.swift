@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-enum toDoCase: String {
+enum toDoCase: String, CaseIterable {
     case memo = "메모"
     case date = "마감일"
     case tag = "태그"
@@ -157,10 +157,12 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = TagViewController()
             navigationController?.pushViewController(vc, animated: true)
             
-        } else if indexPath.section == toDoCase.priority.index {
-            let vc = PriorityViewController()
-            navigationController?.pushViewController(vc, animated: true)
-        } else {
+        }
+//        else if indexPath.section == toDoCase.priority.index {
+//            let vc = PriorityViewController()
+//            navigationController?.pushViewController(vc, animated: true)
+//        } 
+        else {
             
         }
     }
