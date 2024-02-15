@@ -54,6 +54,7 @@ class RemindersViewController: BaseViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         configureToolBar()
+        
     }
     
     func configureToolBar() {

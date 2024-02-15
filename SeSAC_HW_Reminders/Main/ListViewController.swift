@@ -20,10 +20,15 @@ class ListViewController: BaseViewController {
         view.register(UITableViewCell.self, forCellReuseIdentifier: "listCell")
         return view
     }()
+    
+    lazy var rightButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
+        return button
+    }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func configureHierarchy() {
@@ -40,6 +45,7 @@ class ListViewController: BaseViewController {
     
     override func configureView() {
         view.backgroundColor = .white
+        navigationItem.rightBarButtonItem = rightButton
         
         let realm = try! Realm()
         list = realm.objects(ReminderModel.self).where {
@@ -47,7 +53,14 @@ class ListViewController: BaseViewController {
         }
         
     }
-
+    
+    @objc func rightBarButtonClicked() {
+        let upcomingDate = UIAction(title: "마감일순", handler: { _ in print("마감일순") })
+        let title = UIAction(title: "제목순", handler: { _ in print("제목순") })
+        let lowPriority = UIAction(title: "우선순위 낮음", handler: { _ in print("우선순위 낮음") })
+        rightButton.menu = UIMenu(options: .displayInline, children: [upcomingDate, title, lowPriority])
+    }
+    
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -63,4 +76,5 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
 
         return cell
     }
+
 }
