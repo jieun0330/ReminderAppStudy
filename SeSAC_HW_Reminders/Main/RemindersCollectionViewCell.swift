@@ -27,7 +27,6 @@ class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     override func configureConstraints() {
-
         circleIcon.snp.makeConstraints {
             $0.leading.top.equalTo(contentView).inset(10)
             $0.size.equalTo(30)
@@ -35,8 +34,6 @@ class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     override func configureView() {
-        
-        
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true

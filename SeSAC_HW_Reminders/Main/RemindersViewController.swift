@@ -16,29 +16,19 @@ class RemindersViewController: BaseViewController {
         view.register(RemindersCollectionViewCell.self, forCellWithReuseIdentifier: RemindersCollectionViewCell.identifier)
         return view
     }()
-
-//    let toolbar: UIToolbar() = {
-//        let bar = UIToolbar
-//        return bar
-//    }()
     
-    lazy var plusButton: UIBarButtonItem = {
+    lazy var leftBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
-        button = UIBarButtonItem(title: "새로운 미리 알림", style: .plain, target: self, action: #selector(plusButtonClicked))
-
-        return button
-    }()
-
-    
-    var addListButton: UIBarButtonItem = {
-        var button = UIBarButtonItem()
-
-//        button = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: #selector(addListButtonClicked))
-
+        button = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(plusButtonClicked))
+        
         return button
     }()
     
-
+    lazy var rightBarButton: UIBarButtonItem = {
+        var button = UIBarButtonItem()
+        button = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: #selector(addListButtonClicked))
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,15 +51,9 @@ class RemindersViewController: BaseViewController {
     
     override func configureView() {
         view.backgroundColor = .systemGray6
-        
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         configureToolBar()
-
-        
-
-        
     }
     
     func configureToolBar() {
@@ -79,34 +63,20 @@ class RemindersViewController: BaseViewController {
         // ToolBar는 UINavigationController에 속해있고 기본적으로 숨겨져있어서 -> false
         self.navigationController?.isToolbarHidden = false
         // 아 중간에 넣어주라고~
-        [plusButton, flexibleSpace, addListButton].forEach {
+        [leftBarButton, flexibleSpace, rightBarButton].forEach {
             items.append($0)
         }
         self.toolbarItems = items
-        
-
-       
     }
-    
-//    override func setToolbarItems(_ toolbarItems: [UIBarButtonItem]?, animated: Bool) {
-//        
-//    }
-//    open func setToolbarItems(_ toolbarItems: [UIBarButtonItem]?, animated: Bool)
-
-    
     
     @objc func plusButtonClicked() {
-//        print("click")
-        let vc = UINavigationController(rootViewController: ToDoViewController()) 
-        
-//        navigationController?.pushViewController(vc, animated: true)
-//        navigationController?.popToViewController(vc, animated: true)
+        let vc = UINavigationController(rootViewController: ToDoViewController())
         present(vc, animated: true)
     }
-//    
-//    @objc func addListButtonClicked() {
-//        
-//    }
+    
+    @objc func addListButtonClicked() {
+        
+    }
     
     // 🚨static을 써야 저 위에 쓸 수 있는건가
     static func configureCollectionViewLayout() -> UICollectionViewLayout {
@@ -130,9 +100,6 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RemindersCollectionViewCell.identifier, for: indexPath) as! RemindersCollectionViewCell
-        
-//        cell.layer.borderColor = UIColor.red.cgColor
-//        cell.layer.borderWidth = 1        
         
         return cell
     }

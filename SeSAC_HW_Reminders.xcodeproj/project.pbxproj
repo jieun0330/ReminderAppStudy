@@ -24,6 +24,7 @@
 		C2E7FE3A2B7CCF3600004FC7 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE392B7CCF3600004FC7 /* ToDoTableViewCell.swift */; };
 		C2E7FE3C2B7CCFE300004FC7 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */; };
 		C2E7FE3E2B7CD81E00004FC7 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3D2B7CD81E00004FC7 /* DateViewController.swift */; };
+		C2E7FE402B7CDEAB00004FC7 /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3F2B7CDEAB00004FC7 /* MemoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		C2E7FE392B7CCF3600004FC7 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE3D2B7CD81E00004FC7 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		C2E7FE3F2B7CDEAB00004FC7 /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +82,10 @@
 			children = (
 				C2996A0A2B7C94F10067D397 /* Protocol */,
 				C29969FE2B7C8F1A0067D397 /* Base */,
+				C2E7FE442B7D074000004FC7 /* Main */,
 				C29969FD2B7C8F120067D397 /* View */,
+				C2E7FE462B7D078300004FC7 /* Cell */,
+				C2E7FE452B7D075F00004FC7 /* Detail */,
 				C29969E72B7C8E5A0067D397 /* AppDelegate.swift */,
 				C29969E92B7C8E5A0067D397 /* SceneDelegate.swift */,
 				C29969EB2B7C8E5A0067D397 /* ViewController.swift */,
@@ -95,11 +100,7 @@
 		C29969FD2B7C8F120067D397 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */,
-				C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */,
 				C2E7FE372B7CAC0100004FC7 /* ToDoViewController.swift */,
-				C2E7FE392B7CCF3600004FC7 /* ToDoTableViewCell.swift */,
-				C2E7FE3D2B7CD81E00004FC7 /* DateViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -120,6 +121,32 @@
 				C2996A0B2B7C94F80067D397 /* Protocol.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		C2E7FE442B7D074000004FC7 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */,
+				C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C2E7FE452B7D075F00004FC7 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C2E7FE3D2B7CD81E00004FC7 /* DateViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C2E7FE462B7D078300004FC7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C2E7FE3F2B7CDEAB00004FC7 /* MemoTableViewCell.swift */,
+				C2E7FE392B7CCF3600004FC7 /* ToDoTableViewCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2996A002B7C8F200067D397 /* BaseViewController.swift in Sources */,
+				C2E7FE402B7CDEAB00004FC7 /* MemoTableViewCell.swift in Sources */,
 				C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */,
 				C29969FC2B7C8EF10067D397 /* RemindersViewController.swift in Sources */,
 				C2996A0C2B7C94F80067D397 /* Protocol.swift in Sources */,
