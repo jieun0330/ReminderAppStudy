@@ -29,8 +29,9 @@ class RemindersViewController: BaseViewController {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.backgroundColor = .systemGray6
         view.register(RemindersCollectionViewCell.self, forCellWithReuseIdentifier: RemindersCollectionViewCell.identifier)
+        
         return view }()
-
+    
     lazy var leftToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
         button = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(leftToolBarButtonClicked))
@@ -44,14 +45,10 @@ class RemindersViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        collectionView.reloadData()
+
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        collectionView.reloadData()
-        
-    }
+
     
     override func configureHierarchy() {
         [allText, collectionView].forEach {
@@ -135,18 +132,7 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
 //        if cellUI.allCases[indexPath.item].cellTitle == allText.text! {
 //            cell.countLabel.text = "\(repo.readRecordFilter().count)"
 //        }
-        
-        
-        
-        
-        
-        
-        if indexPath.row == cellUI.allCases[indexPath.row].rawValue {
-            print("test")
-        }
-        
-        
-        
+   
         
         switch cellUI.allCases[indexPath.row] {
             
@@ -162,7 +148,8 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.countLabel.text = ""
         }
         
-        
+        collectionView.reloadData()
+
         
         
         
@@ -180,6 +167,8 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
        
         
         return cell
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

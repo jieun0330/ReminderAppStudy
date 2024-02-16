@@ -15,13 +15,9 @@ class ToDoViewController: BaseViewController {
     
 //    var count = 0
     // 2. countup이라는 클로저를 만들어줬어
-    var countUp: ((Int) -> Void)?
+//    var countUp: ((Int) -> Void)?
         
-    var receivedDate = "" {
-        didSet{
-            tableView.reloadData()
-        }
-    }
+    var receivedDate = ""
     var receivedTextField = ""
     
     lazy var addButton: UIBarButtonItem = {
@@ -50,6 +46,10 @@ class ToDoViewController: BaseViewController {
                                                name: Notification.Name(rawValue: "TextFieldReceived"),
                                                object: nil)
     }
+    
+//    override func viewDidDisappear(_ animated: Bool) {
+//    
+//    }
     
     override func configureHierarchy() {
         [tableView].forEach {
