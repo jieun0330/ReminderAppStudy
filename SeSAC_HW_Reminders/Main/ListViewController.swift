@@ -22,7 +22,8 @@ class ListViewController: BaseViewController {
         let view = UITableView()
         view.delegate = self
         view.dataSource = self
-        view.register(UITableViewCell.self, forCellReuseIdentifier: "listCell")
+//        view.register(UITableViewCell.self, forCellReuseIdentifier: "listCell")
+        view.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.identifier)
         return view }()
 
     override func viewDidLoad() {
@@ -68,8 +69,14 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell")!
-        cell.textLabel?.text = list[indexPath.row].date
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
+        cell.todoLabel.text = list[indexPath.row].date
+//        cell.textLabel?.text = list[indexPath.row].date
+//        cell.imageView?.image = UIImage(systemName: "circle")
+        
+        
+        cell.selectionStyle = .none
 
         return cell
     }
