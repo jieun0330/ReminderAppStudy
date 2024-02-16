@@ -11,7 +11,8 @@ import RealmSwift
 
 class ListViewController: BaseViewController {
 
-    let realm = try! Realm()
+//    let realm = try! Realm()
+    let repository = ToDoRepository()
     var list: Results<ReminderModel>!
     
     lazy var tableView: UITableView = {
@@ -44,13 +45,18 @@ class ListViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = rightButton
-        list = realm.objects(ReminderModel.self)
+        
+        
+//        list = realm.objects(ReminderModel.self)
+        list = repository.readRecordFilter()
     }
     
     @objc func rightBarButtonClicked() {
         // 마감일순을 눌렀을 때 sort가 되어야되는구나 위에꺼 가져와야징
         let upcomingDate = UIAction(title: "마감일순", handler: { _ in
-            self.list = self.realm.objects(ReminderModel.self).sorted(byKeyPath: "date", ascending: true)
+//            self.list = self.realm.objects(ReminderModel.self).sorted(byKeyPath: "date", ascending: true)
+            self.list = self.repository.readRecordFilter().sorted(byKeyPath: "date", ascending: true)
+
             self.tableView.reloadData()
         })
         

@@ -8,6 +8,59 @@
 import UIKit
 import SnapKit
 
+enum cellUI: String, CaseIterable {
+    case today
+    case schedule
+    case all
+    case flag
+    case complete
+    
+    var cellImage: String {
+        switch self {
+        case .today:
+            "sportscourt.circle"
+        case .schedule:
+            "calendar.circle.fill"
+        case .all:
+            "archivebox.circle.fill"
+        case .flag:
+            "flag.circle.fill"
+        case .complete:
+            "checkmark.circle.fill"
+        }
+    }
+    
+    var cellTitle: String {
+        switch self {
+        case .today:
+            "오늘"
+        case .schedule:
+            "예정"
+        case .all:
+            "전체"
+        case .flag:
+            "깃발 표시"
+        case .complete:
+            "완료됨"
+        }
+    }
+    
+    var cellColor: UIColor {
+        switch self {
+        case .today:
+            return .blue
+        case .schedule:
+            return .red
+        case .all:
+            return .gray
+        case .flag:
+            return .orange
+        case .complete:
+            return .gray
+        }
+    }
+}
+
 class RemindersViewController: BaseViewController {
     
     lazy var rightBarButtonItem: UIBarButtonItem = {
@@ -26,7 +79,15 @@ class RemindersViewController: BaseViewController {
         view.register(RemindersCollectionViewCell.self, forCellWithReuseIdentifier: RemindersCollectionViewCell.identifier)
         return view }()
     
-    let cellImage = ["sportscourt.circle", "calendar.circle.fill", "archivebox.circle.fill", "flag.circle.fill", "checkmark.circle.fill"]
+    // 딕셔너리는 인덱스 접근을 못하니까 이건 정녕 못쓰는건가,,
+//    let cellImage = ["sportscourt.circle": "오늘",
+//                     "calendar.circle.fill": "예정",
+//                     "archivebox.circle.fill": "전체",
+//                     "flag.circle.fill": "깃발 표시",
+//                     "checkmark.circle.fill": "완료됨"]
+//    let cellImage = ["sportscourt.circle", "calendar.circle.fill", "archivebox.circle.fill", "flag.circle.fill", "checkmark.circle.fill"]
+//    let cellTitle = ["오늘", "예정", "전체", "깃발 표시", "완료됨"]
+    
     
     lazy var leftToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
@@ -119,7 +180,20 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RemindersCollectionViewCell.identifier, for: indexPath) as! RemindersCollectionViewCell
-        cell.circleIcon.image = UIImage(systemName: cellImage[indexPath.item])
+//        print("keys", cellImage.keys)
+//        print(indexPath.item)
+//        print(cellImage[indexPath.item].key)
+        
+        // 맞다 지은아 딕셔너리는 순서가 정해져있는게 아니라서 index 접근이 안된다
+        // 어떻게 하더라
+//        for image in cellImage {
+//            print(image)
+//        }
+        
+//        print(cellImage.keys)
+        cell.circleIcon.image = UIImage(systemName: cellUI.allCases[indexPath.item].cellImage)
+        cell.circleIcon.tintColor = cellUI.allCases[indexPath.item].cellColor
+        cell.cellTitle.text = cellUI.allCases[indexPath.item].cellTitle
         
         return cell
     }
