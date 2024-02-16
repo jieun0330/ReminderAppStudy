@@ -8,22 +8,20 @@
 import UIKit
 import SnapKit
 
+
 class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
-    
+
     let circleIcon: UIImageView = {
         let icon = UIImageView()
-        icon.image = UIImage(systemName: "calendar.circle.fill")
         return icon }()
     
     let cellTitle: UILabel = {
         let title = UILabel()
-        title.text = "전체"
         title.font = UIFont.systemFont(ofSize: 12)
         return title }()
     
-    let count: UILabel = {
+    var countLabel: UILabel = {
         let number = UILabel()
-        number.text = "0"
         return number }()
     
     override init(frame: CGRect) {
@@ -31,7 +29,7 @@ class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     }
     
     override func configureHierarchy() {
-        [circleIcon, cellTitle, count].forEach {
+        [circleIcon, cellTitle, countLabel].forEach {
             contentView.addSubview($0)
         }
     }
@@ -47,12 +45,13 @@ class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
             $0.height.equalTo(10)
         }
         
-        count.snp.makeConstraints {
+        countLabel.snp.makeConstraints {
             $0.trailing.equalTo(contentView).inset(10)
             $0.top.equalTo(contentView).offset(15)
         }
     }
     
+
     override func configureView() {
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 10

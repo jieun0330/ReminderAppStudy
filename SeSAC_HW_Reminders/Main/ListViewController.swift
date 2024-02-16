@@ -11,9 +11,12 @@ import RealmSwift
 
 class ListViewController: BaseViewController {
 
-//    let realm = try! Realm()
     let repository = ToDoRepository()
     var list: Results<ReminderModel>!
+    
+    lazy var rightBarButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
+        return button}()
     
     lazy var tableView: UITableView = {
         let view = UITableView()
@@ -21,10 +24,6 @@ class ListViewController: BaseViewController {
         view.dataSource = self
         view.register(UITableViewCell.self, forCellReuseIdentifier: "listCell")
         return view }()
-    
-    lazy var rightButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
-        return button}()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,25 +43,21 @@ class ListViewController: BaseViewController {
     
     override func configureView() {
         view.backgroundColor = .white
-        navigationItem.rightBarButtonItem = rightButton
+        navigationItem.rightBarButtonItem = rightBarButton
         
-        
-//        list = realm.objects(ReminderModel.self)
         list = repository.readRecordFilter()
     }
     
     @objc func rightBarButtonClicked() {
         // 마감일순을 눌렀을 때 sort가 되어야되는구나 위에꺼 가져와야징
         let upcomingDate = UIAction(title: "마감일순", handler: { _ in
-//            self.list = self.realm.objects(ReminderModel.self).sorted(byKeyPath: "date", ascending: true)
             self.list = self.repository.readRecordFilter().sorted(byKeyPath: "date", ascending: true)
-
             self.tableView.reloadData()
         })
         
         let title = UIAction(title: "제목순", handler: { _ in print("제목순") })
         let lowPriority = UIAction(title: "우선순위 낮음", handler: { _ in print("우선순위 낮음") })
-        rightButton.menu = UIMenu(options: .displayInline, children: [upcomingDate, title, lowPriority])
+        rightBarButton.menu = UIMenu(options: .displayInline, children: [upcomingDate, title, lowPriority])
     }
 }
 

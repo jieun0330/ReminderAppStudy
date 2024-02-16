@@ -46,6 +46,7 @@ class TagViewController: BaseViewController {
 
 extension TagViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
+        // 2️⃣ NotificationCenter 방법
         // 1. 텍스트필드에 입력값을 다 마치면 notificationCenter 통해서 값을 전달해줄거니까 우선 저장해보자
         NotificationCenter.default.post(name: Notification.Name("TextFieldReceived"),
                                         object: nil,

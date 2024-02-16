@@ -9,30 +9,24 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-enum toDoCase: String, CaseIterable {
-    case memo = "메모"
-    case date = "마감일"
-    case tag = "태그"
-    case priority = "우선순위"
-    case image = "이미지 추천"
+class ToDoViewController: BaseViewController {
+
+    let repository = ToDoRepository()
     
-    var index: Int {
-        switch self {
-        case .memo:
-            return 0
-        case .date:
-            return 1
-        case .tag:
-            return 2
-        case .priority:
-            return 3
-        case .image:
-            return 4
+//    var count = 0
+    // 2. countup이라는 클로저를 만들어줬어
+    var countUp: ((Int) -> Void)?
+        
+    var receivedDate = "" {
+        didSet{
+            tableView.reloadData()
         }
     }
-}
-
-class ToDoViewController: BaseViewController {
+    var receivedTextField = ""
+    
+    lazy var addButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addButtonClicked))
+        return button }()
     
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
@@ -42,21 +36,7 @@ class ToDoViewController: BaseViewController {
         view.dataSource = self
         view.register(ToDoTableViewCell.self, forCellReuseIdentifier: ToDoTableViewCell.identifier)
         view.register(MemoTableViewCell.self, forCellReuseIdentifier: MemoTableViewCell.identifier)
-        return view
-    }()
-    
-    lazy var rightButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(rightBarButtonClicked))
-        return button
-    }()
-    
-    let repository = ToDoRepository()
-    
-    var receivedDate = ""
-    var receivedTextField = ""
-        
-    var memoList: [String] = ["제목", "메모"]
-    var todoList: [String] = ["마감일", "태그", "우선 순위", "이미지 추가"]
+        return view }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +49,6 @@ class ToDoViewController: BaseViewController {
                                                selector: #selector(tagReceivedNotification),
                                                name: Notification.Name(rawValue: "TextFieldReceived"),
                                                object: nil)
-        
     }
     
     override func configureHierarchy() {
@@ -87,7 +66,7 @@ class ToDoViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = .white
         navigationItem.title = "새로운 할 일"
-        navigationItem.rightBarButtonItem = self.rightButton
+        navigationItem.rightBarButtonItem = self.addButton
     }
     
     @objc func tagReceivedNotification(notification: NSNotification) {
@@ -102,24 +81,23 @@ class ToDoViewController: BaseViewController {
         }
     }
     
-    @objc func rightBarButtonClicked() {
-        
-//        let realm = try! Realm()
-//        print(realm.configuration.fileURL)
+    @objc func addButtonClicked() {
         
         let data = ReminderModel(title: "", memo: "", date: receivedDate, tag: receivedTextField, priority: "")
         
         repository.createRecord(data)
         
-//        try! realm.write {
-//            realm.add(data)
-//            print("real created")
-//        }
+        
+        
+        // 1. 추가 버튼을 누르면 더해진 숫자가 메인뷰에 보여졌으면 좋겠어
+        // 이것도 함수 안에 있으니까 클로저로 만들어줘야겠지?
+
+        // 3. 만든 클로저를 여기에다가 넣어줘볼까
+//        countUp()
+        
         
         dismiss(animated: true)
-        
     }
-    
 }
 
 extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
@@ -145,21 +123,32 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
-            
-            cell.title.text = todoList[indexPath.section-1]
+            cell.title.text = toDoCase.allCases[indexPath.section-1].rawValue
             
             if indexPath.section == toDoCase.date.index {
                 cell.receivedTitle.text = receivedDate
-
             } else if indexPath.section == toDoCase.tag.index {
                 cell.receivedTitle.text = receivedTextField
             } else {
                 
             }
-            
+//            let section = toDoCase.allCases[indexPath.row]
+//            
+//            cell.receivedTitle.text = section.rawValue
+//            switch section {
+//            case .memo:
+//                cell.receivedTitle = moemo
+//            case .date:
+//                cell.receivedTitle = date
+//            case .tag:
+//                <#code#>
+//            case .priority:
+//                <#code#>
+//            case .image:
+//                <#code#>
+//            }
             // 5. receivedDate에 담아줬으니까 cell에 보여줄수 있게 되었어!!
             
-        
             return cell
         }
     }
@@ -175,19 +164,13 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
             vc.selectedDate = {value in
                 self.receivedDate = value
                 // 6. 데이터가 바꼈으니까 -> 뷰도 바껴야겠지, reload를 해주자
-                tableView.reloadData()
+//                tableView.reloadData()
             }
-
-            
         } else if indexPath.section == toDoCase.tag.index {
             let vc = TagViewController()
             navigationController?.pushViewController(vc, animated: true)
             
         }
-//        else if indexPath.section == toDoCase.priority.index {
-//            let vc = PriorityViewController()
-//            navigationController?.pushViewController(vc, animated: true)
-//        } 
         else {
             
         }

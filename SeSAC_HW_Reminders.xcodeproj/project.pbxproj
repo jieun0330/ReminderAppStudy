@@ -32,6 +32,8 @@
 		C2E7FE5A2B7E243E00004FC7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2E7FE592B7E243E00004FC7 /* RealmSwift */; };
 		C2E7FE5C2B7E2D6600004FC7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */; };
 		C2E7FE622B7F288300004FC7 /* ToDoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE612B7F288300004FC7 /* ToDoRepository.swift */; };
+		C2E7FE672B7F416100004FC7 /* CellUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE662B7F416100004FC7 /* CellUI.swift */; };
+		C2E7FE692B7F438100004FC7 /* ToDoCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE682B7F438100004FC7 /* ToDoCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +60,8 @@
 		C2E7FE542B7E23F500004FC7 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		C2E7FE612B7F288300004FC7 /* ToDoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRepository.swift; sourceTree = "<group>"; };
+		C2E7FE662B7F416100004FC7 /* CellUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellUI.swift; sourceTree = "<group>"; };
+		C2E7FE682B7F438100004FC7 /* ToDoCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				C2E7FE372B7CAC0100004FC7 /* ToDoViewController.swift */,
+				C2E7FE682B7F438100004FC7 /* ToDoCase.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 				C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */,
 				C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */,
 				C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */,
+				C2E7FE662B7F416100004FC7 /* CellUI.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -274,7 +280,9 @@
 				C2E7FE552B7E23F500004FC7 /* RealmModel.swift in Sources */,
 				C2E7FE502B7DFE3D00004FC7 /* TagViewController.swift in Sources */,
 				C2E7FE522B7E0E6600004FC7 /* PriorityViewController.swift in Sources */,
+				C2E7FE672B7F416100004FC7 /* CellUI.swift in Sources */,
 				C2E7FE622B7F288300004FC7 /* ToDoRepository.swift in Sources */,
+				C2E7FE692B7F438100004FC7 /* ToDoCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
