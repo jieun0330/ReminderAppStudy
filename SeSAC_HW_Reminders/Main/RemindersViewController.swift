@@ -8,9 +8,22 @@
 import UIKit
 import SnapKit
 
-//import RealmSwift
+// 3️⃣ delegate
+// 1. 프로토콜을 만들어주자
+protocol ReloadDataDelegate {
+    func reloadData()
+}
 
-class RemindersViewController: BaseViewController {
+// 2. 채택해주자
+class RemindersViewController: BaseViewController, ReloadDataDelegate{
+    
+    // 3. collectionView reload를 해주고싶어
+    func reloadData() {
+        collectionView.reloadData()
+    }
+    
+
+
     
 //    var list: Results<ReminderModel>!
     let repo = ToDoRepository()
@@ -25,11 +38,10 @@ class RemindersViewController: BaseViewController {
         entire.font = UIFont.boldSystemFont(ofSize: 20)
         return entire }()
     
-    let collectionView: UICollectionView = {
+    var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.backgroundColor = .systemGray6
         view.register(RemindersCollectionViewCell.self, forCellWithReuseIdentifier: RemindersCollectionViewCell.identifier)
-        
         return view }()
     
     lazy var leftToolBarButton: UIBarButtonItem = {
@@ -45,10 +57,10 @@ class RemindersViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        collectionView.reloadData()
 
     }
 
+    
     
     override func configureHierarchy() {
         [allText, collectionView].forEach {
@@ -75,6 +87,8 @@ class RemindersViewController: BaseViewController {
         collectionView.dataSource = self
         configureToolBar()
         navigationItem.rightBarButtonItem = rightBarButtonItem
+
+        
     }
     
     @objc func rightBarButtonItemClicked() { }
@@ -93,8 +107,15 @@ class RemindersViewController: BaseViewController {
     }
     
     @objc func leftToolBarButtonClicked() {
-        let vc = UINavigationController(rootViewController: ToDoViewController())
-        present(vc, animated: true)
+        
+        // 7. TodoViewController로 이동하는 공간에 만들어주자
+        let vc = ToDoViewController()
+        // 8. ToDoViewController안에 delegate 하는 역할을 여기서 해준다!
+        vc.delegate = self
+        let nav = UINavigationController(rootViewController: vc)
+        
+        present(nav, animated: true)
+
     }
     
     @objc func rightToolBarButtonClicked() { }
@@ -148,7 +169,7 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.countLabel.text = ""
         }
         
-        collectionView.reloadData()
+//        collectionView.reloadData()
 
         
         
@@ -176,3 +197,4 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         navigationController?.pushViewController(vc, animated: true)
     }
 }
+

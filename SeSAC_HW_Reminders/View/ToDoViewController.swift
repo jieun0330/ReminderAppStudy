@@ -9,16 +9,20 @@ import UIKit
 import SnapKit
 import RealmSwift
 
+
+
+
 class ToDoViewController: BaseViewController {
 
+
     let repository = ToDoRepository()
-    
-//    var count = 0
-    // 2. countup이라는 클로저를 만들어줬어
-//    var countUp: ((Int) -> Void)?
+
         
     var receivedDate = ""
     var receivedTextField = ""
+    
+    // 5. 변수 생성
+    var delegate: ReloadDataDelegate?
     
     lazy var addButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addButtonClicked))
@@ -81,20 +85,16 @@ class ToDoViewController: BaseViewController {
         }
     }
     
+    // 4. 추가 버튼했을때 delegate 동작을 해줘야되니까 여기다 써줘야되는데 변수를 생성해주고 오자
+    
     @objc func addButtonClicked() {
         
         let data = ReminderModel(title: "", memo: "", date: receivedDate, tag: receivedTextField, priority: "")
         
         repository.createRecord(data)
         
-        
-        
-        // 1. 추가 버튼을 누르면 더해진 숫자가 메인뷰에 보여졌으면 좋겠어
-        // 이것도 함수 안에 있으니까 클로저로 만들어줘야겠지?
-
-        // 3. 만든 클로저를 여기에다가 넣어줘볼까
-//        countUp()
-        
+        // 6. reloadData역할을 여기서 해준다
+        delegate?.reloadData()
         
         dismiss(animated: true)
     }
