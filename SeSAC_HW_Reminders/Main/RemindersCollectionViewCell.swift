@@ -13,21 +13,18 @@ class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     let circleIcon: UIImageView = {
         let icon = UIImageView()
         icon.image = UIImage(systemName: "calendar.circle.fill")
-        return icon
-    }()
+        return icon }()
     
     let cellTitle: UILabel = {
         let title = UILabel()
         title.text = "전체"
         title.font = UIFont.systemFont(ofSize: 12)
-        return title
-    }()
+        return title }()
     
     let count: UILabel = {
         let number = UILabel()
         number.text = "0"
-        return number
-    }()
+        return number }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

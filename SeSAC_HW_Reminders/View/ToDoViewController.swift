@@ -49,7 +49,9 @@ class ToDoViewController: BaseViewController {
         let button = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(rightBarButtonClicked))
         return button
     }()
-        
+    
+    let repository = ToDoRepository()
+    
     var receivedDate = ""
     var receivedTextField = ""
         
@@ -102,15 +104,17 @@ class ToDoViewController: BaseViewController {
     
     @objc func rightBarButtonClicked() {
         
-        let realm = try! Realm()
-        print(realm.configuration.fileURL)
+//        let realm = try! Realm()
+//        print(realm.configuration.fileURL)
         
         let data = ReminderModel(title: "", memo: "", date: receivedDate, tag: receivedTextField, priority: "")
         
-        try! realm.write {
-            realm.add(data)
-            print("real created")
-        }
+        repository.createRecord(data)
+        
+//        try! realm.write {
+//            realm.add(data)
+//            print("real created")
+//        }
         
         dismiss(animated: true)
         

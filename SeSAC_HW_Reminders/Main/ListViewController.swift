@@ -19,14 +19,11 @@ class ListViewController: BaseViewController {
         view.delegate = self
         view.dataSource = self
         view.register(UITableViewCell.self, forCellReuseIdentifier: "listCell")
-        return view
-    }()
+        return view }()
     
     lazy var rightButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
-        return button
-    }()
-    
+        return button}()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,15 +52,12 @@ class ListViewController: BaseViewController {
         let upcomingDate = UIAction(title: "마감일순", handler: { _ in
             self.list = self.realm.objects(ReminderModel.self).sorted(byKeyPath: "date", ascending: true)
             self.tableView.reloadData()
-//            print("마감일순")
         })
-        
         
         let title = UIAction(title: "제목순", handler: { _ in print("제목순") })
         let lowPriority = UIAction(title: "우선순위 낮음", handler: { _ in print("우선순위 낮음") })
         rightButton.menu = UIMenu(options: .displayInline, children: [upcomingDate, title, lowPriority])
     }
-    
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -74,10 +68,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell")!
-        
         cell.textLabel?.text = list[indexPath.row].date
 
         return cell
     }
-
 }

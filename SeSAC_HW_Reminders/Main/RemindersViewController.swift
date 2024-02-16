@@ -12,22 +12,19 @@ class RemindersViewController: BaseViewController {
     
     lazy var rightBarButtonItem: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
-        return button
-    }()
+        return button }()
     
     let entireText: UILabel = {
         let entire = UILabel()
         entire.text = "전체"
         entire.font = UIFont.boldSystemFont(ofSize: 20)
-        return entire
-    }()
+        return entire }()
     
     let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.backgroundColor = .systemGray6
         view.register(RemindersCollectionViewCell.self, forCellWithReuseIdentifier: RemindersCollectionViewCell.identifier)
-        return view
-    }()
+        return view }()
     
     let cellImage = ["sportscourt.circle", "calendar.circle.fill", "archivebox.circle.fill", "flag.circle.fill", "checkmark.circle.fill"]
     
@@ -35,14 +32,12 @@ class RemindersViewController: BaseViewController {
         var button = UIBarButtonItem()
         button = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(leftToolBarButtonClicked))
         
-        return button
-    }()
+        return button }()
     
     lazy var rightToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
         button = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: #selector(rightToolBarButtonClicked))
-        return button
-    }()
+        return button }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -124,7 +119,6 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RemindersCollectionViewCell.identifier, for: indexPath) as! RemindersCollectionViewCell
-        
         cell.circleIcon.image = UIImage(systemName: cellImage[indexPath.item])
         
         return cell
