@@ -105,13 +105,40 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            repository.deleteRecord(list[indexPath.row])
-//            list[indexPath.row].removeObserver(self, forKeyPath: "title")
-            tableView.reloadData()
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            print("삭제 클릭")
+            success(true)
         }
+        delete.backgroundColor = .red
+        
+        
+        let flag = UIContextualAction(style: .normal, title: "깃발") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            print("깃발 클릭")
+            success(true)
+        }
+        flag.backgroundColor = .orange
+        
+        let detail = UIContextualAction(style: .normal, title: "세부사항") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            print("세부사항 클릭")
+            success(true)
+        }
+        detail.backgroundColor = .lightGray
+
+        
+
+        
+        return UISwipeActionsConfiguration(actions: [delete, flag, detail])
+        
     }
+    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            repository.deleteRecord(list[indexPath.row])
+//            tableView.reloadData()
+//        }
+//    }
     
 //    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
