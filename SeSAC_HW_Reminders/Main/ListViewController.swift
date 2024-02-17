@@ -108,8 +108,12 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            self.repository.deleteRecord(self.list[indexPath.row])
+
             print("삭제 클릭")
             success(true)
+            tableView.reloadData()
+
         }
         delete.backgroundColor = .red
         
@@ -121,6 +125,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         flag.backgroundColor = .orange
         
         let detail = UIContextualAction(style: .normal, title: "세부사항") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+
             print("세부사항 클릭")
             success(true)
         }
