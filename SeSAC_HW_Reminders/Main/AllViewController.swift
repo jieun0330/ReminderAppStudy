@@ -45,6 +45,9 @@ class ListViewController: BaseViewController {
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = rightBarButton
         list = repository.readRecordAllFilter()
+        tableView.rowHeight = 80
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
     @objc func rightBarButtonClicked() {
@@ -66,9 +69,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
-        cell.todoLabel.text = list[indexPath.row].date
+        cell.dateLabel.text = list[indexPath.row].date
         cell.selectionStyle = .none
         cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
+        
         
         return cell
     }
@@ -77,4 +81,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         repository.updateComplete(list[sender.tag])
         tableView.reloadData()
     }
+    
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return UITableView.automaticDimension
+//    }
 }

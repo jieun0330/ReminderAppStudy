@@ -103,7 +103,7 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if section == NewToDoEnum.title.rawValue {
             return 2
         } else {
             return 1
@@ -111,6 +111,26 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        
+//        let titleCell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as! TitleTableViewCell
+//        
+//        let section = NewToDoEnum.allCases[indexPath.section]
+//        print(section)
+//        switch section {
+//        case .title:
+//            titleCell.titleTextField.placeholder = section.cellTitle
+//        case .date:
+//            titleCell.titleTextField.placeholder = section.cellTitle
+//        case .tag:
+//            titleCell.titleTextField.placeholder = section.cellTitle
+//        case .priority:
+//            titleCell.titleTextField.placeholder = section.cellTitle
+//        case .image:
+//            titleCell.titleTextField.placeholder = section.cellTitle
+//        }
+//        
+//        return titleCell
+        
         
         if indexPath.section == NewToDoEnum.title.rawValue {
             let cell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as! TitleTableViewCell
@@ -163,7 +183,7 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             vc.selectedDate = {value in
                 self.receivedDate = value
                 // 6. 데이터가 바꼈으니까 -> 뷰도 바껴야겠지, reload를 해주자
-                //                tableView.reloadData()
+                                tableView.reloadData()
             }
         } else if indexPath.section == NewToDoEnum.tag.rawValue {
             let vc = TagViewController()
