@@ -52,8 +52,17 @@ class ToDoRepository {
     }    
     
     // CRU"D"
-//    func deleteRecord() {
-//        realm.delete(<#T##object: ObjectBase##ObjectBase#>)
-//    }
+    func deleteRecord(_ item: ReminderModel) {
+        
+        do {
+            try realm.write {
+                realm.delete(item)
+            }
+        } catch {
+            print(error)
+        }
+        
+//        realm.delete(item)
+    }
     
 }

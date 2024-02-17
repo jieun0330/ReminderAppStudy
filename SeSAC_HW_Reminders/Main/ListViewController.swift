@@ -105,6 +105,14 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData()
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            repository.deleteRecord(list[indexPath.row])
+//            list[indexPath.row].removeObserver(self, forKeyPath: "title")
+            tableView.reloadData()
+        }
+    }
+    
 //    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return UITableView.automaticDimension
 //    }
