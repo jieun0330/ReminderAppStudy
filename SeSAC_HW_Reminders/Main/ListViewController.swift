@@ -55,8 +55,19 @@ class ListViewController: BaseViewController {
             self.list = self.repository.readRecordAllFilter().sorted(byKeyPath: "date", ascending: true)
             self.tableView.reloadData()
         })
-        let title = UIAction(title: "제목순", handler: { _ in print("제목순") })
-        let lowPriority = UIAction(title: "우선순위 낮음", handler: { _ in print("우선순위 낮음") })
+        let title = UIAction(title: "제목순", handler: { _ in
+                    self.list = self.repository.readRecordAllFilter().sorted(byKeyPath: "title", ascending: true)
+            self.tableView.reloadData()
+
+        })
+
+        let lowPriority = UIAction(title: "우선순위 낮음", handler: { _ in
+            self.list = self.repository.readRecordAllFilter().sorted(byKeyPath: "priority", ascending: true)
+//            print(self.list)
+//            self.list = self.repository.readRecordAllFilter().sorted(byKeyPath: "tag", ascending: false)
+
+            self.tableView.reloadData()
+        })
         rightBarButton.menu = UIMenu(options: .displayInline, children: [upcomingDate, title, lowPriority])
     }
 }
@@ -72,6 +83,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
+        cell.mainLabel.text = list[indexPath.row].title
         cell.dateLabel.text = list[indexPath.row].date
         cell.selectionStyle = .none
         

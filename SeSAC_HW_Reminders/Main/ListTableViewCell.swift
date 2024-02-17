@@ -26,7 +26,7 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let mainLabel: UILabel = {
         let label = UILabel()
-        label.text = "키보드 구매"
+//        label.text = "키보드 구매"
 //        label.numberOfLines = 0
         return label
     }()

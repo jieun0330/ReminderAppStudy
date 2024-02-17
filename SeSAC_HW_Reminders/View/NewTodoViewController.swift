@@ -12,6 +12,7 @@ import RealmSwift
 class NewTodoViewController: BaseViewController {
     
     let repository = ToDoRepository()
+    var receivedTitle = ""
     var receivedDate = ""
     var receivedTag = ""
     var receivedSegmentValue = ""
@@ -69,7 +70,8 @@ class NewTodoViewController: BaseViewController {
     }
     
     @objc func receivedTitleTextFieldNotification(notification: NSNotification) {
-        if let _ = notification.userInfo?["title"] as? String {
+        if let value = notification.userInfo?["title"] as? String {
+            receivedTitle = value
             addButton.isEnabled = true
         }
     }
@@ -88,7 +90,7 @@ class NewTodoViewController: BaseViewController {
     
     // 4. 추가 버튼했을때 delegate 동작을 해줘야되니까 여기다 써줘야되는데 변수를 생성해주고 오자
     @objc func addButtonClicked() {
-        let data = ReminderModel(title: "", memo: "", date: receivedDate, tag: receivedTag, priority: receivedSegmentValue, complete: false)
+        let data = ReminderModel(title: receivedTitle, memo: "", date: receivedDate, tag: receivedTag, priority: receivedSegmentValue, complete: false)
         repository.createRecord(data)
         // 추가 버튼 후 -> 카운트업 역할
         // 6. reloadData역할을 여기서 해준다
