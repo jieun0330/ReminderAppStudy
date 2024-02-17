@@ -41,5 +41,4 @@ class PriorityViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = .white
     }
-
 }

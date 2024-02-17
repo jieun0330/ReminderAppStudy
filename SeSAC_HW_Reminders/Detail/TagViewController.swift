@@ -15,12 +15,10 @@ class TagViewController: BaseViewController {
         field.placeholder = "새로운 태그 추가..."
         field.delegate = self
         field.backgroundColor = .lightGray
-        return field
-    }()
-
+        return field }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func configureHierarchy() {
@@ -41,7 +39,6 @@ class TagViewController: BaseViewController {
         view.backgroundColor = .white
         navigationItem.title = "태그"
     }
-
 }
 
 extension TagViewController: UITextFieldDelegate {

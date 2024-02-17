@@ -10,22 +10,17 @@ import SnapKit
 
 class TitleTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-//    var textField: ((Bool) -> Void)?
-    
     lazy var titleTextField: UITextField = {
         let title = UITextField()
         title.placeholder = "제목"
         title.textAlignment = .left
         title.delegate = self
-        return title
-    }()
+        return title }()
     
     let memoTextView: UITextView = {
         let memo = UITextView()
         memo.text = "메모"
-        
-        return memo
-    }()
+        return memo }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -64,7 +59,5 @@ extension TitleTableViewCell: UITextFieldDelegate {
         // 1. 텍스트필드 입력 감지가 되면
         // 2. NewToDoViewController에 있는 addButton의 isEnabled = true로 바뀌었으면 좋겠따
         NotificationCenter.default.post(name: Notification.Name("title"), object: nil, userInfo: ["title": titleTextField.text!])
-        
-        
     }
 }

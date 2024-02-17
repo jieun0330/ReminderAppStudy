@@ -10,7 +10,7 @@ import SnapKit
 
 
 class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
-
+    
     let circleIcon: UIImageView = {
         let icon = UIImageView()
         return icon }()
@@ -39,6 +39,7 @@ class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
             $0.leading.top.equalTo(contentView).inset(10)
             $0.size.equalTo(30)
         }
+        
         cellTitle.snp.makeConstraints {
             $0.centerX.equalTo(circleIcon.snp.centerX)
             $0.top.equalTo(circleIcon.snp.bottom).offset(5)
@@ -51,7 +52,6 @@ class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
         }
     }
     
-
     override func configureView() {
         contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 10

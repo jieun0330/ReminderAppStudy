@@ -22,10 +22,6 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
         collectionView.reloadData()
     }
     
-
-
-    
-//    var list: Results<ReminderModel>!
     let repo = ToDoRepository()
     
     lazy var rightBarButtonItem: UIBarButtonItem = {
@@ -57,16 +53,13 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         collectionView.reloadData()
     }
-
-    
     
     override func configureHierarchy() {
         [allText, collectionView].forEach {
@@ -89,12 +82,10 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     
     override func configureView() {
         view.backgroundColor = .systemGray6
+        navigationItem.rightBarButtonItem = rightBarButtonItem
         collectionView.delegate = self
         collectionView.dataSource = self
         configureToolBar()
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-
-        
     }
     
     @objc func rightBarButtonItemClicked() { }
@@ -113,7 +104,6 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     }
     
     @objc func leftToolBarButtonClicked() {
-        
         // 7. TodoViewController로 이동하는 공간에 만들어주자
         let vc = NewTodoViewController()
         // 8. ToDoViewController안에 delegate 하는 역할을 여기서 해준다!
@@ -121,7 +111,6 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
         let nav = UINavigationController(rootViewController: vc)
         
         present(nav, animated: true)
-
     }
     
     @objc func rightToolBarButtonClicked() { }
@@ -154,13 +143,6 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.circleIcon.tintColor = cellUI.allCases[indexPath.item].cellColor
         cell.cellTitle.text = cellUI.allCases[indexPath.item].cellTitle
         
-
-        
-//        if cellUI.allCases[indexPath.item].cellTitle == allText.text! {
-//            cell.countLabel.text = "\(repo.readRecordFilter().count)"
-//        }
-   
-        
         switch cellUI.allCases[indexPath.row] {
             
         case .today:
@@ -175,27 +157,7 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.countLabel.text = "\(repo.readRecordCompletedFilter().count)"
         }
         
-//        collectionView.reloadData()
-
-        
-        
-        
-        
-        
-//
-//        if indexPath.row == 0 {
-//            cell.countLabel.text = "1"
-//        } else if indexPath.row == 1 {
-//            cell.countLabel.text = "0"
-//        }
-//        print(cellUI.all.cellTitle)
-//        print(allText.text)
-        
-       
-        
-        return cell
-        
-        
+        return cell        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -9,15 +9,9 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-
-
-
 class NewTodoViewController: BaseViewController {
-
-
+    
     let repository = ToDoRepository()
-
-        
     var receivedDate = ""
     var receivedTextField = ""
     
@@ -52,10 +46,6 @@ class NewTodoViewController: BaseViewController {
         addButton.isEnabled = false
     }
     
-//    override func viewDidDisappear(_ animated: Bool) {
-//    
-//    }
-    
     override func configureHierarchy() {
         [tableView].forEach {
             view.addSubview($0)
@@ -75,13 +65,10 @@ class NewTodoViewController: BaseViewController {
         
         // addbutton이 활성화가 돼야해
         NotificationCenter.default.addObserver(self, selector: #selector(receivedTitleTextFieldNotification), name: Notification.Name("title"), object: nil)
-        
-        
     }
     
     @objc func receivedTitleTextFieldNotification(notification: NSNotification) {
-        if let value = notification.userInfo?["title"] as? String {
-//            tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+        if let _ = notification.userInfo?["title"] as? String {
             addButton.isEnabled = true
         }
     }
@@ -99,19 +86,13 @@ class NewTodoViewController: BaseViewController {
     }
     
     // 4. 추가 버튼했을때 delegate 동작을 해줘야되니까 여기다 써줘야되는데 변수를 생성해주고 오자
-    
     @objc func addButtonClicked() {
-        
         let data = ReminderModel(title: "", memo: "", date: receivedDate, tag: receivedTextField, priority: "", complete: false)
         repository.createRecord(data)
-        
         // 추가 버튼 후 -> 카운트업 역할
         // 6. reloadData역할을 여기서 해준다
         delegate?.reloadData()
         dismiss(animated: true)
-        
-        
-        
     }
 }
 
@@ -131,50 +112,40 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.section == NewToDoEnum.memo.index {
+        if indexPath.section == NewToDoEnum.title.rawValue {
             let cell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as! TitleTableViewCell
-            cell.titleTextField.placeholder = "?"
-            
-//            cell.textFieldDidChangeSelection(<#T##textField: UITextField##UITextField#>)
-//            if cell.titleTextField.text?.count == 1 {
-//                print("떴다")
-//            }
-            
-//            if cell.titleTextField.text!.count >= 1 {
-//                addButton.isEnabled = true
-//            } else {
-//                addButton.isEnabled = false
-//            }
-            
-            
+            cell.titleTextField.placeholder = NewToDoEnum.title.cellTitle
+            if indexPath.row == 1 {
+                cell.titleTextField.placeholder = "메모"
+            }
             
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
-            cell.title.text = NewToDoEnum.allCases[indexPath.section-1].rawValue
+            cell.title.text = NewToDoEnum.allCases[indexPath.section].cellTitle
             
-            if indexPath.section == NewToDoEnum.date.index {
+            if indexPath.section == NewToDoEnum.date.rawValue {
                 cell.receivedTitle.text = receivedDate
-            } else if indexPath.section == NewToDoEnum.tag.index {
+            } else if indexPath.section == NewToDoEnum.tag.rawValue {
                 cell.receivedTitle.text = receivedTextField
             } else {
                 
             }
-//            let section = toDoCase.allCases[indexPath.row]
-//            
-//            cell.receivedTitle.text = section.rawValue
-//            switch section {
-//            case .memo:
-//                cell.receivedTitle = moemo
-//            case .date:
-//                cell.receivedTitle = date
-//            case .tag:
-//                <#code#>
-//            case .priority:
-//                <#code#>
-//            case .image:
-//                <#code#>
-//            }
+            //            let section = toDoCase.allCases[indexPath.row]
+            //            
+            //            cell.receivedTitle.text = section.rawValue
+            //            switch section {
+            //            case .memo:
+            //                cell.receivedTitle = moemo
+            //            case .date:
+            //                cell.receivedTitle = date
+            //            case .tag:
+            //                <#code#>
+            //            case .priority:
+            //                <#code#>
+            //            case .image:
+            //                <#code#>
+            //            }
             // 5. receivedDate에 담아줬으니까 cell에 보여줄수 있게 되었어!!
             
             return cell
@@ -183,7 +154,7 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == NewToDoEnum.date.index {
+        if indexPath.section == NewToDoEnum.date.rawValue {
             let vc = DateViewController()
             navigationController?.pushViewController(vc, animated: true)
             
@@ -192,12 +163,11 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             vc.selectedDate = {value in
                 self.receivedDate = value
                 // 6. 데이터가 바꼈으니까 -> 뷰도 바껴야겠지, reload를 해주자
-//                tableView.reloadData()
+                //                tableView.reloadData()
             }
-        } else if indexPath.section == NewToDoEnum.tag.index {
+        } else if indexPath.section == NewToDoEnum.tag.rawValue {
             let vc = TagViewController()
             navigationController?.pushViewController(vc, animated: true)
-            
         }
         else {
             

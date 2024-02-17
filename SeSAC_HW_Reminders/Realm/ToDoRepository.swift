@@ -12,11 +12,9 @@ class ToDoRepository {
     
     // open a realm
     let realm = try! Realm()
-    let todo = NewToDoEnum.self
     
     // "C"RUD
     func createRecord(_ data: ReminderModel) {
-        
         do {
             try realm.write {
                 realm.add(data)
@@ -28,19 +26,15 @@ class ToDoRepository {
     }
     
     // C"R"UD
+    // false: 할일 못한 거
     func readRecordAllFilter() -> Results<ReminderModel> {
         return realm.objects(ReminderModel.self).where {
-            
-            
-            
             $0.complete == false
         }
-        // false: 할일을 못한 거
-        // true: 할일을 완료한거!
         // ascending: 내림차순, 올림차순 정렬
-        
     }
     
+    // true: 할일 완료한거!
     func readRecordCompletedFilter() -> Results<ReminderModel> {
         return realm.objects(ReminderModel.self).where {
             $0.complete == true
@@ -55,9 +49,7 @@ class ToDoRepository {
         } catch {
             print(error)
         }
-    }
-    
-    
+    }    
     
     // CRU"D"
 //    func deleteRecord() {

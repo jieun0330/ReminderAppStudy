@@ -11,30 +11,17 @@ import RealmSwift
 
 class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let realm = try! Realm()
-    var list: Results<ReminderModel>!
-
-//    let
-    
-    let repository = ToDoRepository()
-    
-    var check: ((Bool) -> Void)?
-    
     let checkButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "circle"), for: .normal)
-        
-//        button.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .highlighted)
-        return button
-    }()
+        return button }()
     
     let todoLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.text = "?"
-        return label
-    }()
-
+        return label }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -57,7 +44,6 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
             $0.trailing.equalTo(contentView.snp.trailing).inset(20)
             $0.centerY.equalTo(checkButton)
             $0.height.equalTo(20)
-//            $0.width.equalTo(100)
         }
     }
     
@@ -65,13 +51,9 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
         checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
     }
     
-    @objc func checkButtonClicked() {
-//        repository.updateComplete(list)
-    }
-
+    @objc func checkButtonClicked() { }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    
+    }    
 }

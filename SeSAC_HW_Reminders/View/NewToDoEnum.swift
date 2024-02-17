@@ -7,25 +7,25 @@
 
 import Foundation
 
-enum NewToDoEnum: String, CaseIterable {
-    case memo = "메모"
-    case date = "마감일"
-    case tag = "태그"
-    case priority = "우선순위"
-    case image = "이미지 추천"
-    
-    var index: Int {
+enum NewToDoEnum: Int, CaseIterable {
+    case title
+    case date
+    case tag
+    case priority
+    case image
+
+    var cellTitle: String {
         switch self {
-        case .memo:
-            return 0
+        case .title:
+            "제목"
         case .date:
-            return 1
+            "마감일"
         case .tag:
-            return 2
+            "태그"
         case .priority:
-            return 3
+            "우선순위"
         case .image:
-            return 4
+            "이미지 추천"
         }
     }
 }
