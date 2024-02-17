@@ -11,7 +11,7 @@ import RealmSwift
 
 class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let checkButton: UIButton = {
+    var checkButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "circle"), for: .normal)
         return button }()
@@ -111,12 +111,12 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
 
     }
     
-    override func configureView() {
-        checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
-    }
-    
-    @objc func checkButtonClicked() { }
-    
+//    override func configureView() {
+//        checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
+//    }
+//    
+//    @objc func checkButtonClicked() { }
+//    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }    

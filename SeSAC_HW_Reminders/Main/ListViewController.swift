@@ -68,10 +68,18 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
         cell.dateLabel.text = list[indexPath.row].date
         cell.selectionStyle = .none
+        
+        cell.checkButton.tag = indexPath.row
         cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
+        
+//        repository.updateComplete(list[indexPath.row]. /)
+        
         cell.priorityLabel.text = list[indexPath.row].priority
         cell.tagLabel.text = list[indexPath.row].tag
         
@@ -79,7 +87,9 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func checkButtonClicked(_ sender: UIButton) {
+//        print(sender.tag)
         repository.updateComplete(list[sender.tag])
+        sleep(1)
         tableView.reloadData()
     }
     
