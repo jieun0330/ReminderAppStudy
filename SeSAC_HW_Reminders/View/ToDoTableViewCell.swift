@@ -43,7 +43,7 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
         }
         
         receivedTitle.snp.makeConstraints {
-            $0.leading.equalTo(title.snp.trailing).offset(20)
+            $0.trailing.equalTo(moreButton.snp.leading).offset(-20)
             $0.top.equalTo(title.snp.top)
         }
         

@@ -45,7 +45,7 @@ class DateViewController: BaseViewController {
     @objc func datePickerClicked() {
         let date = self.datePicker.date
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+        dateFormatter.dateFormat = "yyyy. M. dd."
         let strDate = dateFormatter.string(from: date)
         // 1. pick한 날짜를 TodoViewController로 보내줘야돼, 그럼 여긴 함수 안이니까 바깥으로 꺼내주려면 closure를 써야겠지??
         // 3. 클로저 생성 완료, 그럼 TodoViewController에서 접근할 수 있겠지?
