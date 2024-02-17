@@ -42,8 +42,28 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     
     lazy var leftToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
-        button = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(leftToolBarButtonClicked))
+        button = UIBarButtonItem(customView: customButton)
+//        button.addtarge
+//        button = uibarbu
+//        button.target = self
+//        button.action = #selector(leftToolBarButtonClicked)
+//        button = UIBarButtonItem(customView: customView)
+//        button = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(leftToolBarButtonClicked))
         return button }()
+    
+    //
+    lazy var customButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        button.setTitle(" 새로운 할 일", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.addTarget(self, action: #selector(leftToolBarButtonClicked), for: .touchUpInside)
+        
+//        button.layer.borderWidth = 1
+//        button.layer.borderColor = UIColor.red.cgColor
+        
+        return button
+    }()
     
     lazy var rightToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
@@ -65,6 +85,10 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
         [allText, collectionView].forEach {
             view.addSubview($0)
         }
+//        
+//        [customButton, customLabel].forEach {
+//            customView.addSubview($0)
+//        }
     }
     
     override func configureConstraints() {
@@ -78,6 +102,10 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
             $0.top.equalTo(allText.snp.bottom).offset(20)
             $0.height.equalTo(400)
         }
+        
+//        customView.snp.makeConstraints {
+//            $0.size.equalTo(30)
+//        }
     }
     
     override func configureView() {
@@ -86,6 +114,7 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
         collectionView.delegate = self
         collectionView.dataSource = self
         configureToolBar()
+//        leftToolBarButton.
     }
     
     @objc func rightBarButtonItemClicked() { }
