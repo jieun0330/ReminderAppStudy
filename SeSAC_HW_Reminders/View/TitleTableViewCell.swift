@@ -12,22 +12,23 @@ class TitleTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     lazy var titleTextField: UITextField = {
         let title = UITextField()
-        title.placeholder = "제목"
+        title.placeholder = NewToDoEnum.title.cellTitle
         title.textAlignment = .left
         title.delegate = self
         return title }()
     
-    let memoTextView: UITextView = {
-        let memo = UITextView()
-        memo.text = "메모"
-        return memo }()
+//    lazy var memoTextView: UITextView = {
+//        let memo = UITextView()
+//        memo.text = "메모"
+//        memo.delegate = self
+//        return memo }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     override func configureHierarchy() {
-        [titleTextField, memoTextView].forEach {
+        [titleTextField].forEach {
             contentView.addSubview($0)
         }
     }
@@ -36,12 +37,6 @@ class TitleTableViewCell: BaseTableViewCell, ReusableProtocol {
         titleTextField.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview().inset(20)
-        }
-        
-        memoTextView.snp.makeConstraints {
-            $0.centerY.equalToSuperview()
-            $0.leading.equalToSuperview().inset(20)
-            $0.height.equalTo(100)
         }
     }
     
@@ -59,5 +54,13 @@ extension TitleTableViewCell: UITextFieldDelegate {
         // 1. 텍스트필드 입력 감지가 되면
         // 2. NewToDoViewController에 있는 addButton의 isEnabled = true로 바뀌었으면 좋겠따
         NotificationCenter.default.post(name: Notification.Name("title"), object: nil, userInfo: ["title": titleTextField.text!])
+        print("3", titleTextField.text!)
     }
 }
+
+//extension TitleTableViewCell: UITextViewDelegate {
+//    func textViewDidChange(_ textView: UITextView) {
+//        NotificationCenter.default.post(name: Notification.Name("memo"), object: nil, userInfo: ["memo": textView.text!])
+//        print("memo", textView.text!)
+//    }
+//}

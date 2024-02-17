@@ -13,6 +13,7 @@ class NewTodoViewController: BaseViewController {
     
     let repository = ToDoRepository()
     var receivedTitle = ""
+    var receivedMemo = ""
     var receivedDate = ""
     var receivedTag = ""
     var receivedSegmentValue = ["", ""]
@@ -22,8 +23,7 @@ class NewTodoViewController: BaseViewController {
     
     lazy var cancleButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
-        return button
-    }()
+        return button }()
     
     lazy var addButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addButtonClicked))
@@ -37,7 +37,7 @@ class NewTodoViewController: BaseViewController {
         view.dataSource = self
         view.register(ToDoTableViewCell.self, forCellReuseIdentifier: ToDoTableViewCell.identifier)
         view.register(TitleTableViewCell.self, forCellReuseIdentifier: TitleTableViewCell.identifier)
-        return view }()
+        return view }() 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ class NewTodoViewController: BaseViewController {
         // viewWillAppear에서 설정을 해버리면 화면이 바뀔때마다 설정설정설정섲엊섲 하겠지?
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(tagReceivedNotification),
-                                               name: Notification.Name(rawValue: "TextFieldReceived"),
+                                               name: Notification.Name(rawValue: "tagReceived"),
                                                object: nil)
         addButton.isEnabled = false
     }
@@ -74,14 +74,25 @@ class NewTodoViewController: BaseViewController {
         // addbutton이 활성화가 돼야해
         NotificationCenter.default.addObserver(self, selector: #selector(receivedTitleTextFieldNotification), name: Notification.Name("title"), object: nil)
         
-        
-        
+        //        print("1", receivedTitle)
+        //        
+        //        NotificationCenter.default.addObserver(self, selector: #selector(receivedMemoNotification), name: NSNotification.Name("memo"), object: nil)
     }
+    
+    //    @objc func receivedMemoNotification(notification: NSNotification) {
+    //        if let value = notification.userInfo?["memo"] as? String {
+    //            receivedMemo = value
+    //            print("memo1", value)
+    //            print("memo2", receivedMemo)
+    //        }
+    //    }
     
     @objc func receivedTitleTextFieldNotification(notification: NSNotification) {
         if let value = notification.userInfo?["title"] as? String {
             receivedTitle = value
             addButton.isEnabled = true
+            print("2", value)
+            print("2", receivedTitle)
         }
     }
     
@@ -89,7 +100,7 @@ class NewTodoViewController: BaseViewController {
         // nsnotification.userinfo에 저장된 딕셔너리 값을 가져오기 위해
         // value는 Any?값이 된다 -> 타입캐스팅을 해준다
         // String? -> 옵셔널 바인딩을 해준다
-        if let value = notification.userInfo?["textField"] as? String {
+        if let value = notification.userInfo?["tagReceived"] as? String {
             // 이것도 cell에 넣어줘야하니까 변수를 만들어주자
             receivedTag = "#\(value)"
             // 이것도 reload?
@@ -128,29 +139,29 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        tableView.sectionHeaderTopPadding = 1
-//        tableView.sectionHeaderHeight = 0
+        //        tableView.sectionHeaderTopPadding = 1
+        //        tableView.sectionHeaderHeight = 0
         
-//        indexPath.section.
-//
-//        let titleCell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as! TitleTableViewCell
-//        
-//        let section = NewToDoEnum.allCases[indexPath.section]
-//        print(section)
-//        switch section {
-//        case .title:
-//            titleCell.titleTextField.placeholder = section.cellTitle
-//        case .date:
-//            titleCell.titleTextField.placeholder = section.cellTitle
-//        case .tag:
-//            titleCell.titleTextField.placeholder = section.cellTitle
-//        case .priority:
-//            titleCell.titleTextField.placeholder = section.cellTitle
-//        case .image:
-//            titleCell.titleTextField.placeholder = section.cellTitle
-//        }
-//        
-//        return titleCell
+        //        indexPath.section.
+        //
+        //        let titleCell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as! TitleTableViewCell
+        //        
+        //        let section = NewToDoEnum.allCases[indexPath.section]
+        //        print(section)
+        //        switch section {
+        //        case .title:
+        //            titleCell.titleTextField.placeholder = section.cellTitle
+        //        case .date:
+        //            titleCell.titleTextField.placeholder = section.cellTitle
+        //        case .tag:
+        //            titleCell.titleTextField.placeholder = section.cellTitle
+        //        case .priority:
+        //            titleCell.titleTextField.placeholder = section.cellTitle
+        //        case .image:
+        //            titleCell.titleTextField.placeholder = section.cellTitle
+        //        }
+        //        
+        //        return titleCell
         
         
         if indexPath.section == NewToDoEnum.title.rawValue {
@@ -161,20 +172,20 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return cell
+            
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
             cell.title.text = NewToDoEnum.allCases[indexPath.section].cellTitle
             
             if indexPath.section == NewToDoEnum.date.rawValue {
-                cell.receivedTitle.text = receivedDate
+                cell.receivedValue.text = receivedDate
             } else if indexPath.section == NewToDoEnum.tag.rawValue {
-                cell.receivedTitle.text = receivedTag
+                cell.receivedValue.text = receivedTag
             } else if indexPath.section == NewToDoEnum.priority.rawValue {
-                cell.receivedTitle.text = receivedSegmentValue[0]
+                cell.receivedValue.text = receivedSegmentValue[0]
                 
-                
-                
-                
+            } else {
+                cell.receivedValue.text = ""
             }
             //            let section = toDoCase.allCases[indexPath.row]
             //            
@@ -208,7 +219,7 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             vc.selectedDate = {value in
                 self.receivedDate = value
                 // 6. 데이터가 바꼈으니까 -> 뷰도 바껴야겠지, reload를 해주자
-                                tableView.reloadData()
+                tableView.reloadData()
             }
         } else if indexPath.section == NewToDoEnum.tag.rawValue {
             let vc = TagViewController()
@@ -220,32 +231,18 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 print(value)
                 self.receivedSegmentValue = value
                 tableView.reloadData()
-
+                
             }
         }
         else {
-            
         }
     }
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//
-//        return "jieun"
-//    }
-    
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//        UIView()
-//    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         UIView()
     }
     
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        return 1
-//    }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 1
     }
-    
 }

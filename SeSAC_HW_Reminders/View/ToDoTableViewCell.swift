@@ -15,7 +15,7 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
         todo.textColor = .white
         return todo }()
     
-    let receivedTitle: UILabel = {
+    let receivedValue: UILabel = {
         let title = UILabel()
         title.text = ""
         return title }()
@@ -31,7 +31,7 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     override func configureHierarchy() {
-        [title, receivedTitle, moreButton].forEach {
+        [title, receivedValue, moreButton].forEach {
             contentView.addSubview($0)
         }
     }
@@ -42,7 +42,7 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
             $0.leading.equalToSuperview().inset(20)
         }
         
-        receivedTitle.snp.makeConstraints {
+        receivedValue.snp.makeConstraints {
             $0.trailing.equalTo(moreButton.snp.leading).offset(-20)
             $0.top.equalTo(title.snp.top)
         }

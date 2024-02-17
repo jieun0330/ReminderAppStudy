@@ -21,18 +21,13 @@ class PriorityViewController: BaseViewController {
         }
         control.selectedSegmentIndex = 0
         control.addTarget(self, action: #selector(segmentSelected), for: .valueChanged)
-//        toDoCase.allCases.enumerated().forEach { (index, section) in
-//            <#code#>
-//        }
-
+        
         return control
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print(priority.allCases.ind)
-
     }
     
     override func configureHierarchy() {
@@ -51,36 +46,14 @@ class PriorityViewController: BaseViewController {
     
     override func configureView() {
         view.backgroundColor = .white
-        
-
-        
-//        print(segment.selectedSegmentIndex)
-//        print(priority.high.rawValue)
-        print(priority.RawValue.self) // Int
-        
-        
-//        if segment.
     }
     
     @objc func segmentSelected(_ sender: UISegmentedControl) {
         
         let tag = sender.selectedSegmentIndex
-//        sender.tag = priority.allCases.raw
-        print(tag)
-//
-        
         
         if sender.selectedSegmentIndex == priority.allCases[tag].rawValue {
-
             segmentValue?([priority.allCases[tag].title, priority.allCases[tag].exclamationMark])
-            
         }
     }
-    
-    
-//    func segmentSelected(_ sender: UISegmentedControl) {
-//        if segment.selectedSegmentIndex == priority.high.rawValue {
-//            print("맍는데")
-//        }
-//    }
 }

@@ -46,26 +46,24 @@ class ListViewController: BaseViewController {
         navigationItem.rightBarButtonItem = rightBarButton
         list = repository.readRecordAllFilter()
         tableView.rowHeight = 80
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = UITableView.automaticDimension
+        //        tableView.rowHeight = UITableView.automaticDimension
+        //        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
     
     @objc func rightBarButtonClicked() {
+        
         let upcomingDate = UIAction(title: "마감일순", handler: { _ in
             self.list = self.repository.readRecordAllFilter().sorted(byKeyPath: "date", ascending: true)
             self.tableView.reloadData()
         })
+        
         let title = UIAction(title: "제목순", handler: { _ in
-                    self.list = self.repository.readRecordAllFilter().sorted(byKeyPath: "title", ascending: true)
+            self.list = self.repository.readRecordAllFilter().sorted(byKeyPath: "title", ascending: true)
             self.tableView.reloadData()
-
         })
-
+        
         let lowPriority = UIAction(title: "우선순위 낮음", handler: { _ in
             self.list = self.repository.readRecordAllFilter().sorted(byKeyPath: "priority", ascending: true)
-//            print(self.list)
-//            self.list = self.repository.readRecordAllFilter().sorted(byKeyPath: "tag", ascending: false)
-
             self.tableView.reloadData()
         })
         rightBarButton.menu = UIMenu(options: .displayInline, children: [upcomingDate, title, lowPriority])
@@ -80,18 +78,12 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
         cell.mainLabel.text = list[indexPath.row].title
         cell.dateLabel.text = list[indexPath.row].date
         cell.selectionStyle = .none
-        
         cell.checkButton.tag = indexPath.row
         cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
-        
-//        repository.updateComplete(list[indexPath.row]. /)
-        
         cell.priorityLabel.text = list[indexPath.row].priority
         cell.tagLabel.text = list[indexPath.row].tag
         
@@ -99,7 +91,6 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func checkButtonClicked(_ sender: UIButton) {
-//        print(sender.tag)
         repository.updateComplete(list[sender.tag])
         sleep(1)
         tableView.reloadData()
@@ -109,14 +100,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.repository.deleteRecord(self.list[indexPath.row])
-
             print("삭제 클릭")
             success(true)
             tableView.reloadData()
-
         }
         delete.backgroundColor = .red
-        
         
         let flag = UIContextualAction(style: .normal, title: "깃발") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             print("깃발 클릭")
@@ -125,27 +113,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         flag.backgroundColor = .orange
         
         let detail = UIContextualAction(style: .normal, title: "세부사항") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-
             print("세부사항 클릭")
             success(true)
         }
         detail.backgroundColor = .lightGray
-
-        
-
         
         return UISwipeActionsConfiguration(actions: [delete, flag, detail])
-        
     }
-    
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            repository.deleteRecord(list[indexPath.row])
-//            tableView.reloadData()
-//        }
-//    }
-    
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return UITableView.automaticDimension
-//    }
 }

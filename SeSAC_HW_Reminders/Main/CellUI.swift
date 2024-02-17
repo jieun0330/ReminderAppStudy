@@ -8,6 +8,7 @@
 import UIKit
 
 enum cellUI: Int, CaseIterable {
+    
     case today
     case schedule
     case all

@@ -43,27 +43,15 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     lazy var leftToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
         button = UIBarButtonItem(customView: customButton)
-//        button.addtarge
-//        button = uibarbu
-//        button.target = self
-//        button.action = #selector(leftToolBarButtonClicked)
-//        button = UIBarButtonItem(customView: customView)
-//        button = UIBarButtonItem(title: "새로운 할 일", style: .plain, target: self, action: #selector(leftToolBarButtonClicked))
         return button }()
     
-    //
     lazy var customButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
         button.setTitle(" 새로운 할 일", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(leftToolBarButtonClicked), for: .touchUpInside)
-        
-//        button.layer.borderWidth = 1
-//        button.layer.borderColor = UIColor.red.cgColor
-        
-        return button
-    }()
+        return button }()
     
     lazy var rightToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
@@ -72,23 +60,17 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        collectionView.reloadData()
+        //        collectionView.reloadData()
     }
     
     override func configureHierarchy() {
         [allText, collectionView].forEach {
             view.addSubview($0)
         }
-//        
-//        [customButton, customLabel].forEach {
-//            customView.addSubview($0)
-//        }
     }
     
     override func configureConstraints() {
@@ -102,10 +84,6 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
             $0.top.equalTo(allText.snp.bottom).offset(20)
             $0.height.equalTo(400)
         }
-        
-//        customView.snp.makeConstraints {
-//            $0.size.equalTo(30)
-//        }
     }
     
     override func configureView() {
@@ -114,7 +92,6 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
         collectionView.delegate = self
         collectionView.dataSource = self
         configureToolBar()
-//        leftToolBarButton.
     }
     
     @objc func rightBarButtonItemClicked() { }
@@ -138,7 +115,6 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
         // 8. ToDoViewController안에 delegate 하는 역할을 여기서 해준다!
         vc.delegate = self
         let nav = UINavigationController(rootViewController: vc)
-        
         present(nav, animated: true)
     }
     
@@ -154,7 +130,6 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
         layout.minimumInteritemSpacing = spacing // 셀 상하 간격
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        
         return layout
     }
 }
@@ -173,7 +148,6 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.cellTitle.text = cellUI.allCases[indexPath.item].cellTitle
         
         switch cellUI.allCases[indexPath.row] {
-            
         case .today:
             cell.countLabel.text = "0"
         case .schedule:
@@ -194,4 +168,3 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         navigationController?.pushViewController(vc, animated: true)
     }
 }
-

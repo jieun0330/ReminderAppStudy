@@ -8,13 +8,15 @@
 import Foundation
 
 enum NewToDoEnum: Int, CaseIterable {
+    
     case title
     case date
     case tag
     case priority
     case image
-
+    
     var cellTitle: String {
+        
         switch self {
         case .title:
             "제목"

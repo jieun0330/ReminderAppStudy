@@ -18,7 +18,7 @@ class ToDoRepository {
         do {
             try realm.write {
                 realm.add(data)
-                    print(realm.configuration.fileURL)
+                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
@@ -40,7 +40,7 @@ class ToDoRepository {
             $0.complete == true
         }
     }
-
+    
     func updateComplete(_ item: ReminderModel) {
         do {
             try realm.write {
@@ -61,8 +61,5 @@ class ToDoRepository {
         } catch {
             print(error)
         }
-        
-//        realm.delete(item)
     }
-    
 }
