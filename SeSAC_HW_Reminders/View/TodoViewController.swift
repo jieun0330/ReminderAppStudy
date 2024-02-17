@@ -12,7 +12,7 @@ import RealmSwift
 
 
 
-class ToDoViewController: BaseViewController {
+class TodoViewController: BaseViewController {
 
 
     let repository = ToDoRepository()
@@ -108,10 +108,10 @@ class ToDoViewController: BaseViewController {
     }
 }
 
-extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
+extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return toDoCase.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

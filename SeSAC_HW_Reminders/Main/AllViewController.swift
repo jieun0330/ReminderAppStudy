@@ -46,13 +46,13 @@ class ListViewController: BaseViewController {
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = rightBarButton
         
-        list = repository.readRecordFilter()
+        list = repository.readRecordAllFilter()
     }
     
     @objc func rightBarButtonClicked() {
         // 마감일순을 눌렀을 때 sort가 되어야되는구나 위에꺼 가져와야징
         let upcomingDate = UIAction(title: "마감일순", handler: { _ in
-            self.list = self.repository.readRecordFilter().sorted(byKeyPath: "date", ascending: true)
+            self.list = self.repository.readRecordAllFilter().sorted(byKeyPath: "date", ascending: true)
             self.tableView.reloadData()
         })
         
