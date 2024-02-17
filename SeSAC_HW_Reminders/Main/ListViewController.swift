@@ -72,7 +72,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.dateLabel.text = list[indexPath.row].date
         cell.selectionStyle = .none
         cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
-        
+        cell.priorityLabel.text = list[indexPath.row].priority
         
         return cell
     }

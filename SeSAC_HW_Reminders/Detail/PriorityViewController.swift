@@ -8,25 +8,6 @@
 import UIKit
 import SnapKit
 
-enum priority: Int, CaseIterable {
-    case none
-    case low
-    case middle
-    case high
-    
-    var title: String {
-        switch self {
-        case .none:
-            "없음"
-        case .low:
-            "낮음"
-        case .middle:
-            "중간"
-        case .high:
-            "높음"
-        }
-    }
-}
 
 class PriorityViewController: BaseViewController {
     
@@ -91,7 +72,7 @@ class PriorityViewController: BaseViewController {
         
         if sender.selectedSegmentIndex == priority.allCases[tag].rawValue {
 
-            segmentValue?(priority.allCases[tag].title)
+            segmentValue?(priority.allCases[tag].exclamationMark)
             
         }
     }

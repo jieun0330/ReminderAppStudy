@@ -18,7 +18,6 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let priorityLabel: UILabel = {
         let label = UILabel()
-        label.text = "!!!"
         label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = .systemBlue
 //        label.numberOfLines = 0
