@@ -20,6 +20,11 @@ class NewTodoViewController: BaseViewController {
     // 5. 변수 생성
     var delegate: ReloadDataDelegate?
     
+    lazy var cancleButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
+        return button
+    }()
+    
     lazy var addButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addButtonClicked))
         return button }()
@@ -64,6 +69,7 @@ class NewTodoViewController: BaseViewController {
         view.backgroundColor = .white
         navigationItem.title = "새로운 할 일"
         navigationItem.rightBarButtonItem = self.addButton
+        navigationItem.leftBarButtonItem = self.cancleButton
         
         // addbutton이 활성화가 돼야해
         NotificationCenter.default.addObserver(self, selector: #selector(receivedTitleTextFieldNotification), name: Notification.Name("title"), object: nil)
@@ -86,6 +92,10 @@ class NewTodoViewController: BaseViewController {
             // 이것도 reload?
             tableView.reloadData()
         }
+    }
+    
+    @objc func cancelButtonClicked() {
+        dismiss(animated: true)
     }
     
     // 4. 추가 버튼했을때 delegate 동작을 해줘야되니까 여기다 써줘야되는데 변수를 생성해주고 오자
