@@ -115,7 +115,7 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     @objc func leftToolBarButtonClicked() {
         
         // 7. TodoViewController로 이동하는 공간에 만들어주자
-        let vc = TodoViewController()
+        let vc = NewTodoViewController()
         // 8. ToDoViewController안에 delegate 하는 역할을 여기서 해준다!
         vc.delegate = self
         let nav = UINavigationController(rootViewController: vc)

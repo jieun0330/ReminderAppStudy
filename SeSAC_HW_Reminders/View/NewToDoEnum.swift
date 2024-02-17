@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum toDoCase: String, CaseIterable {
+enum NewToDoEnum: String, CaseIterable {
     case memo = "메모"
     case date = "마감일"
     case tag = "태그"

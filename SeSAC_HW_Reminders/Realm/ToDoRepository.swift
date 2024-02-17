@@ -12,7 +12,7 @@ class ToDoRepository {
     
     // open a realm
     let realm = try! Realm()
-    let todo = toDoCase.self
+    let todo = NewToDoEnum.self
     
     // "C"RUD
     func createRecord(_ data: ReminderModel) {

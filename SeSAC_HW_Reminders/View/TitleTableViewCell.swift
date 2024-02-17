@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MemoTableViewCell: BaseTableViewCell, ReusableProtocol {
+class TitleTableViewCell: BaseTableViewCell, ReusableProtocol {
     
 //    var textField: ((Bool) -> Void)?
     
@@ -16,7 +16,7 @@ class MemoTableViewCell: BaseTableViewCell, ReusableProtocol {
         let title = UITextField()
         title.placeholder = "제목"
         title.textAlignment = .left
-//        title.delegate = self
+        title.delegate = self
         return title
     }()
     
@@ -59,10 +59,12 @@ class MemoTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
 }
 
-//extension MemoTableViewCell: UITextFieldDelegate {
-//    func textFieldDidChangeSelection(_ textField: UITextField) {
-//        // 텍스트필드 입력 감지가 되면
-//        
-//        
-//    }
-//}
+extension TitleTableViewCell: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        // 1. 텍스트필드 입력 감지가 되면
+        // 2. NewToDoViewController에 있는 addButton의 isEnabled = true로 바뀌었으면 좋겠따
+        NotificationCenter.default.post(name: Notification.Name("title"), object: nil, userInfo: ["title": titleTextField.text!])
+        
+        
+    }
+}
