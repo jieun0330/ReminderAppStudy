@@ -28,10 +28,26 @@ class ToDoRepository {
     
     // C"R"UD
     func readRecordFilter() -> Results<ReminderModel> {
-        return realm.objects(ReminderModel.self)
+        return realm.objects(ReminderModel.self).where {
+            $0.complete == false
+        }
+        // false: 할일을 못한 거
+        // true: 할일을 완료한거!
+        // ascending: 내림차순, 올림차순 정렬
+        
+    }
+
+    func updateComplete(_ item: ReminderModel) {
+        do {
+            try realm.write {
+                item.complete.toggle()
+            }
+        } catch {
+            print(error)
+        }
     }
     
-    // CR"U"D
+    
     
     // CRU"D"
 //    func deleteRecord() {

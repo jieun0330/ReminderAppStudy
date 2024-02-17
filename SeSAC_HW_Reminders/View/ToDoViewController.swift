@@ -49,6 +49,7 @@ class ToDoViewController: BaseViewController {
                                                selector: #selector(tagReceivedNotification),
                                                name: Notification.Name(rawValue: "TextFieldReceived"),
                                                object: nil)
+//        addButton.isEnabled = false
     }
     
 //    override func viewDidDisappear(_ animated: Bool) {
@@ -71,6 +72,11 @@ class ToDoViewController: BaseViewController {
         view.backgroundColor = .white
         navigationItem.title = "새로운 할 일"
         navigationItem.rightBarButtonItem = self.addButton
+        
+        // addbutton이 활성화가 돼야해
+        
+        
+        
     }
     
     @objc func tagReceivedNotification(notification: NSNotification) {
@@ -89,14 +95,16 @@ class ToDoViewController: BaseViewController {
     
     @objc func addButtonClicked() {
         
-        let data = ReminderModel(title: "", memo: "", date: receivedDate, tag: receivedTextField, priority: "")
-        
+        let data = ReminderModel(title: "", memo: "", date: receivedDate, tag: receivedTextField, priority: "", complete: false)
         repository.createRecord(data)
         
+        // 추가 버튼 후 -> 카운트업 역할
         // 6. reloadData역할을 여기서 해준다
         delegate?.reloadData()
-        
         dismiss(animated: true)
+        
+        
+        
     }
 }
 
@@ -119,6 +127,14 @@ extension ToDoViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == toDoCase.memo.index {
             let cell = tableView.dequeueReusableCell(withIdentifier: MemoTableViewCell.identifier, for: indexPath) as! MemoTableViewCell
             cell.titleTextField.placeholder = "제목"
+            
+            
+            
+//            if cell.titleTextField.text!.count >= 1 {
+//                addButton.isEnabled = true
+//            } else {
+//                addButton.isEnabled = false
+//            }
             
             return cell
         } else {

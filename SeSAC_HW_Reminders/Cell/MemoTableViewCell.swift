@@ -10,10 +10,13 @@ import SnapKit
 
 class MemoTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let titleTextField: UITextField = {
+//    var textField: ((Bool) -> Void)?
+    
+    lazy var titleTextField: UITextField = {
         let title = UITextField()
         title.placeholder = "제목"
         title.textAlignment = .left
+//        title.delegate = self
         return title
     }()
     
@@ -55,3 +58,11 @@ class MemoTableViewCell: BaseTableViewCell, ReusableProtocol {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+//extension MemoTableViewCell: UITextFieldDelegate {
+//    func textFieldDidChangeSelection(_ textField: UITextField) {
+//        // 텍스트필드 입력 감지가 되면
+//        
+//        
+//    }
+//}

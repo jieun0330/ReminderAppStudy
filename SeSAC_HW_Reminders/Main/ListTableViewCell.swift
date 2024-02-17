@@ -7,13 +7,24 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
+    
+    let realm = try! Realm()
+    var list: Results<ReminderModel>!
+
+//    let
+    
+    let repository = ToDoRepository()
+    
+    var check: ((Bool) -> Void)?
     
     let checkButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "circle"), for: .normal)
-        button.setImage(UIImage(systemName: "circle.fill"), for: .selected)
+        
+//        button.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .highlighted)
         return button
     }()
     
@@ -51,7 +62,11 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     override func configureView() {
-        
+        checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
+    }
+    
+    @objc func checkButtonClicked() {
+//        repository.updateComplete(list)
     }
 
     required init?(coder: NSCoder) {

@@ -69,15 +69,27 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell")!
         let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
         cell.todoLabel.text = list[indexPath.row].date
-//        cell.textLabel?.text = list[indexPath.row].date
-//        cell.imageView?.image = UIImage(systemName: "circle")
-        
-        
+
         cell.selectionStyle = .none
+        
+//        let tag = cell.checkButton.tag
+        cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
+
 
         return cell
     }
+    
+    @objc func checkButtonClicked(_ sender: UIButton) {
+        repository.updateComplete(list[sender.tag])
+        tableView.reloadData()
+    }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        repository.updateComplete(list[indexPath.row])
+//        tableView.reloadData()
+//    }
+
+
 }

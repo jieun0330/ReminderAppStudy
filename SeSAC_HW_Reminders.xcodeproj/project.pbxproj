@@ -27,7 +27,7 @@
 		C2E7FE402B7CDEAB00004FC7 /* MemoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3F2B7CDEAB00004FC7 /* MemoTableViewCell.swift */; };
 		C2E7FE502B7DFE3D00004FC7 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */; };
 		C2E7FE522B7E0E6600004FC7 /* PriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */; };
-		C2E7FE552B7E23F500004FC7 /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE542B7E23F500004FC7 /* RealmModel.swift */; };
+		C2E7FE552B7E23F500004FC7 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE542B7E23F500004FC7 /* ReminderModel.swift */; };
 		C2E7FE582B7E243E00004FC7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C2E7FE572B7E243E00004FC7 /* Realm */; };
 		C2E7FE5A2B7E243E00004FC7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2E7FE592B7E243E00004FC7 /* RealmSwift */; };
 		C2E7FE5C2B7E2D6600004FC7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */; };
@@ -58,7 +58,7 @@
 		C2E7FE3F2B7CDEAB00004FC7 /* MemoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
-		C2E7FE542B7E23F500004FC7 /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		C2E7FE542B7E23F500004FC7 /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
 		C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		C2E7FE612B7F288300004FC7 /* ToDoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRepository.swift; sourceTree = "<group>"; };
 		C2E7FE662B7F416100004FC7 /* CellUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellUI.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 		C2E7FE532B7E23EA00004FC7 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				C2E7FE542B7E23F500004FC7 /* RealmModel.swift */,
+				C2E7FE542B7E23F500004FC7 /* ReminderModel.swift */,
 				C2E7FE612B7F288300004FC7 /* ToDoRepository.swift */,
 			);
 			path = Realm;
@@ -281,7 +281,7 @@
 				C29969EA2B7C8E5A0067D397 /* SceneDelegate.swift in Sources */,
 				C2E7FE3A2B7CCF3600004FC7 /* ToDoTableViewCell.swift in Sources */,
 				C2E7FE6B2B7F8BEA00004FC7 /* ListTableViewCell.swift in Sources */,
-				C2E7FE552B7E23F500004FC7 /* RealmModel.swift in Sources */,
+				C2E7FE552B7E23F500004FC7 /* ReminderModel.swift in Sources */,
 				C2E7FE502B7DFE3D00004FC7 /* TagViewController.swift in Sources */,
 				C2E7FE522B7E0E6600004FC7 /* PriorityViewController.swift in Sources */,
 				C2E7FE672B7F416100004FC7 /* CellUI.swift in Sources */,

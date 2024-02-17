@@ -15,13 +15,15 @@ class ReminderModel: Object {
     @Persisted var date: String
     @Persisted var tag: String
     @Persisted var priority: String?
+    @Persisted var complete: Bool
     
-    convenience init(title: String, memo: String, date: String, tag: String, priority: String) {
+    convenience init(title: String, memo: String, date: String, tag: String, priority: String, complete: Bool) {
         self.init() // 이거 없으면 오류 뜨는데 내가 알아서 만들게~~~~ 하는 의미라서 이거 넣으면 오류 싹~ 사라져여~
         self.title = title
         self.memo = memo
         self.date = date
         self.tag = tag
         self.priority = priority
+        self.complete = complete
     }
 }
