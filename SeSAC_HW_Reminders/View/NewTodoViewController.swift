@@ -73,6 +73,9 @@ class NewTodoViewController: BaseViewController {
         
         // addbutton이 활성화가 돼야해
         NotificationCenter.default.addObserver(self, selector: #selector(receivedTitleTextFieldNotification), name: Notification.Name("title"), object: nil)
+        
+        
+        
     }
     
     @objc func receivedTitleTextFieldNotification(notification: NSNotification) {
@@ -124,7 +127,12 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        
+        
+//        tableView.sectionHeaderTopPadding = 1
+//        tableView.sectionHeaderHeight = 0
+        
+//        indexPath.section.
+//
 //        let titleCell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as! TitleTableViewCell
 //        
 //        let section = NewToDoEnum.allCases[indexPath.section]
@@ -219,4 +227,25 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
     }
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//
+//        return "jieun"
+//    }
+    
+//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        UIView()
+//    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        UIView()
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        return 1
+//    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1
+    }
+    
 }

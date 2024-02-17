@@ -17,7 +17,7 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let receivedTitle: UILabel = {
         let title = UILabel()
-        title.text = "?"
+        title.text = ""
         return title }()
     
     let moreButton: UIButton = {
