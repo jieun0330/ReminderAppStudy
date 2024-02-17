@@ -11,7 +11,7 @@ import SnapKit
 
 class PriorityViewController: BaseViewController {
     
-    var segmentValue: ((String) -> Void)?
+    var segmentValue: (([String]) -> Void)?
     
     lazy var segment: UISegmentedControl = {
         let control = UISegmentedControl()
@@ -72,7 +72,7 @@ class PriorityViewController: BaseViewController {
         
         if sender.selectedSegmentIndex == priority.allCases[tag].rawValue {
 
-            segmentValue?(priority.allCases[tag].exclamationMark)
+            segmentValue?([priority.allCases[tag].title, priority.allCases[tag].exclamationMark])
             
         }
     }

@@ -15,7 +15,7 @@ class NewTodoViewController: BaseViewController {
     var receivedTitle = ""
     var receivedDate = ""
     var receivedTag = ""
-    var receivedSegmentValue = ""
+    var receivedSegmentValue = ["", ""]
     
     // 5. 변수 생성
     var delegate: ReloadDataDelegate?
@@ -103,7 +103,7 @@ class NewTodoViewController: BaseViewController {
     
     // 4. 추가 버튼했을때 delegate 동작을 해줘야되니까 여기다 써줘야되는데 변수를 생성해주고 오자
     @objc func addButtonClicked() {
-        let data = ReminderModel(title: receivedTitle, memo: "", date: receivedDate, tag: receivedTag, priority: receivedSegmentValue, complete: false)
+        let data = ReminderModel(title: receivedTitle, memo: "", date: receivedDate, tag: receivedTag, priority: receivedSegmentValue[1], complete: false)
         repository.createRecord(data)
         // 추가 버튼 후 -> 카운트업 역할
         // 6. reloadData역할을 여기서 해준다
@@ -170,7 +170,7 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             } else if indexPath.section == NewToDoEnum.tag.rawValue {
                 cell.receivedTitle.text = receivedTag
             } else if indexPath.section == NewToDoEnum.priority.rawValue {
-                cell.receivedTitle.text = receivedSegmentValue
+                cell.receivedTitle.text = receivedSegmentValue[0]
                 
                 
                 
