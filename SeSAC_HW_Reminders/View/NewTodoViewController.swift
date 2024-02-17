@@ -13,7 +13,7 @@ class NewTodoViewController: BaseViewController {
     
     let repository = ToDoRepository()
     var receivedDate = ""
-    var receivedTextField = ""
+    var receivedTag = ""
     var receivedSegmentValue = ""
     
     // 5. 변수 생성
@@ -80,7 +80,7 @@ class NewTodoViewController: BaseViewController {
         // String? -> 옵셔널 바인딩을 해준다
         if let value = notification.userInfo?["textField"] as? String {
             // 이것도 cell에 넣어줘야하니까 변수를 만들어주자
-            receivedTextField = value
+            receivedTag = "#\(value)"
             // 이것도 reload?
             tableView.reloadData()
         }
@@ -88,7 +88,7 @@ class NewTodoViewController: BaseViewController {
     
     // 4. 추가 버튼했을때 delegate 동작을 해줘야되니까 여기다 써줘야되는데 변수를 생성해주고 오자
     @objc func addButtonClicked() {
-        let data = ReminderModel(title: "", memo: "", date: receivedDate, tag: receivedTextField, priority: receivedSegmentValue, complete: false)
+        let data = ReminderModel(title: "", memo: "", date: receivedDate, tag: receivedTag, priority: receivedSegmentValue, complete: false)
         repository.createRecord(data)
         // 추가 버튼 후 -> 카운트업 역할
         // 6. reloadData역할을 여기서 해준다
@@ -148,7 +148,7 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.section == NewToDoEnum.date.rawValue {
                 cell.receivedTitle.text = receivedDate
             } else if indexPath.section == NewToDoEnum.tag.rawValue {
-                cell.receivedTitle.text = receivedTextField
+                cell.receivedTitle.text = receivedTag
             } else if indexPath.section == NewToDoEnum.priority.rawValue {
                 cell.receivedTitle.text = receivedSegmentValue
                 

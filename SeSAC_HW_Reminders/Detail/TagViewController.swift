@@ -10,6 +10,19 @@ import SnapKit
 
 class TagViewController: BaseViewController {
     
+//    let tagBox: UIView = {
+//        let view = UIView()
+//        view.backgroundColor = .lightGray
+//        return view
+//    }()
+//    
+//    let tagWord: UIButton = {
+//        let button = UIButton()
+//        button.setTitle("#ㅎㅎ", for: .normal)
+//        button.backgroundColor = .systemBlue
+//        return button
+//    }()
+    
     lazy var textField: UITextField = {
         let field = UITextField()
         field.placeholder = "새로운 태그 추가..."
@@ -25,11 +38,32 @@ class TagViewController: BaseViewController {
         [textField].forEach {
             view.addSubview($0)
         }
+        
+//        [tagWord].forEach {
+//            tagBox.addSubview($0)
+//        }
+        
     }
     
     override func configureConstraints() {
+        
+//        tagBox.snp.makeConstraints {
+//            $0.horizontalEdges.equalToSuperview().inset(20)
+//            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+//            $0.height.equalTo(50)
+//        }
+//        
+//        tagWord.snp.makeConstraints {
+//            $0.leading.equalToSuperview().inset(10)
+//            $0.centerY.equalToSuperview()
+//            
+//            $0.height.equalTo(30)
+//        }
+        
+        
         textField.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
+//            $0.top.equalTo(tagBox.snp.bottom).offset(20)
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.height.equalTo(40)
         }
@@ -48,5 +82,7 @@ extension TagViewController: UITextFieldDelegate {
         NotificationCenter.default.post(name: Notification.Name("TextFieldReceived"),
                                         object: nil,
                                         userInfo: ["textField": textField.text!])
+        
+        // 1. 텍스트필드에 값의 입력을 마치면
     }
 }

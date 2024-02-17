@@ -73,6 +73,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
         cell.priorityLabel.text = list[indexPath.row].priority
+        cell.tagLabel.text = list[indexPath.row].tag
         
         return cell
     }
