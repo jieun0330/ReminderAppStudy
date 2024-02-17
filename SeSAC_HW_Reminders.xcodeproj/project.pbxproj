@@ -106,7 +106,6 @@
 				C2E7FE442B7D074000004FC7 /* Main */,
 				C29969FD2B7C8F120067D397 /* View */,
 				C2E7FE452B7D075F00004FC7 /* Detail */,
-				C2E7FE462B7D078300004FC7 /* Cell */,
 				C29969E72B7C8E5A0067D397 /* AppDelegate.swift */,
 				C29969E92B7C8E5A0067D397 /* SceneDelegate.swift */,
 				C29969EB2B7C8E5A0067D397 /* ViewController.swift */,
@@ -167,13 +166,6 @@
 				C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */,
 			);
 			path = Detail;
-			sourceTree = "<group>";
-		};
-		C2E7FE462B7D078300004FC7 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
 			sourceTree = "<group>";
 		};
 		C2E7FE532B7E23EA00004FC7 /* Realm */ = {

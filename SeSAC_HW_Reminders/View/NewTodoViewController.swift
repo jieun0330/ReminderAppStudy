@@ -148,8 +148,8 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.receivedTitle.text = receivedDate
             } else if indexPath.section == NewToDoEnum.tag.rawValue {
                 cell.receivedTitle.text = receivedTextField
-            } else {
-                
+            } else if indexPath.section == NewToDoEnum.priority.rawValue {
+                cell.receivedTitle.text = "우선순위"
             }
             //            let section = toDoCase.allCases[indexPath.row]
             //            
@@ -187,6 +187,9 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             }
         } else if indexPath.section == NewToDoEnum.tag.rawValue {
             let vc = TagViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        } else if indexPath.section == NewToDoEnum.priority.rawValue {
+            let vc = PriorityViewController()
             navigationController?.pushViewController(vc, animated: true)
         }
         else {
