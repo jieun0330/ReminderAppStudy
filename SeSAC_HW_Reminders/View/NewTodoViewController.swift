@@ -14,6 +14,7 @@ class NewTodoViewController: BaseViewController {
     let repository = ToDoRepository()
     var receivedDate = ""
     var receivedTextField = ""
+    var receivedSegmentValue = ""
     
     // 5. 변수 생성
     var delegate: ReloadDataDelegate?
@@ -149,7 +150,11 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             } else if indexPath.section == NewToDoEnum.tag.rawValue {
                 cell.receivedTitle.text = receivedTextField
             } else if indexPath.section == NewToDoEnum.priority.rawValue {
-                cell.receivedTitle.text = "우선순위"
+                cell.receivedTitle.text = receivedSegmentValue
+                
+                
+                
+                
             }
             //            let section = toDoCase.allCases[indexPath.row]
             //            
@@ -191,6 +196,12 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == NewToDoEnum.priority.rawValue {
             let vc = PriorityViewController()
             navigationController?.pushViewController(vc, animated: true)
+            vc.segmentValue = { value in
+                print(value)
+                self.receivedSegmentValue = value
+                tableView.reloadData()
+
+            }
         }
         else {
             

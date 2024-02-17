@@ -8,30 +8,49 @@
 import UIKit
 import SnapKit
 
-enum priority: String, CaseIterable {
-    case none = "없음"
-    case low = "낮음"
-    case middle = "중간"
-    case high = "높음"
+enum priority: Int, CaseIterable {
+    case none
+    case low
+    case middle
+    case high
+    
+    var title: String {
+        switch self {
+        case .none:
+            "없음"
+        case .low:
+            "낮음"
+        case .middle:
+            "중간"
+        case .high:
+            "높음"
+        }
+    }
 }
 
 class PriorityViewController: BaseViewController {
     
-    let segment: UISegmentedControl = {
+    var segmentValue: ((String) -> Void)?
+    
+    lazy var segment: UISegmentedControl = {
         let control = UISegmentedControl()
         control.removeAllSegments()
         priority.allCases.enumerated().forEach { (index, section) in
-            control.insertSegment(withTitle: section.rawValue, at: index, animated: true)
+            control.insertSegment(withTitle: section.title, at: index, animated: true)
         }
         control.selectedSegmentIndex = 0
+        control.addTarget(self, action: #selector(segmentSelected), for: .valueChanged)
 //        toDoCase.allCases.enumerated().forEach { (index, section) in
 //            <#code#>
 //        }
+
         return control
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        print(priority.allCases.ind)
 
     }
     
@@ -51,5 +70,36 @@ class PriorityViewController: BaseViewController {
     
     override func configureView() {
         view.backgroundColor = .white
+        
+
+        
+//        print(segment.selectedSegmentIndex)
+//        print(priority.high.rawValue)
+        print(priority.RawValue.self) // Int
+        
+        
+//        if segment.
     }
+    
+    @objc func segmentSelected(_ sender: UISegmentedControl) {
+        
+        let tag = sender.selectedSegmentIndex
+//        sender.tag = priority.allCases.raw
+        print(tag)
+//
+        
+        
+        if sender.selectedSegmentIndex == priority.allCases[tag].rawValue {
+
+            segmentValue?(priority.allCases[tag].title)
+            
+        }
+    }
+    
+    
+//    func segmentSelected(_ sender: UISegmentedControl) {
+//        if segment.selectedSegmentIndex == priority.high.rawValue {
+//            print("맍는데")
+//        }
+//    }
 }
