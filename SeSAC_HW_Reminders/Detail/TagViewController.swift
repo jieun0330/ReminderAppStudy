@@ -30,6 +30,7 @@ class TagViewController: BaseViewController {
         field.placeholder = "새로운 태그 추가..."
         field.delegate = self
         field.backgroundColor = .lightGray
+        field.layer.cornerRadius = 10
         return field }()
     
     override func viewDidLoad() {

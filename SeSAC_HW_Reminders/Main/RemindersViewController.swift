@@ -26,6 +26,13 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
         let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
         return button }()
     
+    let searchBar: UISearchBar = {
+        let search = UISearchBar()
+        search.backgroundImage = UIImage() // searchBar 모양이 못생기긴했는데 흰색 뒷배경을 없애려면 UIImage()를 줘야한다
+
+        return search
+    }()
+    
     let allText: UILabel = {
         let entire = UILabel()
         entire.text = "전체"
@@ -69,15 +76,22 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     }
     
     override func configureHierarchy() {
-        [allText, collectionView].forEach {
+        [searchBar, allText, collectionView].forEach {
             view.addSubview($0)
         }
     }
     
     override func configureConstraints() {
+        
+        searchBar.snp.makeConstraints {
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(30)
+        }
+        
         allText.snp.makeConstraints {
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
+            $0.top.equalTo(searchBar.snp.bottom).offset(20)
         }
         
         collectionView.snp.makeConstraints {
@@ -183,19 +197,5 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         case .complete:
             vc.list = repo.readRecordCompletedFilter()
         }
-        
-//        if indexPath.item == cellUI.all.rawValue {
-//            let vc = ListViewController()
-//            navigationController?.pushViewController(vc, animated: true)
-//            vc.list = repo.readRecordAllFilter()
-//        } else if indexPath.item == cellUI.complete.rawValue {
-//            let vc = ListViewController()
-//            navigationController?.pushViewController(vc, animated: true)
-//            vc.list = repo.readRecordCompletedFilter()
-//        } else if indexPath.item == cellUI.today.rawValue {
-//            let vc = ListViewController()
-//            navigationController?.pushViewController(vc, animated: true)
-//            vc.list = repo.todayScheduleFilter()
-//        }
     }
 }

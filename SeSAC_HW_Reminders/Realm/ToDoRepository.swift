@@ -55,6 +55,13 @@ class ToDoRepository {
         }
     }
     
+//    func searchFilter() -> Results<ReminderModel> {
+//        return realm.objects(ReminderModel.self).where {
+//            
+//        }
+//    }
+    
+    // CR"U"D
     // checkBox 선택 시 -> 할일 완료 업데이트
     func updateComplete(_ item: ReminderModel) {
         do {
