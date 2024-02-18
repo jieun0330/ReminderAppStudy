@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import RealmSwift
 
 class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
@@ -28,7 +27,6 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
-//        label.text = "메모 텍스트 들어가야 할 부분"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
         return label }()
@@ -95,5 +93,5 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }    
+    }
 }

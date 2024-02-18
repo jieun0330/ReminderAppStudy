@@ -45,10 +45,7 @@ class ListViewController: BaseViewController {
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = rightBarButton
         tableView.rowHeight = 80
-//        list = repository.readRecordAllFilter()
-
-        //        tableView.rowHeight = UITableView.automaticDimension
-        //        tableView.estimatedRowHeight = UITableView.automaticDimension
+        // 🚨 tableView 자동 높이 설정해주기
     }
     
     @objc func rightBarButtonClicked() {
@@ -72,8 +69,8 @@ class ListViewController: BaseViewController {
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return list.count
     }
     
@@ -82,41 +79,29 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
         cell.mainLabel.text = list[indexPath.row].title
         cell.subtitleLabel.text = list[indexPath.row].memo
-        // list: Results<ReminderModel> 
         cell.dateLabel.text = list[indexPath.row].date
-//        print("cell", cell.dateLabel.text)
-//        print("list", list[indexPath.row].date)
         cell.selectionStyle = .none
         cell.checkButton.tag = indexPath.row
         cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
         cell.priorityLabel.text = list[indexPath.row].priority
         cell.tagLabel.text = list[indexPath.row].tag
         
-//        if indexPath.row == 2 {
-
-//        }
-        
-        
         return cell
     }
     
     @objc func checkButtonClicked(_ sender: UIButton) {
         repository.updateComplete(list[sender.tag])
-        
         sleep(1)
         tableView.reloadData()
-        
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.repository.deleteRecord(self.list[indexPath.row])
-            
             print("삭제 클릭")
             success(true)
             tableView.reloadData()
-            
         }
         delete.backgroundColor = .red
         
@@ -133,10 +118,5 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         detail.backgroundColor = .lightGray
         
         return UISwipeActionsConfiguration(actions: [delete, flag, detail])
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(indexPath.row.dateLabel.text)
-
     }
 }

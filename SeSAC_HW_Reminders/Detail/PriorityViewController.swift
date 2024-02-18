@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 
-
 class PriorityViewController: BaseViewController {
     
     var segmentValue: (([String]) -> Void)?
@@ -27,7 +26,6 @@ class PriorityViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func configureHierarchy() {
@@ -49,9 +47,7 @@ class PriorityViewController: BaseViewController {
     }
     
     @objc func segmentSelected(_ sender: UISegmentedControl) {
-        
         let tag = sender.selectedSegmentIndex
-        
         if sender.selectedSegmentIndex == priority.allCases[tag].rawValue {
             segmentValue?([priority.allCases[tag].title, priority.allCases[tag].exclamationMark])
         }

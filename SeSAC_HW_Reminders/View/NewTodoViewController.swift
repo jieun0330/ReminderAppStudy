@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import RealmSwift
 
 class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     
@@ -46,12 +45,10 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
         // 얘는 나 값 받을거야~ 설정~! 이라서
         // viewDidLoad때 설정을 뙇 처음 한번 해주는거임
         // viewWillAppear에서 설정을 해버리면 화면이 바뀔때마다 설정설정설정섲엊섲 하겠지?
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(tagReceivedNotification),
-            name: Notification.Name(rawValue: "tagReceived"),
-            object: nil
-        )
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(tagReceivedNotification),
+                                               name: Notification.Name(rawValue: "tagReceived"),
+                                               object: nil)
         
         addButton.isEnabled = false
     }
@@ -75,12 +72,13 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
         navigationItem.leftBarButtonItem = self.cancleButton
     }
     
+    /*
+     NSNotification.userinfo에 저장된 딕셔너리 값을 가져오기 위해
+     value는 Any?값이 된다 -> 타입캐스팅을 해준다
+     String? -> 옵셔널 바인딩을 해준다
+     */
     @objc func tagReceivedNotification(notification: NSNotification) {
-        // nsnotification.userinfo에 저장된 딕셔너리 값을 가져오기 위해
-        // value는 Any?값이 된다 -> 타입캐스팅을 해준다
-        // String? -> 옵셔널 바인딩을 해준다
         if let value = notification.userInfo?["tagReceived"] as? String {
-            // 이것도 cell에 넣어줘야하니까 변수를 만들어주자
             receivedTag = "#\(value)"
             tableView.reloadData()
         }
@@ -90,13 +88,9 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
         dismiss(animated: true)
     }
     
-    // 4. 추가 버튼했을때 delegate 동작을 해줘야되니까 여기다 써줘야되는데 변수를 생성해주고 오자
     @objc func addButtonClicked() {
-        let data = ReminderModel(title: receivedTitle, memo: receivedMemo, date: receivedDate, tag: receivedTag, priority: receivedSegmentValue[1], complete: false)
+        let data = ReminderModel(title: receivedTitle, memo: receivedMemo, date: receivedDate, tag: receivedTag, priority: receivedSegmentValue[1], complete: false, flag: false)
         repository.createRecord(data)
-        // 추가 버튼 후 -> 카운트업 역할
-        // 6. reloadData역할을 여기서 해준다
-        print("receviedTitel: \(receivedTitle) ")
         delegate?.reloadData()
         dismiss(animated: true)
     }
@@ -139,18 +133,11 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.title.text = NewToDoEnum.allCases[indexPath.section].cellTitle
             
             if indexPath.section == NewToDoEnum.date.rawValue {
-                
-                
-                
                 cell.receivedValue.text = receivedDate
-                
-                
-                
             } else if indexPath.section == NewToDoEnum.tag.rawValue {
                 cell.receivedValue.text = receivedTag
             } else if indexPath.section == NewToDoEnum.priority.rawValue {
                 cell.receivedValue.text = receivedSegmentValue[0]
-                
             } else {
                 cell.receivedValue.text = ""
             }
@@ -170,20 +157,6 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             receivedMemo = textField.text!
         }
-        
-//        switch textField.tag {
-//        case 0:
-//            guard let text = textField.text else { return }
-//            receivedTitle = text
-//            if !text.isEmpty {
-//                addButton.isEnabled = true
-//            }
-//        case 1:
-//            guard let text = textField.text else { return }
-//            receivedMemo = text
-//        default:
-//            break
-//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -191,11 +164,8 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = DateViewController()
             navigationController?.pushViewController(vc, animated: true)
             
-            // 1️⃣ 클로저 방법
-            // 4. 가져온걸 cell에다가 쓰려면 변수에 담아줘야할거같아
             vc.selectedDate = {value in
                 self.receivedDate = value
-                // 6. 데이터가 바꼈으니까 -> 뷰도 바껴야겠지, reload를 해주자
                 tableView.reloadData()
             }
         } else if indexPath.section == NewToDoEnum.tag.rawValue {
@@ -205,15 +175,13 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = PriorityViewController()
             navigationController?.pushViewController(vc, animated: true)
             vc.segmentValue = { value in
-                print(value)
                 self.receivedSegmentValue = value
                 tableView.reloadData()
-                
             }
         }
-        else { }
     }
     
+    // 섹션 간의 간격 조정
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         UIView()
     }

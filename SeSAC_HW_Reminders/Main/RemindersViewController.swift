@@ -8,16 +8,14 @@
 import UIKit
 import SnapKit
 
-// 3️⃣ delegate
-// 1. 프로토콜을 만들어주자
+// 추가 버튼 클릭 시 메인화면 reload delegate
 protocol ReloadDataDelegate {
     func reloadData()
 }
 
-// 2. 채택해주자
 class RemindersViewController: BaseViewController, ReloadDataDelegate{
     
-    // 3. collectionView reload를 해주고싶어
+    // 추가 버튼 클릭 시 메인화면 reload delegate
     func reloadData() {
         collectionView.reloadData()
     }
@@ -61,15 +59,13 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(repo.todayScheduleFilter().count)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-                collectionView.reloadData()
-//        print(repo.todayScheduleFilter().count)
-
+        collectionView.reloadData()
+        
     }
     
     override func configureHierarchy() {
@@ -101,13 +97,16 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     
     @objc func rightBarButtonItemClicked() { }
     
+    /*
+     UIToolBar
+     1. 버튼들 사이에 간격을 지정하기 위해서는 flexibleSpace가 필요하다
+     2. ToolBar는 UINavigationController에 속해있고 기본적으로 숨겨져있어서 -> false
+     3. 버튼 사이 space를 주고싶다면 중간에 넣어준다
+     */
     func configureToolBar() {
-        // 버튼들 사이에 간격을 지정하기 위해서는 flexibleSpace가 필요하다
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         var items = [UIBarButtonItem]()
-        // ToolBar는 UINavigationController에 속해있고 기본적으로 숨겨져있어서 -> false
         self.navigationController?.isToolbarHidden = false
-        // 아 중간에 넣어주라고~
         [leftToolBarButton, flexibleSpace, rightToolBarButton].forEach {
             items.append($0)
         }
@@ -115,17 +114,16 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     }
     
     @objc func leftToolBarButtonClicked() {
-        // 7. TodoViewController로 이동하는 공간에 만들어주자
+        // 추가 버튼 클릭 시 메인화면 reload delegate
         let vc = NewTodoViewController()
-        // 8. ToDoViewController안에 delegate 하는 역할을 여기서 해준다!
         vc.delegate = self
         let nav = UINavigationController(rootViewController: vc)
+        // nav.delegate = self를 하면 NewToDoViewController가 아닌 NavigationController에 delegate가 입혀진다(?)
         present(nav, animated: true)
     }
     
     @objc func rightToolBarButtonClicked() { }
     
-    // 🚨static을 써야 저 위에 쓸 수 있는건가
     static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         let spacing: CGFloat = 20
@@ -146,8 +144,7 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RemindersCollectionViewCell.identifier, for: indexPath) as! RemindersCollectionViewCell
-        // 맞다 지은아 딕셔너리는 순서가 정해져있는게 아니라서 index 접근이 안된다
-        // 어떻게 하더라 -> enum으로 바꿈
+        // 딕셔너리는 순서가 정해져있는게 아니라서 index 접근이 안된다 -> enum으로 수정
         cell.circleIcon.image = UIImage(systemName: cellUI.allCases[indexPath.item].cellImage)
         cell.circleIcon.tintColor = cellUI.allCases[indexPath.item].cellColor
         cell.cellTitle.text = cellUI.allCases[indexPath.item].cellTitle
@@ -164,24 +161,16 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         case .complete:
             cell.countLabel.text = "\(repo.readRecordCompletedFilter().count)"
         }
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-
-
-        
         if indexPath.item == cellUI.all.rawValue {
             let vc = ListViewController()
             navigationController?.pushViewController(vc, animated: true)
             vc.list = repo.readRecordAllFilter()
-//            vc.list = repo.readRecordCompletedFilter()
-//            print(vc.list)
-
-        }
-        else if indexPath.item == cellUI.complete.rawValue {
+        } else if indexPath.item == cellUI.complete.rawValue {
             let vc = ListViewController()
             navigationController?.pushViewController(vc, animated: true)
             vc.list = repo.readRecordCompletedFilter()
@@ -190,9 +179,5 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
             navigationController?.pushViewController(vc, animated: true)
             vc.list = repo.todayScheduleFilter()
         }
-        
-        // 2번 아이템을 눌렀을때는 전체 뷰
-        // 4번 아이템을 눌렀을때는 완료 뷰
-        
     }
 }

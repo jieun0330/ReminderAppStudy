@@ -18,7 +18,7 @@ class ToDoRepository {
         do {
             try realm.write {
                 realm.add(data)
-                print(realm.configuration.fileURL)
+//                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
@@ -41,13 +41,14 @@ class ToDoRepository {
         }
     }
     
-    // 날짜 입력안했을 경우 + 완료 못한 일 
+    // 날짜 입력안했을 경우 + 완료 못한 일
     func todayScheduleFilter() -> Results<ReminderModel> {
         return realm.objects(ReminderModel.self).where {
             $0.date == "" && $0.complete == false
         }
     }
     
+    // checkBox 선택 시 -> 할일 완료 업데이트
     func updateComplete(_ item: ReminderModel) {
         do {
             try realm.write {
@@ -56,11 +57,10 @@ class ToDoRepository {
         } catch {
             print(error)
         }
-    }    
+    }
     
     // CRU"D"
     func deleteRecord(_ item: ReminderModel) {
-        
         do {
             try realm.write {
                 realm.delete(item)
