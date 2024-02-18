@@ -41,6 +41,13 @@ class ToDoRepository {
         }
     }
     
+    // 날짜 입력안했을 경우 + 완료 못한 일 
+    func todayScheduleFilter() -> Results<ReminderModel> {
+        return realm.objects(ReminderModel.self).where {
+            $0.date == "" && $0.complete == false
+        }
+    }
+    
     func updateComplete(_ item: ReminderModel) {
         do {
             try realm.write {

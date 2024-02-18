@@ -82,7 +82,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
         cell.mainLabel.text = list[indexPath.row].title
         cell.subtitleLabel.text = list[indexPath.row].memo
+        // list: Results<ReminderModel> 
         cell.dateLabel.text = list[indexPath.row].date
+//        print("cell", cell.dateLabel.text)
+//        print("list", list[indexPath.row].date)
         cell.selectionStyle = .none
         cell.checkButton.tag = indexPath.row
         cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
@@ -130,5 +133,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         detail.backgroundColor = .lightGray
         
         return UISwipeActionsConfiguration(actions: [delete, flag, detail])
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print(indexPath.row.dateLabel.text)
+
     }
 }

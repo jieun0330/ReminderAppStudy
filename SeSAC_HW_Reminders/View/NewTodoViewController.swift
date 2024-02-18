@@ -139,7 +139,13 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             cell.title.text = NewToDoEnum.allCases[indexPath.section].cellTitle
             
             if indexPath.section == NewToDoEnum.date.rawValue {
+                
+                
+                
                 cell.receivedValue.text = receivedDate
+                
+                
+                
             } else if indexPath.section == NewToDoEnum.tag.rawValue {
                 cell.receivedValue.text = receivedTag
             } else if indexPath.section == NewToDoEnum.priority.rawValue {

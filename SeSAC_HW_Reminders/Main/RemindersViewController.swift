@@ -60,12 +60,16 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(repo.todayScheduleFilter().count)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
                 collectionView.reloadData()
+//        print(repo.todayScheduleFilter().count)
+
     }
     
     override func configureHierarchy() {
@@ -150,7 +154,7 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         
         switch cellUI.allCases[indexPath.row] {
         case .today:
-            cell.countLabel.text = "0"
+            cell.countLabel.text = "\(repo.todayScheduleFilter().count)"
         case .schedule:
             cell.countLabel.text = "0"
         case .all:
@@ -181,6 +185,10 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
             let vc = ListViewController()
             navigationController?.pushViewController(vc, animated: true)
             vc.list = repo.readRecordCompletedFilter()
+        } else if indexPath.item == cellUI.today.rawValue {
+            let vc = ListViewController()
+            navigationController?.pushViewController(vc, animated: true)
+            vc.list = repo.todayScheduleFilter()
         }
         
         // 2번 아이템을 눌렀을때는 전체 뷰
