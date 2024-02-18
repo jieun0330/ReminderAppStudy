@@ -157,19 +157,27 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func valueChanged(_ textField: UITextField) {
-        switch textField.tag {
-        case 0:
-            guard let text = textField.text else { return }
-            receivedTitle = text
-            if !text.isEmpty {
-                addButton.isEnabled = true
-            }
-        case 1:
-            guard let text = textField.text else { return }
-            receivedMemo = text
-        default:
-            break
+        
+        if textField.tag == 0 {
+            receivedTitle = textField.text!
+            addButton.isEnabled = true
+        } else {
+            receivedMemo = textField.text!
         }
+        
+//        switch textField.tag {
+//        case 0:
+//            guard let text = textField.text else { return }
+//            receivedTitle = text
+//            if !text.isEmpty {
+//                addButton.isEnabled = true
+//            }
+//        case 1:
+//            guard let text = textField.text else { return }
+//            receivedMemo = text
+//        default:
+//            break
+//        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

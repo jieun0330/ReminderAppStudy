@@ -44,8 +44,9 @@ class ListViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = rightBarButton
-        list = repository.readRecordAllFilter()
         tableView.rowHeight = 80
+//        list = repository.readRecordAllFilter()
+
         //        tableView.rowHeight = UITableView.automaticDimension
         //        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
@@ -87,6 +88,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
         cell.priorityLabel.text = list[indexPath.row].priority
         cell.tagLabel.text = list[indexPath.row].tag
+        
+//        if indexPath.row == 2 {
+
+//        }
+        
         
         return cell
     }

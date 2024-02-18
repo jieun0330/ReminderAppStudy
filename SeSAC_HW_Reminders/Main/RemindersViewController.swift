@@ -160,11 +160,30 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
             cell.countLabel.text = "\(repo.readRecordCompletedFilter().count)"
         }
         
-        return cell        
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = ListViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        
+
+
+        
+        if indexPath.item == cellUI.all.rawValue {
+            let vc = ListViewController()
+            navigationController?.pushViewController(vc, animated: true)
+            vc.list = repo.readRecordAllFilter()
+//            vc.list = repo.readRecordCompletedFilter()
+//            print(vc.list)
+
+        }
+        else if indexPath.item == cellUI.complete.rawValue {
+            let vc = ListViewController()
+            navigationController?.pushViewController(vc, animated: true)
+            vc.list = repo.readRecordCompletedFilter()
+        }
+        
+        // 2번 아이템을 눌렀을때는 전체 뷰
+        // 4번 아이템을 눌렀을때는 완료 뷰
+        
     }
 }
