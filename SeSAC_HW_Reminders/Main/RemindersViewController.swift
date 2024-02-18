@@ -93,6 +93,7 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
         collectionView.delegate = self
         collectionView.dataSource = self
         configureToolBar()
+        
     }
     
     @objc func rightBarButtonItemClicked() { }
@@ -153,7 +154,7 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         case .today:
             cell.countLabel.text = "\(repo.todayScheduleFilter().count)"
         case .schedule:
-            cell.countLabel.text = "0"
+            cell.countLabel.text = "\(repo.beScheduleFilter().count)"
         case .all:
             cell.countLabel.text = "\(repo.readRecordAllFilter().count)"
         case .flag:
@@ -166,18 +167,35 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if indexPath.item == cellUI.all.rawValue {
-            let vc = ListViewController()
-            navigationController?.pushViewController(vc, animated: true)
-            vc.list = repo.readRecordAllFilter()
-        } else if indexPath.item == cellUI.complete.rawValue {
-            let vc = ListViewController()
-            navigationController?.pushViewController(vc, animated: true)
-            vc.list = repo.readRecordCompletedFilter()
-        } else if indexPath.item == cellUI.today.rawValue {
-            let vc = ListViewController()
-            navigationController?.pushViewController(vc, animated: true)
+        let vc = ListViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        
+        switch cellUI.allCases[indexPath.item] {
+            
+        case .today:
             vc.list = repo.todayScheduleFilter()
+        case .schedule:
+            vc.list = repo.beScheduleFilter()
+        case .all:
+            vc.list = repo.readRecordAllFilter()
+        case .flag:
+            ""
+        case .complete:
+            vc.list = repo.readRecordCompletedFilter()
         }
+        
+//        if indexPath.item == cellUI.all.rawValue {
+//            let vc = ListViewController()
+//            navigationController?.pushViewController(vc, animated: true)
+//            vc.list = repo.readRecordAllFilter()
+//        } else if indexPath.item == cellUI.complete.rawValue {
+//            let vc = ListViewController()
+//            navigationController?.pushViewController(vc, animated: true)
+//            vc.list = repo.readRecordCompletedFilter()
+//        } else if indexPath.item == cellUI.today.rawValue {
+//            let vc = ListViewController()
+//            navigationController?.pushViewController(vc, animated: true)
+//            vc.list = repo.todayScheduleFilter()
+//        }
     }
 }
