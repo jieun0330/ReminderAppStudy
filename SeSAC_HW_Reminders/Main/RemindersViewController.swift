@@ -64,7 +64,8 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //        collectionView.reloadData()
+        
+                collectionView.reloadData()
     }
     
     override func configureHierarchy() {

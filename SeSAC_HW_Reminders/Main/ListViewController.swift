@@ -99,17 +99,21 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     @objc func checkButtonClicked(_ sender: UIButton) {
         repository.updateComplete(list[sender.tag])
+        
         sleep(1)
         tableView.reloadData()
+        
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.repository.deleteRecord(self.list[indexPath.row])
+            
             print("삭제 클릭")
             success(true)
             tableView.reloadData()
+            
         }
         delete.backgroundColor = .red
         
