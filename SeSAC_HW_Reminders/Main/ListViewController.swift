@@ -80,6 +80,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
         cell.mainLabel.text = list[indexPath.row].title
+        cell.subtitleLabel.text = list[indexPath.row].memo
         cell.dateLabel.text = list[indexPath.row].date
         cell.selectionStyle = .none
         cell.checkButton.tag = indexPath.row

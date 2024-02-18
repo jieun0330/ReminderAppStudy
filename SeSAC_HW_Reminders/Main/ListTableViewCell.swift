@@ -28,7 +28,7 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "메모 텍스트 들어가야 할 부분"
+//        label.text = "메모 텍스트 들어가야 할 부분"
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
         return label }()
