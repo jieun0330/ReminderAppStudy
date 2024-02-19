@@ -19,6 +19,11 @@ class RemindersViewController: BaseViewController {
     let repo = ToDoRepository()
     var list: Results<ReminderModel>!
     
+    lazy var leftBarButtonItem: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(leftBarButtonItemClicked))
+        return button
+    }()
+    
     lazy var rightBarButtonItem: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
         return button }()
@@ -88,12 +93,15 @@ class RemindersViewController: BaseViewController {
     
     override func configureView() {
         view.backgroundColor = .systemGray6
+        navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
         collectionView.delegate = self
         collectionView.dataSource = self
         configureToolBar()
         
     }
+    
+    @objc func leftBarButtonItemClicked() { }
     
     @objc func rightBarButtonItemClicked() { }
     
