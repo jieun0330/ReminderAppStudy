@@ -46,6 +46,8 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     let image: UIImageView = {
         let img = UIImageView()
         img.backgroundColor = .lightGray
+        img.contentMode = .scaleAspectFill
+        img.clipsToBounds = true
         return img
     }()
     

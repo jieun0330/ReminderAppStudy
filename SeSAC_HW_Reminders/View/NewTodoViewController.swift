@@ -103,6 +103,11 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     @objc func addButtonClicked() {
         let data = ReminderModel(title: receivedTitle, memo: receivedMemo, date: receivedDate, tag: receivedTag, priority: receivedSegmentValue[1], complete: false, flag: false)
         repository.createRecord(data)
+        
+        if let image = receivedImage.image {
+            saveImageToDocument(image: image, fileName: "\(data.id)")
+        }
+        
         delegate?.reloadData()
         dismiss(animated: true)
     }

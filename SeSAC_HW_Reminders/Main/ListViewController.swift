@@ -62,6 +62,9 @@ class ListViewController: BaseViewController {
         navigationItem.rightBarButtonItem = rightBarButton
         tableView.rowHeight = 80
         // 🚨 tableView 자동 높이 설정해주기
+        
+        
+        
     }
     
     @objc func rightBarButtonClicked() {
@@ -103,6 +106,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.priorityLabel.text = list[indexPath.row].priority
         cell.tagLabel.text = list[indexPath.row].tag
         
+        cell.image.image = loadImageFromDocument(fileName: "\(list[indexPath.row].id)")
+
         return cell
     }
     
