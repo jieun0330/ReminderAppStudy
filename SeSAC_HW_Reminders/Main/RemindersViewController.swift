@@ -101,7 +101,10 @@ class RemindersViewController: BaseViewController {
         
     }
     
-    @objc func leftBarButtonItemClicked() { }
+    @objc func leftBarButtonItemClicked() {
+        let vc = CalendarViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     @objc func rightBarButtonItemClicked() { }
     
@@ -186,7 +189,7 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         case .all:
             vc.list = repo.readRecordAllFilter()
         case .flag:
-            ""
+            vc.list = repo.readRecordAllFilter() // 임시
         case .complete:
             vc.list = repo.readRecordCompletedFilter()
         }
