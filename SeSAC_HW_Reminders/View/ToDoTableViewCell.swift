@@ -22,6 +22,8 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let receivedImg: UIImageView = {
         let img = UIImageView()
+//        img.backgroundColor = .orange
+        img.layer.cornerRadius = 5
         return img
     } ()
     
@@ -54,7 +56,8 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
         
         receivedImg.snp.makeConstraints {
             $0.trailing.equalTo(moreButton.snp.leading).offset(-20)
-            $0.top.equalTo(title.snp.top)
+            $0.centerY.equalTo(title)
+            $0.size.equalTo(30)
         }
         
         moreButton.snp.makeConstraints {

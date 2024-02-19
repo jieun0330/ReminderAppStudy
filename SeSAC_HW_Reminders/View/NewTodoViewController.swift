@@ -16,6 +16,7 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     var receivedDate = ""
     var receivedTag = ""
     var receivedSegmentValue = ["", ""]
+    var receivedImage: UIImageView = UIImageView(image: UIImage(systemName: ""))
     
     // 5. 변수 생성
     var delegate: ReloadDataDelegate?
@@ -39,6 +40,7 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
         view.register(TitleTableViewCell.self, forCellReuseIdentifier: TitleTableViewCell.identifier)
         return view }()
     
+
 //    lazy var tapGestureRecognizer: UITapGestureRecognizer = {
 //        let tap = UITapGestureRecognizer()
 //        tap.delegate = self
@@ -78,6 +80,7 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
         navigationItem.title = "새로운 할 일"
         navigationItem.rightBarButtonItem = self.addButton
         navigationItem.leftBarButtonItem = self.cancleButton
+//        receivedImage.layer.cornerRadius = 5
     }
     
 
@@ -147,8 +150,9 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.receivedValue.text = receivedTag
             } else if indexPath.section == NewToDoEnum.priority.rawValue {
                 cell.receivedValue.text = receivedSegmentValue[0]
-            } else {
-                cell.receivedImg.image = UIImage(systemName: "pencil")
+            } else if indexPath.section == NewToDoEnum.image.rawValue {
+                cell.receivedImg.image = receivedImage.image
+                
             }
             return cell
         }
@@ -190,8 +194,10 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.reloadData()
             }
         }
-//        else {
-//            let vc = UIImagePickerController()
+        else {
+            let vc = UIImagePickerController()
+            vc.allowsEditing = true
+            vc.delegate = self
 //            let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 //            actionSheet.addAction(UIAlertAction(title: "사진 찍기", style: .default, handler: { _ in
 //                vc.sourceType = .camera
@@ -199,12 +205,12 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
 //            actionSheet.addAction(UIAlertAction(title: "사진 보관함", style: .default, handler: { _ in
 //                vc.sourceType = .photoLibrary
 //            }))
-//            present(actionSheet, animated: true)
-//            
-//
-//            
-//            
-//        }
+            present(vc, animated: true)
+            
+
+            
+            
+        }
     }
     
     // 섹션 간의 간격 조정
@@ -223,3 +229,25 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
 //        return true
 //    }
 //}
+
+extension NewTodoViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            receivedImage.image = pickedImage
+            tableView.reloadData()
+
+            
+        }
+        print("받아왔나")
+
+        dismiss(animated: true)
+
+
+        
+    }
+}
