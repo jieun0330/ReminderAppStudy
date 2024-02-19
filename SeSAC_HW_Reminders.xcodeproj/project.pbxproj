@@ -26,6 +26,7 @@
 		C2CAC0352B83315C001AD512 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C2CAC0342B83315C001AD512 /* FSCalendar */; };
 		C2CAC0372B8333AE001AD512 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0362B8333AE001AD512 /* CalendarViewController.swift */; };
 		C2CAC03A2B8342DB001AD512 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0392B8342DB001AD512 /* FileManager.swift */; };
+		C2CAC03D2B8352A2001AD512 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC03C2B8352A2001AD512 /* DetailViewController.swift */; };
 		C2E7FE382B7CAC0100004FC7 /* NewTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */; };
 		C2E7FE3A2B7CCF3600004FC7 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE392B7CCF3600004FC7 /* ToDoTableViewCell.swift */; };
 		C2E7FE3C2B7CCFE300004FC7 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */; };
@@ -62,6 +63,7 @@
 		C2CAC02E2B80F0D1001AD512 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C2CAC0362B8333AE001AD512 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C2CAC0392B8342DB001AD512 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		C2CAC03C2B8352A2001AD512 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoViewController.swift; sourceTree = "<group>"; };
 		C2E7FE392B7CCF3600004FC7 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				C2CAC0382B8342D1001AD512 /* FileManager */,
 				C29969FE2B7C8F1A0067D397 /* Base */,
 				C2E7FE442B7D074000004FC7 /* Main */,
+				C2CAC03B2B835262001AD512 /* List */,
 				C29969FD2B7C8F120067D397 /* View */,
 				C2E7FE452B7D075F00004FC7 /* Detail */,
 				C29969E72B7C8E5A0067D397 /* AppDelegate.swift */,
@@ -169,13 +172,21 @@
 			path = FileManager;
 			sourceTree = "<group>";
 		};
+		C2CAC03B2B835262001AD512 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */,
+				C2E7FE6A2B7F8BEA00004FC7 /* ListTableViewCell.swift */,
+				C2CAC03C2B8352A2001AD512 /* DetailViewController.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		C2E7FE442B7D074000004FC7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */,
 				C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */,
-				C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */,
-				C2E7FE6A2B7F8BEA00004FC7 /* ListTableViewCell.swift */,
 				C2E7FE662B7F416100004FC7 /* CellUI.swift */,
 				C2CAC02C2B80F0B9001AD512 /* CustomView.swift */,
 			);
@@ -294,6 +305,7 @@
 				C2996A0C2B7C94F80067D397 /* Protocol.swift in Sources */,
 				C2E7FE3E2B7CD81E00004FC7 /* DateViewController.swift in Sources */,
 				C2E7FE382B7CAC0100004FC7 /* NewTodoViewController.swift in Sources */,
+				C2CAC03D2B8352A2001AD512 /* DetailViewController.swift in Sources */,
 				C2CAC02D2B80F0B9001AD512 /* CustomView.swift in Sources */,
 				C2E7FE3C2B7CCFE300004FC7 /* BaseTableViewCell.swift in Sources */,
 				C2996A072B7C90C00067D397 /* RemindersCollectionViewCell.swift in Sources */,
