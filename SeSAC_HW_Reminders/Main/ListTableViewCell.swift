@@ -43,20 +43,29 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
         label.textColor = .systemBlue
         return label }()
     
+    
     let image: UIImageView = {
         let img = UIImageView()
-        img.backgroundColor = .lightGray
+//        img.backgroundColor = .lightGray
         img.contentMode = .scaleAspectFill
         img.clipsToBounds = true
         return img
     }()
+    
+    let flagLabel: UIButton = {
+        let flag = UIButton()
+//        flag.setImage(UIImage(systemName: "flag.fill"), for: .normal)
+//        flag.tintColor = .orange
+        return flag
+    }()
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     override func configureHierarchy() {
-        [checkButton, priorityLabel, mainLabel, subtitleLabel, dateLabel, tagLabel, image].forEach {
+        [checkButton, priorityLabel, mainLabel, subtitleLabel, dateLabel, tagLabel, image, flagLabel].forEach {
             contentView.addSubview($0)
         }
     }
@@ -99,12 +108,20 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
         }
         
         image.snp.makeConstraints {
-            $0.trailing.equalToSuperview().inset(20)
-//            $0.leading.equalTo(mainLabel.snp.trailing)
+            $0.trailing.equalTo(flagLabel.snp.leading).offset(-10)
             $0.top.equalToSuperview().offset(10)
             $0.centerY.equalToSuperview()
             $0.size.equalTo(40)
         }
+        
+        flagLabel.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(20)
+            $0.top.equalTo(checkButton)
+//            $0.centerY.equalToSuperview()
+            $0.size.equalTo(20)
+        }
+        
+
         
     }
     

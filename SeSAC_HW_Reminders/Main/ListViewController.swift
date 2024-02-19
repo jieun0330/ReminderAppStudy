@@ -13,6 +13,7 @@ class ListViewController: BaseViewController {
     
     let repository = ToDoRepository()
     var list: Results<ReminderModel>!
+    var receivedFlag = false
     
     lazy var rightBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
@@ -107,6 +108,13 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.tagLabel.text = list[indexPath.row].tag
         
         cell.image.image = loadImageFromDocument(fileName: "\(list[indexPath.row].id)")
+        
+        cell.flagLabel.setImage(list[indexPath.row].flag == true ? UIImage(systemName: "flag.fill") : UIImage(systemName: ""), for: .normal)
+        cell.flagLabel.tintColor = .orange
+//        if list[indexPath.row].flag == true {
+//            cell.flagLabel.setImage(UIImage(systemName: "flag.fill"), for: .normal)
+//            cell.flagLabel.tintColor = .orange
+//        }
 
         return cell
     }
@@ -128,8 +136,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         delete.backgroundColor = .red
         
         let flag = UIContextualAction(style: .normal, title: "깃발") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
-            print("깃발 클릭")
-            success(true)
+            self.repository.updateFlag(self.list[indexPath.row])
+
+            tableView.reloadData()
+            
+
         }
         flag.backgroundColor = .orange
         

@@ -61,6 +61,12 @@ class ToDoRepository {
         }
     }
     
+    func flagFilter() -> Results<ReminderModel> {
+        return realm.objects(ReminderModel.self).where {
+            $0.flag == true
+        }
+    }
+    
     // CR"U"D
     // checkBox 선택 시 -> 할일 완료 업데이트
     func updateComplete(_ item: ReminderModel) {
@@ -70,6 +76,17 @@ class ToDoRepository {
             }
         } catch {
             print(error)
+        }
+    }
+    
+    // 깃발 선택 시
+    func updateFlag(_ item: ReminderModel) {
+        do {
+            try realm.write {
+                item.flag.toggle()
+            }
+        } catch {
+            
         }
     }
     

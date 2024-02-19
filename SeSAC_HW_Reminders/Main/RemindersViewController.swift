@@ -168,7 +168,7 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         case .all:
             cell.countLabel.text = "\(repo.readRecordAllFilter().count)"
         case .flag:
-            cell.countLabel.text = "0"
+            cell.countLabel.text = "\(repo.flagFilter().count)"
         case .complete:
             cell.countLabel.text = "\(repo.readRecordCompletedFilter().count)"
         }
@@ -189,7 +189,7 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         case .all:
             vc.list = repo.readRecordAllFilter()
         case .flag:
-            vc.list = repo.readRecordAllFilter() // 임시
+            vc.list = repo.flagFilter()
         case .complete:
             vc.list = repo.readRecordCompletedFilter()
         }
