@@ -20,6 +20,7 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     // 5. 변수 생성
     var delegate: ReloadDataDelegate?
     
+    
     lazy var cancleButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
         return button }()
@@ -38,6 +39,12 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
         view.register(TitleTableViewCell.self, forCellReuseIdentifier: TitleTableViewCell.identifier)
         return view }()
     
+//    lazy var tapGestureRecognizer: UITapGestureRecognizer = {
+//        let tap = UITapGestureRecognizer()
+//        tap.delegate = self
+//        return tap
+//    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,6 +58,7 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
                                                object: nil)
         
         addButton.isEnabled = false
+//        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func configureHierarchy() {
@@ -72,6 +80,7 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
         navigationItem.leftBarButtonItem = self.cancleButton
     }
     
+
     /*
      NSNotification.userinfo에 저장된 딕셔너리 값을 가져오기 위해
      value는 Any?값이 된다 -> 타입캐스팅을 해준다
@@ -139,7 +148,7 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             } else if indexPath.section == NewToDoEnum.priority.rawValue {
                 cell.receivedValue.text = receivedSegmentValue[0]
             } else {
-                cell.receivedValue.text = ""
+                cell.receivedImg.image = UIImage(systemName: "pencil")
             }
             return cell
         }
@@ -160,6 +169,8 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
         if indexPath.section == NewToDoEnum.date.rawValue {
             let vc = DateViewController()
             navigationController?.pushViewController(vc, animated: true)
@@ -179,6 +190,21 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.reloadData()
             }
         }
+//        else {
+//            let vc = UIImagePickerController()
+//            let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//            actionSheet.addAction(UIAlertAction(title: "사진 찍기", style: .default, handler: { _ in
+//                vc.sourceType = .camera
+//            }))
+//            actionSheet.addAction(UIAlertAction(title: "사진 보관함", style: .default, handler: { _ in
+//                vc.sourceType = .photoLibrary
+//            }))
+//            present(actionSheet, animated: true)
+//            
+//
+//            
+//            
+//        }
     }
     
     // 섹션 간의 간격 조정
@@ -190,3 +216,10 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
 }
+
+
+//extension NewTodoViewController: UIGestureRecognizerDelegate {
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+//        return true
+//    }
+//}

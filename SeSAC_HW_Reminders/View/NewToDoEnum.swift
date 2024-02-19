@@ -27,7 +27,7 @@ enum NewToDoEnum: Int, CaseIterable {
         case .priority:
             "우선순위"
         case .image:
-            "이미지 추천"
+            "이미지 추가"
         }
     }
 }

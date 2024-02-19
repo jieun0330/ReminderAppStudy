@@ -20,6 +20,11 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
         title.text = ""
         return title }()
     
+    let receivedImg: UIImageView = {
+        let img = UIImageView()
+        return img
+    } ()
+    
     let moreButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
@@ -31,7 +36,7 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     override func configureHierarchy() {
-        [title, receivedValue, moreButton].forEach {
+        [title, receivedValue, receivedImg, moreButton].forEach {
             contentView.addSubview($0)
         }
     }
@@ -43,6 +48,11 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
         }
         
         receivedValue.snp.makeConstraints {
+            $0.trailing.equalTo(moreButton.snp.leading).offset(-20)
+            $0.top.equalTo(title.snp.top)
+        }
+        
+        receivedImg.snp.makeConstraints {
             $0.trailing.equalTo(moreButton.snp.leading).offset(-20)
             $0.top.equalTo(title.snp.top)
         }

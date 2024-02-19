@@ -7,31 +7,21 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 // 추가 버튼 클릭 시 메인화면 reload delegate
 protocol ReloadDataDelegate {
     func reloadData()
 }
 
-class RemindersViewController: BaseViewController, ReloadDataDelegate{
-    
-    // 추가 버튼 클릭 시 메인화면 reload delegate
-    func reloadData() {
-        collectionView.reloadData()
-    }
+class RemindersViewController: BaseViewController {
     
     let repo = ToDoRepository()
+    var list: Results<ReminderModel>!
     
     lazy var rightBarButtonItem: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
         return button }()
-    
-    let searchBar: UISearchBar = {
-        let search = UISearchBar()
-        search.backgroundImage = UIImage() // searchBar 모양이 못생기긴했는데 흰색 뒷배경을 없애려면 UIImage()를 줘야한다
-
-        return search
-    }()
     
     let allText: UILabel = {
         let entire = UILabel()
@@ -76,22 +66,17 @@ class RemindersViewController: BaseViewController, ReloadDataDelegate{
     }
     
     override func configureHierarchy() {
-        [searchBar, allText, collectionView].forEach {
+        [allText, collectionView].forEach {
             view.addSubview($0)
         }
     }
     
     override func configureConstraints() {
-        
-        searchBar.snp.makeConstraints {
-            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.top.equalTo(view.safeAreaLayoutGuide)
-            $0.height.equalTo(30)
-        }
+
         
         allText.snp.makeConstraints {
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
-            $0.top.equalTo(searchBar.snp.bottom).offset(20)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
         }
         
         collectionView.snp.makeConstraints {
@@ -199,3 +184,17 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         }
     }
 }
+
+extension RemindersViewController: ReloadDataDelegate {
+    
+    // 추가 버튼 클릭 시 메인화면 reload delegate
+    func reloadData() {
+        collectionView.reloadData()
+    }
+}
+
+//extension RemindersViewController: UISearchBarDelegate {
+//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+//        repo.searchFilter(list[0].title)
+//    }
+//}

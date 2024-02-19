@@ -55,11 +55,11 @@ class ToDoRepository {
         }
     }
     
-//    func searchFilter() -> Results<ReminderModel> {
-//        return realm.objects(ReminderModel.self).where {
-//            
-//        }
-//    }
+    func searchFilter(_ item: ReminderModel) -> Results<ReminderModel> {
+        return realm.objects(ReminderModel.self).where {
+            $0.title.contains(item.title, options: .caseInsensitive) // caseInsensitive: 대소문자 구별 없음
+        }
+    }
     
     // CR"U"D
     // checkBox 선택 시 -> 할일 완료 업데이트

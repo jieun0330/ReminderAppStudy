@@ -43,12 +43,18 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
         label.textColor = .systemBlue
         return label }()
     
+    let image: UIImageView = {
+        let img = UIImageView()
+        img.backgroundColor = .lightGray
+        return img
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     override func configureHierarchy() {
-        [checkButton, priorityLabel, mainLabel, subtitleLabel, dateLabel, tagLabel].forEach {
+        [checkButton, priorityLabel, mainLabel, subtitleLabel, dateLabel, tagLabel, image].forEach {
             contentView.addSubview($0)
         }
     }
@@ -89,6 +95,15 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
             $0.top.equalTo(subtitleLabel.snp.bottom).offset(3)
             $0.height.equalTo(15)
         }
+        
+        image.snp.makeConstraints {
+            $0.trailing.equalToSuperview().inset(20)
+//            $0.leading.equalTo(mainLabel.snp.trailing)
+            $0.top.equalToSuperview().offset(10)
+            $0.centerY.equalToSuperview()
+            $0.size.equalTo(40)
+        }
+        
     }
     
     required init?(coder: NSCoder) {

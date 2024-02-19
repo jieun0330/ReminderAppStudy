@@ -18,6 +18,13 @@ class ListViewController: BaseViewController {
         let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
         return button}()
     
+    let searchBar: UISearchBar = {
+        let search = UISearchBar()
+        search.backgroundImage = UIImage() // searchBar 모양이 못생기긴했는데 흰색 뒷배경을 없애려면 UIImage()를 줘야한다
+//        search.delegate = self
+        return search
+    }()
+    
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.delegate = self
@@ -30,14 +37,23 @@ class ListViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [tableView].forEach {
+        [searchBar, tableView].forEach {
             view.addSubview($0)
         }
     }
     
     override func configureConstraints() {
+        
+        searchBar.snp.makeConstraints {
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.height.equalTo(30)
+        }
+        
         tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(searchBar.snp.bottom).offset(10)
+            $0.horizontalEdges.equalToSuperview()
+            $0.bottom.equalToSuperview()
         }
     }
     
@@ -65,6 +81,7 @@ class ListViewController: BaseViewController {
             self.tableView.reloadData()
         })
         rightBarButton.menu = UIMenu(options: .displayInline, children: [upcomingDate, title, lowPriority])
+//        rightBarButton.m
     }
 }
 
