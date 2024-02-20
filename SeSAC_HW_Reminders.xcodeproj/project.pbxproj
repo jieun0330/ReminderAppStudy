@@ -32,6 +32,9 @@
 		C2CAC0482B848F04001AD512 /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0472B848F04001AD512 /* AddListViewController.swift */; };
 		C2CAC04A2B84978E001AD512 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0492B84978E001AD512 /* MyListTableViewCell.swift */; };
 		C2CAC04C2B84A29B001AD512 /* ListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC04B2B84A29B001AD512 /* ListRepository.swift */; };
+		C2CAC04E2B84AA2D001AD512 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC04D2B84AA2D001AD512 /* ListModel.swift */; };
+		C2CAC0502B84ABB0001AD512 /* DetailListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC04F2B84ABB0001AD512 /* DetailListTableViewCell.swift */; };
+		C2CAC0522B84AC91001AD512 /* DetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0512B84AC91001AD512 /* DetailListViewController.swift */; };
 		C2E7FE382B7CAC0100004FC7 /* NewTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */; };
 		C2E7FE3A2B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE392B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift */; };
 		C2E7FE3C2B7CCFE300004FC7 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */; };
@@ -74,6 +77,9 @@
 		C2CAC0472B848F04001AD512 /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		C2CAC0492B84978E001AD512 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 		C2CAC04B2B84A29B001AD512 /* ListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRepository.swift; sourceTree = "<group>"; };
+		C2CAC04D2B84AA2D001AD512 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
+		C2CAC04F2B84ABB0001AD512 /* DetailListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListTableViewCell.swift; sourceTree = "<group>"; };
+		C2CAC0512B84AC91001AD512 /* DetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewController.swift; sourceTree = "<group>"; };
 		C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoViewController.swift; sourceTree = "<group>"; };
 		C2E7FE392B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoSecondTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -188,6 +194,8 @@
 			children = (
 				C2CAC0472B848F04001AD512 /* AddListViewController.swift */,
 				C2CAC0492B84978E001AD512 /* MyListTableViewCell.swift */,
+				C2CAC0512B84AC91001AD512 /* DetailListViewController.swift */,
+				C2CAC04F2B84ABB0001AD512 /* DetailListTableViewCell.swift */,
 			);
 			path = AddList;
 			sourceTree = "<group>";
@@ -231,6 +239,7 @@
 			children = (
 				C2E7FE542B7E23F500004FC7 /* ReminderModel.swift */,
 				C2E7FE612B7F288300004FC7 /* ToDoRepository.swift */,
+				C2CAC04D2B84AA2D001AD512 /* ListModel.swift */,
 				C2CAC04B2B84A29B001AD512 /* ListRepository.swift */,
 			);
 			path = Realm;
@@ -320,7 +329,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2E7FE5C2B7E2D6600004FC7 /* ListViewController.swift in Sources */,
+				C2CAC0522B84AC91001AD512 /* DetailListViewController.swift in Sources */,
 				C2996A002B7C8F200067D397 /* BaseViewController.swift in Sources */,
+				C2CAC0502B84ABB0001AD512 /* DetailListTableViewCell.swift in Sources */,
 				C2CAC03F2B835633001AD512 /* DetailFirstTableViewCell.swift in Sources */,
 				C2E7FE402B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift in Sources */,
 				C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */,
@@ -328,6 +339,7 @@
 				C2CAC04A2B84978E001AD512 /* MyListTableViewCell.swift in Sources */,
 				C2CAC0482B848F04001AD512 /* AddListViewController.swift in Sources */,
 				C2CAC0372B8333AE001AD512 /* CalendarViewController.swift in Sources */,
+				C2CAC04E2B84AA2D001AD512 /* ListModel.swift in Sources */,
 				C2996A0C2B7C94F80067D397 /* Protocol.swift in Sources */,
 				C2E7FE3E2B7CD81E00004FC7 /* DateViewController.swift in Sources */,
 				C2CAC04C2B84A29B001AD512 /* ListRepository.swift in Sources */,

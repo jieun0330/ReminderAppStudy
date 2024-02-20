@@ -57,6 +57,7 @@ class RemindersViewController: BaseViewController {
         view.delegate = self
         view.dataSource = self
         view.rowHeight = 50
+        view.backgroundColor = .systemGray6
         return view
     }()
     
@@ -121,7 +122,7 @@ class RemindersViewController: BaseViewController {
         tableView.snp.makeConstraints {
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.top.equalTo(myListText.snp.bottom).offset(20)
-            $0.height.equalTo(300)
+            $0.height.equalTo(330)
         }
     }
     
@@ -264,6 +265,12 @@ extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
 
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       let vc = DetailListViewController()
+        vc.main = myList[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
