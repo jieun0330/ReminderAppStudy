@@ -32,12 +32,9 @@ class AddListViewController: BaseViewController {
         return view
     }()
     
-    let listIcon: UIButton = {
-        let icon = UIButton()
-        icon.setImage(UIImage(systemName: "list.bullet.circle.fill"), for: .normal)
-//        icon.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        icon.layer.borderWidth = 1
-        icon.layer.borderColor = UIColor.red.cgColor
+    let listIcon: UIImageView = {
+        let icon = UIImageView()
+        icon.image = UIImage(systemName: "list.bullet.circle.fill")
         return icon
     }()
     
