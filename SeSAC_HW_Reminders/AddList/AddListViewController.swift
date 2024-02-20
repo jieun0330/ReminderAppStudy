@@ -7,8 +7,13 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 class AddListViewController: BaseViewController {
+    
+    let toDoRepository = ToDoRepository()
+    let listRepository = ListRepository()
+    var delegate: ReloadDataDelegate?
     
     lazy var cancelButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
@@ -87,6 +92,9 @@ class AddListViewController: BaseViewController {
         view.backgroundColor = .systemGray6
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = doneButton
+        
+        
+        
     }
     
     @objc func cancelButtonClicked() {
@@ -94,6 +102,16 @@ class AddListViewController: BaseViewController {
     }
     
     @objc func doneButtonClicked() {
+        let data = ListModel(title: listNameTextField.text!, registDate: Date())
+        
+        listRepository.createRecord(data)
+        dismiss(animated: true)
+        
+        delegate?.reloadData()
+        // RemindersViewController에 있는 TableView가 reload 되야해용
+        // 1. doneButton 클릭
+        // 2. RemindersViewController로 이동
+        // 3. RemindersViewController - TableView Reload
         
     }
 

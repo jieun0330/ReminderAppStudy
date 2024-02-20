@@ -16,8 +16,11 @@ protocol ReloadDataDelegate {
 
 class RemindersViewController: BaseViewController {
     
-    let repo = ToDoRepository()
-    var list: Results<ReminderModel>!
+    let toDoRepository = ToDoRepository()
+    var toDolist: Results<ReminderModel>!
+    
+    let listRepository = ListRepository()
+    var myList: Results<ListModel>!
     
     lazy var leftBarButtonItem: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(leftBarButtonItemClicked))
@@ -48,7 +51,7 @@ class RemindersViewController: BaseViewController {
         myList.font = UIFont.boldSystemFont(ofSize: 20)
         return myList }()
     
-    lazy var myListTableView: UITableView = {
+    lazy var tableView: UITableView = {
         let view = UITableView()
         view.register(MyListTableViewCell.self, forCellReuseIdentifier: MyListTableViewCell.identifier)
         view.delegate = self
@@ -78,6 +81,9 @@ class RemindersViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        myList = listRepository.readList()
+        print(myList)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +94,7 @@ class RemindersViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [allText, collectionView, myListText, myListTableView].forEach {
+        [allText, collectionView, myListText, tableView].forEach {
             view.addSubview($0)
         }
     }
@@ -112,7 +118,7 @@ class RemindersViewController: BaseViewController {
             $0.top.equalTo(collectionView.snp.bottom).offset(20)
         }
         
-        myListTableView.snp.makeConstraints {
+        tableView.snp.makeConstraints {
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.top.equalTo(myListText.snp.bottom).offset(20)
             $0.height.equalTo(300)
@@ -165,6 +171,9 @@ class RemindersViewController: BaseViewController {
     
     @objc func rightToolBarButtonClicked() {
         let vc = AddListViewController()
+        
+        
+        
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true)
     }
@@ -196,15 +205,15 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         
         switch cellUI.allCases[indexPath.row] {
         case .today:
-            cell.countLabel.text = "\(repo.todayScheduleFilter().count)"
+            cell.countLabel.text = "\(toDoRepository.todayScheduleFilter().count)"
         case .schedule:
-            cell.countLabel.text = "\(repo.beScheduleFilter().count)"
+            cell.countLabel.text = "\(toDoRepository.beScheduleFilter().count)"
         case .all:
-            cell.countLabel.text = "\(repo.readRecordAllFilter().count)"
+            cell.countLabel.text = "\(toDoRepository.readRecordAllFilter().count)"
         case .flag:
-            cell.countLabel.text = "\(repo.flagFilter().count)"
+            cell.countLabel.text = "\(toDoRepository.flagFilter().count)"
         case .complete:
-            cell.countLabel.text = "\(repo.readRecordCompletedFilter().count)"
+            cell.countLabel.text = "\(toDoRepository.readRecordCompletedFilter().count)"
         }
         return cell
     }
@@ -216,15 +225,15 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         switch cellUI.allCases[indexPath.item] {
             
         case .today:
-            vc.list = repo.todayScheduleFilter()
+            vc.list = toDoRepository.todayScheduleFilter()
         case .schedule:
-            vc.list = repo.beScheduleFilter()
+            vc.list = toDoRepository.beScheduleFilter()
         case .all:
-            vc.list = repo.readRecordAllFilter()
+            vc.list = toDoRepository.readRecordAllFilter()
         case .flag:
-            vc.list = repo.flagFilter()
+            vc.list = toDoRepository.flagFilter()
         case .complete:
-            vc.list = repo.readRecordCompletedFilter()
+            vc.list = toDoRepository.readRecordCompletedFilter()
         }
         navigationController?.pushViewController(vc, animated: true)
 
@@ -236,16 +245,23 @@ extension RemindersViewController: ReloadDataDelegate {
     // 추가 버튼 클릭 시 메인화면 reload delegate
     func reloadData() {
         collectionView.reloadData()
+        tableView.reloadData()
     }
 }
 
 extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return myList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewCell.identifier, for: indexPath) as! MyListTableViewCell
+//        print(indexPath)
+//        
+//        let row = myList[indexPath.row]
+//        
+        cell.title.text = myList[indexPath.row].title
+
         
         return cell
     }

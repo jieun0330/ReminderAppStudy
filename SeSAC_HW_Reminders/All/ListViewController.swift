@@ -123,7 +123,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = DetailViewController()
 //        vc.
 //        list[indexPath.row].title
-        print("title", list[indexPath.row].title)
+//        print("title", list[indexPath.row].title)
         
         
         

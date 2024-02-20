@@ -15,9 +15,9 @@ class MyListTableViewCell: BaseTableViewCell, ReusableProtocol {
         return icon
     }()
 
-    let title: UILabel = {
+    var title: UILabel = {
         let text = UILabel()
-        text.text = "미리 알림"
+//        text.text = "미리 알림"
         return text
     }()
     
