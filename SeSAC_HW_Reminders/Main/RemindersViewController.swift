@@ -38,7 +38,24 @@ class RemindersViewController: BaseViewController {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.backgroundColor = .systemGray6
         view.register(RemindersCollectionViewCell.self, forCellWithReuseIdentifier: RemindersCollectionViewCell.identifier)
+//        view.layer.borderColor = UIColor.red.cgColor
+//        view.layer.borderWidth = 1
         return view }()
+    
+    let myListText: UILabel = {
+        let myList = UILabel()
+        myList.text = "나의 목록"
+        myList.font = UIFont.boldSystemFont(ofSize: 20)
+        return myList }()
+    
+    lazy var myListTableView: UITableView = {
+        let view = UITableView()
+        view.register(MyListTableViewCell.self, forCellReuseIdentifier: MyListTableViewCell.identifier)
+        view.delegate = self
+        view.dataSource = self
+        view.rowHeight = 50
+        return view
+    }()
     
     lazy var leftToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
@@ -71,7 +88,7 @@ class RemindersViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [allText, collectionView].forEach {
+        [allText, collectionView, myListText, myListTableView].forEach {
             view.addSubview($0)
         }
     }
@@ -87,7 +104,18 @@ class RemindersViewController: BaseViewController {
         collectionView.snp.makeConstraints {
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
             $0.top.equalTo(allText.snp.bottom).offset(20)
-            $0.height.equalTo(400)
+            $0.height.equalTo(300)
+        }
+        
+        myListText.snp.makeConstraints {
+            $0.leading.equalTo(allText.snp.leading)
+            $0.top.equalTo(collectionView.snp.bottom).offset(20)
+        }
+        
+        myListTableView.snp.makeConstraints {
+            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+            $0.top.equalTo(myListText.snp.bottom).offset(20)
+            $0.height.equalTo(300)
         }
     }
     
@@ -209,4 +237,17 @@ extension RemindersViewController: ReloadDataDelegate {
     func reloadData() {
         collectionView.reloadData()
     }
+}
+
+extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewCell.identifier, for: indexPath) as! MyListTableViewCell
+        
+        return cell
+    }
+    
 }

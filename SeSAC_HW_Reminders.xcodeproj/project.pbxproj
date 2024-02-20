@@ -30,6 +30,7 @@
 		C2CAC03F2B835633001AD512 /* DetailFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */; };
 		C2CAC0432B835EDD001AD512 /* DetailSecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */; };
 		C2CAC0482B848F04001AD512 /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0472B848F04001AD512 /* AddListViewController.swift */; };
+		C2CAC04A2B84978E001AD512 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0492B84978E001AD512 /* MyListTableViewCell.swift */; };
 		C2E7FE382B7CAC0100004FC7 /* NewTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */; };
 		C2E7FE3A2B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE392B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift */; };
 		C2E7FE3C2B7CCFE300004FC7 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */; };
@@ -70,6 +71,7 @@
 		C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFirstTableViewCell.swift; sourceTree = "<group>"; };
 		C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSecondTableViewCell.swift; sourceTree = "<group>"; };
 		C2CAC0472B848F04001AD512 /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
+		C2CAC0492B84978E001AD512 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoViewController.swift; sourceTree = "<group>"; };
 		C2E7FE392B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoSecondTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				C2CAC0472B848F04001AD512 /* AddListViewController.swift */,
+				C2CAC0492B84978E001AD512 /* MyListTableViewCell.swift */,
 			);
 			path = AddList;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				C2E7FE402B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift in Sources */,
 				C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */,
 				C29969FC2B7C8EF10067D397 /* RemindersViewController.swift in Sources */,
+				C2CAC04A2B84978E001AD512 /* MyListTableViewCell.swift in Sources */,
 				C2CAC0482B848F04001AD512 /* AddListViewController.swift in Sources */,
 				C2CAC0372B8333AE001AD512 /* CalendarViewController.swift in Sources */,
 				C2996A0C2B7C94F80067D397 /* Protocol.swift in Sources */,
