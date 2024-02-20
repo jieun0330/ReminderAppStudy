@@ -23,7 +23,7 @@ class MyListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let listCount: UILabel = {
         let count = UILabel()
-        count.text = "3"
+//        count.text = "3"
         count.textColor = .lightGray
         return count
     }()

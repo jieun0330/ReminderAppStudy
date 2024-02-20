@@ -12,23 +12,26 @@ import RealmSwift
 class DetailListViewController: BaseViewController {
 
     var main: ListModel!
+    var listRepository = ListRepository()
+    var list: Results<DetailListModel>!
 //    var list: List<DetailListModel>!
     
-    var listTitle: UILabel = {
+    let listTitle: UILabel = {
         let title = UILabel()
         title.font = UIFont.boldSystemFont(ofSize: 30)
 //        title.text = main.title
         return title
     }()
     
-    var saveButton: UIButton = {
+    lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("저장", for: .normal)
         button.backgroundColor = .orange
+        button.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
         return button
     }()
     
-    var textField: UITextField = {
+    let textField: UITextField = {
         let textfield = UITextField()
         textfield.backgroundColor = .systemGray6
         return textfield
@@ -92,16 +95,28 @@ class DetailListViewController: BaseViewController {
 //        print(main.title)
         listTitle.text = main.title
     }
+    
+    @objc func saveButtonClicked() {
+        
+        let data = DetailListModel(title: textField.text!, registDate: Date())
+        listRepository.createDetailList(main: main, data: data)
+        textField.text = ""
+        tableView.reloadData()
+        
+    }
 
 }
 
 extension DetailListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return main.detail.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailListTableViewCell.identifier, for: indexPath) as! DetailListTableViewCell
+        
+        cell.listContents.text = main.detail[indexPath.row].title
+        
         
         return cell
     }

@@ -21,6 +21,7 @@ class RemindersViewController: BaseViewController {
     
     let listRepository = ListRepository()
     var myList: Results<ListModel>!
+//    var detailList: Results<DetailListModel>!
     
     lazy var leftBarButtonItem: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(leftBarButtonItemClicked))
@@ -83,7 +84,7 @@ class RemindersViewController: BaseViewController {
         super.viewDidLoad()
         
         myList = listRepository.readList()
-        print(myList)
+//        print(myList)
         
     }
     
@@ -91,6 +92,7 @@ class RemindersViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         collectionView.reloadData()
+        tableView.reloadData()
         
     }
     
@@ -262,6 +264,10 @@ extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
 //        let row = myList[indexPath.row]
 //        
         cell.title.text = myList[indexPath.row].title
+//        print(myList[indexPath.row].title)
+        cell.listCount.text = "\(myList[indexPath.row].detail.count)"
+//        print()
+        cell.selectionStyle = .none
 
         
         return cell

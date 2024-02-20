@@ -20,7 +20,7 @@ class DetailListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let listContents: UILabel = {
         let content = UILabel()
-        content.text = "미리 알림"
+//        content.text = "미리 알림"
 //
         return content
     }()

@@ -25,6 +25,16 @@ class ListRepository {
         }
     }
     
+    func createDetailList(main: ListModel, data: DetailListModel) {
+        do {
+            try realm.write {
+                main.detail.append(data)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     // C"R"UD
     func readList() -> Results<ListModel> {
         return realm.objects(ListModel.self)
