@@ -10,12 +10,6 @@ import SnapKit
 
 class AddListViewController: BaseViewController {
     
-    let listNameView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
-    
     lazy var cancelButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
         return button
@@ -24,6 +18,31 @@ class AddListViewController: BaseViewController {
     lazy var doneButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(doneButtonClicked))
         return button
+    }()
+    
+    let listNameView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
+    let listIcon: UIButton = {
+        let icon = UIButton()
+        icon.setImage(UIImage(systemName: "list.bullet.circle.fill"), for: .normal)
+//        icon.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        icon.layer.borderWidth = 1
+        icon.layer.borderColor = UIColor.red.cgColor
+        return icon
+    }()
+    
+    let listNameTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "목록 이름"
+        textField.textAlignment = .center
+        textField.backgroundColor = .systemGray6
+        textField.layer.cornerRadius = 15
+        return textField
     }()
 
     override func viewDidLoad() {
@@ -35,14 +54,32 @@ class AddListViewController: BaseViewController {
         [listNameView].forEach {
             view.addSubview($0)
         }
+        
+        [listIcon, listNameTextField].forEach {
+            listNameView.addSubview($0)
+        }
+        
     }
     
     override func configureConstraints() {
         listNameView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.horizontalEdges.equalToSuperview().inset(20)
-            $0.height.equalTo(300)
+            $0.height.equalTo(220)
         }
+        
+        listIcon.snp.makeConstraints {
+            $0.size.equalTo(100)
+            $0.centerX.equalTo(view)
+            $0.top.equalToSuperview().offset(20)
+        }
+        
+        listNameTextField.snp.makeConstraints {
+            $0.top.equalTo(listIcon.snp.bottom).offset(20)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(60)
+        }
+        
     }
     
     override func configureView() {
@@ -53,7 +90,7 @@ class AddListViewController: BaseViewController {
     }
     
     @objc func cancelButtonClicked() {
-        
+        dismiss(animated: true)
     }
     
     @objc func doneButtonClicked() {
