@@ -21,7 +21,6 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     // 5. 변수 생성
     var delegate: ReloadDataDelegate?
     
-    
     lazy var cancleButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
         return button }()
@@ -32,12 +31,12 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
-        view.backgroundColor = .white
+        view.backgroundColor = .systemGray6
         view.layer.cornerRadius = 10
         view.delegate = self
         view.dataSource = self
-        view.register(ToDoTableViewCell.self, forCellReuseIdentifier: ToDoTableViewCell.identifier)
-        view.register(TitleTableViewCell.self, forCellReuseIdentifier: TitleTableViewCell.identifier)
+        view.register(NewToDoSecondTableViewCell.self, forCellReuseIdentifier: NewToDoSecondTableViewCell.identifier)
+        view.register(NewToDoFirstTableViewCell.self, forCellReuseIdentifier: NewToDoFirstTableViewCell.identifier)
         return view }()
     
 
@@ -76,7 +75,7 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     }
     
     override func configureView() {
-        view.backgroundColor = .white
+//        view.backgroundColor = .systemGray6
         navigationItem.title = "새로운 할 일"
         navigationItem.rightBarButtonItem = self.addButton
         navigationItem.leftBarButtonItem = self.cancleButton
@@ -131,7 +130,7 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == NewToDoEnum.title.rawValue {
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: TitleTableViewCell.identifier, for: indexPath) as! TitleTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: NewToDoFirstTableViewCell.identifier, for: indexPath) as! NewToDoFirstTableViewCell
             cell.titleTextField.tag = indexPath.row
             cell.titleTextField.delegate = self
             
@@ -146,7 +145,7 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: ToDoTableViewCell.identifier, for: indexPath) as! ToDoTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: NewToDoSecondTableViewCell.identifier, for: indexPath) as! NewToDoSecondTableViewCell
             cell.title.text = NewToDoEnum.allCases[indexPath.section].cellTitle
             
             if indexPath.section == NewToDoEnum.date.rawValue {
@@ -248,7 +247,7 @@ extension NewTodoViewController: UIImagePickerControllerDelegate & UINavigationC
 
             
         }
-        print("받아왔나")
+//        print("받아왔나")
 
         dismiss(animated: true)
 

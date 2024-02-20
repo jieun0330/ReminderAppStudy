@@ -46,7 +46,6 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let image: UIImageView = {
         let img = UIImageView()
-//        img.backgroundColor = .lightGray
         img.contentMode = .scaleAspectFill
         img.clipsToBounds = true
         return img
@@ -54,11 +53,8 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let flagLabel: UIButton = {
         let flag = UIButton()
-//        flag.setImage(UIImage(systemName: "flag.fill"), for: .normal)
-//        flag.tintColor = .orange
         return flag
     }()
-
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -117,12 +113,8 @@ class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
         flagLabel.snp.makeConstraints {
             $0.trailing.equalToSuperview().inset(20)
             $0.top.equalTo(checkButton)
-//            $0.centerY.equalToSuperview()
             $0.size.equalTo(20)
         }
-        
-
-        
     }
     
     required init?(coder: NSCoder) {

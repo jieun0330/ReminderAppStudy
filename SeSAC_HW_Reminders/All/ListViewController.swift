@@ -22,7 +22,6 @@ class ListViewController: BaseViewController {
     let searchBar: UISearchBar = {
         let search = UISearchBar()
         search.backgroundImage = UIImage() // searchBar 모양이 못생기긴했는데 흰색 뒷배경을 없애려면 UIImage()를 줘야한다
-//        search.delegate = self
         return search
     }()
     
@@ -35,6 +34,7 @@ class ListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func configureHierarchy() {
@@ -63,9 +63,6 @@ class ListViewController: BaseViewController {
         navigationItem.rightBarButtonItem = rightBarButton
         tableView.rowHeight = 80
         // 🚨 tableView 자동 높이 설정해주기
-        
-        
-        
     }
     
     @objc func rightBarButtonClicked() {
@@ -85,7 +82,6 @@ class ListViewController: BaseViewController {
             self.tableView.reloadData()
         })
         rightBarButton.menu = UIMenu(options: .displayInline, children: [upcomingDate, title, lowPriority])
-//        rightBarButton.m
     }
 }
 
@@ -106,16 +102,10 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.checkButton.addTarget(self, action: #selector(checkButtonClicked), for: .touchUpInside)
         cell.priorityLabel.text = list[indexPath.row].priority
         cell.tagLabel.text = list[indexPath.row].tag
-        
         cell.image.image = loadImageFromDocument(fileName: "\(list[indexPath.row].id)")
-        
         cell.flagLabel.setImage(list[indexPath.row].flag == true ? UIImage(systemName: "flag.fill") : UIImage(systemName: ""), for: .normal)
         cell.flagLabel.tintColor = .orange
-//        if list[indexPath.row].flag == true {
-//            cell.flagLabel.setImage(UIImage(systemName: "flag.fill"), for: .normal)
-//            cell.flagLabel.tintColor = .orange
-//        }
-
+        
         return cell
     }
     
@@ -126,10 +116,20 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+//        print(indexPath)
+        
         let vc = DetailViewController()
+//        vc.
+//        list[indexPath.row].title
+        print("title", list[indexPath.row].title)
+        
+        
+        
+        
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true)
-//        navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -144,10 +144,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let flag = UIContextualAction(style: .normal, title: "깃발") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.repository.updateFlag(self.list[indexPath.row])
-
-            tableView.reloadData()
             
-
+            tableView.reloadData()
         }
         flag.backgroundColor = .orange
         

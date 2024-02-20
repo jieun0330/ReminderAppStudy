@@ -27,11 +27,14 @@
 		C2CAC0372B8333AE001AD512 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0362B8333AE001AD512 /* CalendarViewController.swift */; };
 		C2CAC03A2B8342DB001AD512 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0392B8342DB001AD512 /* FileManager.swift */; };
 		C2CAC03D2B8352A2001AD512 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC03C2B8352A2001AD512 /* DetailViewController.swift */; };
+		C2CAC03F2B835633001AD512 /* DetailFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */; };
+		C2CAC0432B835EDD001AD512 /* DetailSecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */; };
+		C2CAC0482B848F04001AD512 /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0472B848F04001AD512 /* AddListViewController.swift */; };
 		C2E7FE382B7CAC0100004FC7 /* NewTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */; };
-		C2E7FE3A2B7CCF3600004FC7 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE392B7CCF3600004FC7 /* ToDoTableViewCell.swift */; };
+		C2E7FE3A2B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE392B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift */; };
 		C2E7FE3C2B7CCFE300004FC7 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */; };
 		C2E7FE3E2B7CD81E00004FC7 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3D2B7CD81E00004FC7 /* DateViewController.swift */; };
-		C2E7FE402B7CDEAB00004FC7 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3F2B7CDEAB00004FC7 /* TitleTableViewCell.swift */; };
+		C2E7FE402B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3F2B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift */; };
 		C2E7FE502B7DFE3D00004FC7 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */; };
 		C2E7FE522B7E0E6600004FC7 /* PriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */; };
 		C2E7FE552B7E23F500004FC7 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE542B7E23F500004FC7 /* ReminderModel.swift */; };
@@ -64,11 +67,14 @@
 		C2CAC0362B8333AE001AD512 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C2CAC0392B8342DB001AD512 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		C2CAC03C2B8352A2001AD512 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFirstTableViewCell.swift; sourceTree = "<group>"; };
+		C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSecondTableViewCell.swift; sourceTree = "<group>"; };
+		C2CAC0472B848F04001AD512 /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoViewController.swift; sourceTree = "<group>"; };
-		C2E7FE392B7CCF3600004FC7 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		C2E7FE392B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoSecondTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE3D2B7CD81E00004FC7 /* DateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
-		C2E7FE3F2B7CDEAB00004FC7 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		C2E7FE3F2B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoFirstTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
 		C2E7FE542B7E23F500004FC7 /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
@@ -119,9 +125,10 @@
 				C2CAC0382B8342D1001AD512 /* FileManager */,
 				C29969FE2B7C8F1A0067D397 /* Base */,
 				C2E7FE442B7D074000004FC7 /* Main */,
-				C2CAC03B2B835262001AD512 /* List */,
-				C29969FD2B7C8F120067D397 /* View */,
+				C2CAC0462B848ECC001AD512 /* All */,
+				C29969FD2B7C8F120067D397 /* NewToDo */,
 				C2E7FE452B7D075F00004FC7 /* Detail */,
+				C2CAC03B2B835262001AD512 /* AddList */,
 				C29969E72B7C8E5A0067D397 /* AppDelegate.swift */,
 				C29969E92B7C8E5A0067D397 /* SceneDelegate.swift */,
 				C29969EB2B7C8E5A0067D397 /* ViewController.swift */,
@@ -133,16 +140,16 @@
 			path = SeSAC_HW_Reminders;
 			sourceTree = "<group>";
 		};
-		C29969FD2B7C8F120067D397 /* View */ = {
+		C29969FD2B7C8F120067D397 /* NewToDo */ = {
 			isa = PBXGroup;
 			children = (
 				C2CAC0362B8333AE001AD512 /* CalendarViewController.swift */,
 				C2E7FE682B7F438100004FC7 /* NewToDoEnum.swift */,
 				C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */,
-				C2E7FE3F2B7CDEAB00004FC7 /* TitleTableViewCell.swift */,
-				C2E7FE392B7CCF3600004FC7 /* ToDoTableViewCell.swift */,
+				C2E7FE3F2B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift */,
+				C2E7FE392B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift */,
 			);
-			path = View;
+			path = NewToDo;
 			sourceTree = "<group>";
 		};
 		C29969FE2B7C8F1A0067D397 /* Base */ = {
@@ -172,14 +179,24 @@
 			path = FileManager;
 			sourceTree = "<group>";
 		};
-		C2CAC03B2B835262001AD512 /* List */ = {
+		C2CAC03B2B835262001AD512 /* AddList */ = {
+			isa = PBXGroup;
+			children = (
+				C2CAC0472B848F04001AD512 /* AddListViewController.swift */,
+			);
+			path = AddList;
+			sourceTree = "<group>";
+		};
+		C2CAC0462B848ECC001AD512 /* All */ = {
 			isa = PBXGroup;
 			children = (
 				C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */,
 				C2E7FE6A2B7F8BEA00004FC7 /* ListTableViewCell.swift */,
 				C2CAC03C2B8352A2001AD512 /* DetailViewController.swift */,
+				C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */,
+				C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */,
 			);
-			path = List;
+			path = All;
 			sourceTree = "<group>";
 		};
 		C2E7FE442B7D074000004FC7 /* Main */ = {
@@ -298,9 +315,11 @@
 			files = (
 				C2E7FE5C2B7E2D6600004FC7 /* ListViewController.swift in Sources */,
 				C2996A002B7C8F200067D397 /* BaseViewController.swift in Sources */,
-				C2E7FE402B7CDEAB00004FC7 /* TitleTableViewCell.swift in Sources */,
+				C2CAC03F2B835633001AD512 /* DetailFirstTableViewCell.swift in Sources */,
+				C2E7FE402B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift in Sources */,
 				C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */,
 				C29969FC2B7C8EF10067D397 /* RemindersViewController.swift in Sources */,
+				C2CAC0482B848F04001AD512 /* AddListViewController.swift in Sources */,
 				C2CAC0372B8333AE001AD512 /* CalendarViewController.swift in Sources */,
 				C2996A0C2B7C94F80067D397 /* Protocol.swift in Sources */,
 				C2E7FE3E2B7CD81E00004FC7 /* DateViewController.swift in Sources */,
@@ -314,12 +333,13 @@
 				C25DE40D2B80D00C00C70125 /* PriorityEnum.swift in Sources */,
 				C29969EA2B7C8E5A0067D397 /* SceneDelegate.swift in Sources */,
 				C2CAC02F2B80F0D1001AD512 /* BaseView.swift in Sources */,
-				C2E7FE3A2B7CCF3600004FC7 /* ToDoTableViewCell.swift in Sources */,
+				C2E7FE3A2B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift in Sources */,
 				C2E7FE6B2B7F8BEA00004FC7 /* ListTableViewCell.swift in Sources */,
 				C2E7FE552B7E23F500004FC7 /* ReminderModel.swift in Sources */,
 				C2E7FE502B7DFE3D00004FC7 /* TagViewController.swift in Sources */,
 				C2CAC03A2B8342DB001AD512 /* FileManager.swift in Sources */,
 				C2E7FE522B7E0E6600004FC7 /* PriorityViewController.swift in Sources */,
+				C2CAC0432B835EDD001AD512 /* DetailSecondTableViewCell.swift in Sources */,
 				C2E7FE672B7F416100004FC7 /* CellUI.swift in Sources */,
 				C2E7FE622B7F288300004FC7 /* ToDoRepository.swift in Sources */,
 				C2E7FE692B7F438100004FC7 /* NewToDoEnum.swift in Sources */,

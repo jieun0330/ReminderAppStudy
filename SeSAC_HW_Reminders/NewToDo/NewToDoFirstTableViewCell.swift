@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class TitleTableViewCell: BaseTableViewCell, ReusableProtocol {
+class NewToDoFirstTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     lazy var titleTextField: UITextField = {
         let title = UITextField()
@@ -33,7 +33,7 @@ class TitleTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     override func configureView() {
-        contentView.backgroundColor = .lightGray
+        contentView.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

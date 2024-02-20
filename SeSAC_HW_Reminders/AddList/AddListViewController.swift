@@ -1,13 +1,20 @@
 //
-//  DetailViewController.swift
+//  AddListViewController.swift
 //  SeSAC_HW_Reminders
 //
-//  Created by 박지은 on 2/19/24.
+//  Created by 박지은 on 2/20/24.
 //
 
 import UIKit
+import SnapKit
 
-class DetailViewController: BaseViewController {
+class AddListViewController: BaseViewController {
+    
+    let listNameView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        return view
+    }()
     
     lazy var cancelButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
@@ -24,27 +31,34 @@ class DetailViewController: BaseViewController {
 
     }
     
-//    override func configureHierarchy() {
-//        <#code#>
-//    }
-//    
-//    override func configureConstraints() {
-//        <#code#>
-//    }
+    override func configureHierarchy() {
+        [listNameView].forEach {
+            view.addSubview($0)
+        }
+    }
+    
+    override func configureConstraints() {
+        listNameView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide)
+            $0.horizontalEdges.equalToSuperview().inset(20)
+            $0.height.equalTo(300)
+        }
+    }
     
     override func configureView() {
-        view.backgroundColor = .white
-        navigationItem.title = "세부사항"
+        navigationItem.title = "새로운 목록"
+        view.backgroundColor = .systemGray6
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = doneButton
     }
     
     @objc func cancelButtonClicked() {
-        dismiss(animated: true)
+        
     }
     
     @objc func doneButtonClicked() {
         
     }
+
 
 }

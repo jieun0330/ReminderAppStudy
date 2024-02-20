@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
+class NewToDoSecondTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     var title: UILabel = {
         let todo = UILabel()
-        todo.textColor = .white
+        todo.textColor = .black
         return todo }()
     
     let receivedValue: UILabel = {
@@ -30,7 +30,7 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
     let moreButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "chevron.right"), for: .normal)
-        button.tintColor = .white
+        button.tintColor = .lightGray
         return button }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -67,7 +67,7 @@ class ToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     override func configureView() {
-        contentView.backgroundColor = .lightGray
+        contentView.backgroundColor = .white
     }
     
     required init?(coder: NSCoder) {

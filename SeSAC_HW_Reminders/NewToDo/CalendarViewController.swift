@@ -39,5 +39,4 @@ class CalendarViewController: BaseViewController {
     override func configureView() {
         view.backgroundColor = .white
     }
-
 }

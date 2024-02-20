@@ -106,7 +106,9 @@ class RemindersViewController: BaseViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func rightBarButtonItemClicked() { }
+    @objc func rightBarButtonItemClicked() {
+
+    }
     
     /*
      UIToolBar
@@ -133,7 +135,11 @@ class RemindersViewController: BaseViewController {
         present(nav, animated: true)
     }
     
-    @objc func rightToolBarButtonClicked() { }
+    @objc func rightToolBarButtonClicked() {
+        let vc = AddListViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        present(nav, animated: true)
+    }
     
     static func configureCollectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
@@ -178,7 +184,6 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let vc = ListViewController()
-        navigationController?.pushViewController(vc, animated: true)
         
         switch cellUI.allCases[indexPath.item] {
             
@@ -193,6 +198,8 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
         case .complete:
             vc.list = repo.readRecordCompletedFilter()
         }
+        navigationController?.pushViewController(vc, animated: true)
+
     }
 }
 
@@ -203,9 +210,3 @@ extension RemindersViewController: ReloadDataDelegate {
         collectionView.reloadData()
     }
 }
-
-//extension RemindersViewController: UISearchBarDelegate {
-//    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-//        repo.searchFilter(list[0].title)
-//    }
-//}
