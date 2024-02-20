@@ -21,7 +21,12 @@ class DetailListViewController: BaseViewController {
         return title
     }()
     
-    
+    var saveButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("저장", for: .normal)
+        button.backgroundColor = .orange
+        return button
+    }()
     
     var textField: UITextField = {
         let textfield = UITextField()
@@ -48,7 +53,7 @@ class DetailListViewController: BaseViewController {
     }
     
     override func configureHierarchy() {
-        [listTitle, textField, tableView].forEach {
+        [listTitle, textField, saveButton, tableView].forEach {
             view.addSubview($0)
         }
     }
@@ -64,7 +69,14 @@ class DetailListViewController: BaseViewController {
             $0.leading.equalToSuperview().inset(20)
             $0.top.equalTo(listTitle.snp.bottom).offset(20)
             $0.height.equalTo(50)
-            
+            $0.trailing.equalTo(saveButton.snp.leading).offset(20)
+        }
+        
+        saveButton.snp.makeConstraints {
+            $0.trailing.equalToSuperview().offset(-20)
+            $0.centerY.equalTo(textField)
+            $0.height.equalTo(50)
+            $0.width.equalTo(50)
         }
         
         tableView.snp.makeConstraints {
