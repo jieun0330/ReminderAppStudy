@@ -20,7 +20,7 @@ import RealmSwift
 //    }
 //}
 
-class ReminderModel: Object {
+class ReminderMainModel: Object {
     
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var title: String?

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class RemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
+class MainRemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let circleIcon: UIImageView = {
         let icon = UIImageView()

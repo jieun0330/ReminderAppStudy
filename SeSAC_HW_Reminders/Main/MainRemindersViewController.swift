@@ -14,12 +14,12 @@ protocol ReloadDataDelegate {
     func reloadData()
 }
 
-class RemindersViewController: BaseViewController {
+class MainRemindersViewController: BaseViewController {
     
-    let toDoRepository = ToDoRepository()
-    var toDolist: Results<ReminderModel>!
+    let toDoRepository = ReminderMainRepository()
+    var toDolist: Results<ReminderMainModel>!
     
-    let listRepository = ListRepository()
+    let listRepository = MyListRepository()
     var myList: Results<ListModel>!
 //    var detailList: Results<DetailListModel>!
     
@@ -41,7 +41,7 @@ class RemindersViewController: BaseViewController {
     var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.backgroundColor = .systemGray6
-        view.register(RemindersCollectionViewCell.self, forCellWithReuseIdentifier: RemindersCollectionViewCell.identifier)
+        view.register(MainRemindersCollectionViewCell.self, forCellWithReuseIdentifier: MainRemindersCollectionViewCell.identifier)
 //        view.layer.borderColor = UIColor.red.cgColor
 //        view.layer.borderWidth = 1
         return view }()
@@ -54,7 +54,7 @@ class RemindersViewController: BaseViewController {
     
     lazy var tableView: UITableView = {
         let view = UITableView()
-        view.register(MyListTableViewCell.self, forCellReuseIdentifier: MyListTableViewCell.identifier)
+        view.register(MainMyListTableViewCell.self, forCellReuseIdentifier: MainMyListTableViewCell.identifier)
         view.delegate = self
         view.dataSource = self
         view.rowHeight = 50
@@ -194,13 +194,13 @@ class RemindersViewController: BaseViewController {
     }
 }
 
-extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MainRemindersViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cellUI.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RemindersCollectionViewCell.identifier, for: indexPath) as! RemindersCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainRemindersCollectionViewCell.identifier, for: indexPath) as! MainRemindersCollectionViewCell
         // 딕셔너리는 순서가 정해져있는게 아니라서 index 접근이 안된다 -> enum으로 수정
         cell.circleIcon.image = UIImage(systemName: cellUI.allCases[indexPath.item].cellImage)
         cell.circleIcon.tintColor = cellUI.allCases[indexPath.item].cellColor
@@ -223,7 +223,7 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let vc = ListViewController()
+        let vc = AllToDoViewController()
         
         switch cellUI.allCases[indexPath.item] {
             
@@ -243,7 +243,7 @@ extension RemindersViewController: UICollectionViewDelegate, UICollectionViewDat
     }
 }
 
-extension RemindersViewController: ReloadDataDelegate {
+extension MainRemindersViewController: ReloadDataDelegate {
     
     // 추가 버튼 클릭 시 메인화면 reload delegate
     func reloadData() {
@@ -252,13 +252,13 @@ extension RemindersViewController: ReloadDataDelegate {
     }
 }
 
-extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainRemindersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MyListTableViewCell.identifier, for: indexPath) as! MyListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: MainMyListTableViewCell.identifier, for: indexPath) as! MainMyListTableViewCell
 //        print(indexPath)
 //        
 //        let row = myList[indexPath.row]
@@ -274,7 +274,7 @@ extension RemindersViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let vc = DetailListViewController()
+       let vc = DetailMyListViewController()
         vc.main = myList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }

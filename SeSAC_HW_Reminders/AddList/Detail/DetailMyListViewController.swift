@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-class DetailListViewController: BaseViewController {
+class DetailMyListViewController: BaseViewController {
 
     var main: ListModel!
     var listRepository = ListRepository()
@@ -42,7 +42,7 @@ class DetailListViewController: BaseViewController {
         view.delegate = self
         view.dataSource = self
         view.rowHeight = 50
-        view.register(DetailListTableViewCell.self, forCellReuseIdentifier: DetailListTableViewCell.identifier)
+        view.register(DetailMyListTableViewCell.self, forCellReuseIdentifier: DetailMyListTableViewCell.identifier)
 //        view.layer.borderColor = UIColor.red.cgColor
 //        view.layer.borderWidth = 1
         return view
@@ -107,13 +107,13 @@ class DetailListViewController: BaseViewController {
 
 }
 
-extension DetailListViewController: UITableViewDelegate, UITableViewDataSource {
+extension DetailMyListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return main.detail.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DetailListTableViewCell.identifier, for: indexPath) as! DetailListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: DetailMyListTableViewCell.identifier, for: indexPath) as! DetailMyListTableViewCell
         
         cell.listContents.text = main.detail[indexPath.row].title
         

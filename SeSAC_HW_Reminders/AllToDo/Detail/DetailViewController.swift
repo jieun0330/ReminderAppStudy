@@ -11,8 +11,8 @@ import RealmSwift
 
 class DetailViewController: BaseViewController {
     
-    var list: Results<ReminderModel>!
-    var repository = ToDoRepository()
+    var list: Results<ReminderMainModel>!
+    var repository = ReminderMainRepository()
     var receivedTitle = ""
 
     lazy var cancelButton: UIBarButtonItem = {

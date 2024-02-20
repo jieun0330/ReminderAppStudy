@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class ListRepository {
+class MyListRepository {
     
     // open a realm
     let realm = try! Realm()

@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-class ListViewController: BaseViewController {
+class AllToDoViewController: BaseViewController {
     
-    let repository = ToDoRepository()
-    var list: Results<ReminderModel>!
+    let repository = ReminderMainRepository()
+    var list: Results<ReminderMainModel>!
     var receivedFlag = false
     
     lazy var rightBarButton: UIBarButtonItem = {
@@ -29,7 +29,7 @@ class ListViewController: BaseViewController {
         let view = UITableView()
         view.delegate = self
         view.dataSource = self
-        view.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.identifier)
+        view.register(AllToDoTableViewCell.self, forCellReuseIdentifier: AllToDoTableViewCell.identifier)
         return view }()
     
     override func viewDidLoad() {
@@ -85,7 +85,7 @@ class ListViewController: BaseViewController {
     }
 }
 
-extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
@@ -93,7 +93,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as! ListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AllToDoTableViewCell.identifier, for: indexPath) as! AllToDoTableViewCell
         cell.mainLabel.text = list[indexPath.row].title
         cell.subtitleLabel.text = list[indexPath.row].memo
         cell.dateLabel.text = list[indexPath.row].date

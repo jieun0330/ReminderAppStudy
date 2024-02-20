@@ -10,7 +10,7 @@ import SnapKit
 
 class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     
-    let repository = ToDoRepository()
+    let repository = ReminderMainRepository()
     var receivedTitle = ""
     var receivedMemo = ""
     var receivedDate = ""
@@ -100,7 +100,7 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @objc func addButtonClicked() {
-        let data = ReminderModel(title: receivedTitle, memo: receivedMemo, date: receivedDate, tag: receivedTag, priority: receivedSegmentValue[1], complete: false, flag: false)
+        let data = ReminderMainModel(title: receivedTitle, memo: receivedMemo, date: receivedDate, tag: receivedTag, priority: receivedSegmentValue[1], complete: false, flag: false)
         repository.createRecord(data)
         
         if let image = receivedImage.image {

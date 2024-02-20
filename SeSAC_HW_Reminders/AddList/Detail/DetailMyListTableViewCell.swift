@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class DetailListTableViewCell: BaseTableViewCell, ReusableProtocol {
+class DetailMyListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
 //    var main: ListModel!
     

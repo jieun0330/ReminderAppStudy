@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class ListTableViewCell: BaseTableViewCell, ReusableProtocol {
+class AllToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     var checkButton: UIButton = {
         let button = UIButton()

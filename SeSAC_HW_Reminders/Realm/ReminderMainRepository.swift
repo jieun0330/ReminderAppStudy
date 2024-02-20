@@ -8,13 +8,13 @@
 import Foundation
 import RealmSwift
 
-class ToDoRepository {
+class ReminderMainRepository {
     
     // open a realm
     let realm = try! Realm()
     
     // "C"RUD
-    func createRecord(_ data: ReminderModel) {
+    func createRecord(_ data: ReminderMainModel) {
         do {
             try realm.write {
                 realm.add(data)
@@ -27,49 +27,49 @@ class ToDoRepository {
     
     // C"R"UD
     // false: 할일 못한 거
-    func readRecordAllFilter() -> Results<ReminderModel> {
-        return realm.objects(ReminderModel.self).where {
+    func readRecordAllFilter() -> Results<ReminderMainModel> {
+        return realm.objects(ReminderMainModel.self).where {
             $0.complete == false
         }
         // ascending: 내림차순, 올림차순 정렬
     }
     
     // true: 할일 완료한거!
-    func readRecordCompletedFilter() -> Results<ReminderModel> {
-        return realm.objects(ReminderModel.self).where {
+    func readRecordCompletedFilter() -> Results<ReminderMainModel> {
+        return realm.objects(ReminderMainModel.self).where {
             $0.complete == true
         }
     }
     
     // 날짜 입력안했을 경우 + 완료 못한 일 -> 오늘
-    func todayScheduleFilter() -> Results<ReminderModel> {
-        return realm.objects(ReminderModel.self).where {
+    func todayScheduleFilter() -> Results<ReminderMainModel> {
+        return realm.objects(ReminderMainModel.self).where {
             $0.date == "" && $0.complete == false
         }
     }
     
     // 예정
-    func beScheduleFilter() -> Results<ReminderModel> {
-        return realm.objects(ReminderModel.self).where {
+    func beScheduleFilter() -> Results<ReminderMainModel> {
+        return realm.objects(ReminderMainModel.self).where {
             $0.date != "" && $0.complete == false
         }
     }
     
-    func searchFilter(_ item: ReminderModel) -> Results<ReminderModel> {
-        return realm.objects(ReminderModel.self).where {
+    func searchFilter(_ item: ReminderMainModel) -> Results<ReminderMainModel> {
+        return realm.objects(ReminderMainModel.self).where {
             $0.title.contains(item.title, options: .caseInsensitive) // caseInsensitive: 대소문자 구별 없음
         }
     }
     
-    func flagFilter() -> Results<ReminderModel> {
-        return realm.objects(ReminderModel.self).where {
+    func flagFilter() -> Results<ReminderMainModel> {
+        return realm.objects(ReminderMainModel.self).where {
             $0.flag == true
         }
     }
     
     // CR"U"D
     // checkBox 선택 시 -> 할일 완료 업데이트
-    func updateComplete(_ item: ReminderModel) {
+    func updateComplete(_ item: ReminderMainModel) {
         do {
             try realm.write {
                 item.complete.toggle()
@@ -80,7 +80,7 @@ class ToDoRepository {
     }
     
     // 깃발 선택 시
-    func updateFlag(_ item: ReminderModel) {
+    func updateFlag(_ item: ReminderMainModel) {
         do {
             try realm.write {
                 item.flag.toggle()
@@ -91,7 +91,7 @@ class ToDoRepository {
     }
     
     // CRU"D"
-    func deleteRecord(_ item: ReminderModel) {
+    func deleteRecord(_ item: ReminderMainModel) {
         do {
             try realm.write {
                 realm.delete(item)

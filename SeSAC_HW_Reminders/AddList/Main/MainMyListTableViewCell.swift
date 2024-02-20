@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MyListTableViewCell: BaseTableViewCell, ReusableProtocol {
+class MainMyListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let icon: UIButton = {
         let icon = UIButton()

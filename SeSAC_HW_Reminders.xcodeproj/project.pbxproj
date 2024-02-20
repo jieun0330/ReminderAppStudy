@@ -14,14 +14,14 @@
 		C29969EF2B7C8E5A0067D397 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29969ED2B7C8E5A0067D397 /* Main.storyboard */; };
 		C29969F12B7C8E5C0067D397 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29969F02B7C8E5C0067D397 /* Assets.xcassets */; };
 		C29969F42B7C8E5C0067D397 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C29969F22B7C8E5C0067D397 /* LaunchScreen.storyboard */; };
-		C29969FC2B7C8EF10067D397 /* RemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */; };
+		C29969FC2B7C8EF10067D397 /* MainRemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29969FB2B7C8EF10067D397 /* MainRemindersViewController.swift */; };
 		C2996A002B7C8F200067D397 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29969FF2B7C8F200067D397 /* BaseViewController.swift */; };
 		C2996A032B7C90360067D397 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C2996A022B7C90360067D397 /* SnapKit */; };
 		C2996A052B7C90360067D397 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C2996A042B7C90360067D397 /* SnapKit-Dynamic */; };
-		C2996A072B7C90C00067D397 /* RemindersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */; };
+		C2996A072B7C90C00067D397 /* MainRemindersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2996A062B7C90C00067D397 /* MainRemindersCollectionViewCell.swift */; };
 		C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2996A082B7C91810067D397 /* BaseCollectionViewCell.swift */; };
 		C2996A0C2B7C94F80067D397 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2996A0B2B7C94F80067D397 /* Protocol.swift */; };
-		C2CAC02D2B80F0B9001AD512 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC02C2B80F0B9001AD512 /* CustomView.swift */; };
+		C2CAC02D2B80F0B9001AD512 /* LeftBarButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC02C2B80F0B9001AD512 /* LeftBarButtonCustom.swift */; };
 		C2CAC02F2B80F0D1001AD512 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC02E2B80F0D1001AD512 /* BaseView.swift */; };
 		C2CAC0352B83315C001AD512 /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C2CAC0342B83315C001AD512 /* FSCalendar */; };
 		C2CAC0372B8333AE001AD512 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0362B8333AE001AD512 /* CalendarViewController.swift */; };
@@ -30,11 +30,11 @@
 		C2CAC03F2B835633001AD512 /* DetailFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */; };
 		C2CAC0432B835EDD001AD512 /* DetailSecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */; };
 		C2CAC0482B848F04001AD512 /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0472B848F04001AD512 /* AddListViewController.swift */; };
-		C2CAC04A2B84978E001AD512 /* MyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0492B84978E001AD512 /* MyListTableViewCell.swift */; };
-		C2CAC04C2B84A29B001AD512 /* ListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC04B2B84A29B001AD512 /* ListRepository.swift */; };
+		C2CAC04A2B84978E001AD512 /* MainMyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0492B84978E001AD512 /* MainMyListTableViewCell.swift */; };
+		C2CAC04C2B84A29B001AD512 /* MyListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC04B2B84A29B001AD512 /* MyListRepository.swift */; };
 		C2CAC04E2B84AA2D001AD512 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC04D2B84AA2D001AD512 /* ListModel.swift */; };
-		C2CAC0502B84ABB0001AD512 /* DetailListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC04F2B84ABB0001AD512 /* DetailListTableViewCell.swift */; };
-		C2CAC0522B84AC91001AD512 /* DetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0512B84AC91001AD512 /* DetailListViewController.swift */; };
+		C2CAC0502B84ABB0001AD512 /* DetailMyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC04F2B84ABB0001AD512 /* DetailMyListTableViewCell.swift */; };
+		C2CAC0522B84AC91001AD512 /* DetailMyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0512B84AC91001AD512 /* DetailMyListViewController.swift */; };
 		C2E7FE382B7CAC0100004FC7 /* NewTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */; };
 		C2E7FE3A2B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE392B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift */; };
 		C2E7FE3C2B7CCFE300004FC7 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */; };
@@ -42,14 +42,14 @@
 		C2E7FE402B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE3F2B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift */; };
 		C2E7FE502B7DFE3D00004FC7 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */; };
 		C2E7FE522B7E0E6600004FC7 /* PriorityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */; };
-		C2E7FE552B7E23F500004FC7 /* ReminderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE542B7E23F500004FC7 /* ReminderModel.swift */; };
+		C2E7FE552B7E23F500004FC7 /* ReminderMainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE542B7E23F500004FC7 /* ReminderMainModel.swift */; };
 		C2E7FE582B7E243E00004FC7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = C2E7FE572B7E243E00004FC7 /* Realm */; };
 		C2E7FE5A2B7E243E00004FC7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C2E7FE592B7E243E00004FC7 /* RealmSwift */; };
-		C2E7FE5C2B7E2D6600004FC7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */; };
-		C2E7FE622B7F288300004FC7 /* ToDoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE612B7F288300004FC7 /* ToDoRepository.swift */; };
-		C2E7FE672B7F416100004FC7 /* CellUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE662B7F416100004FC7 /* CellUI.swift */; };
+		C2E7FE5C2B7E2D6600004FC7 /* AllToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE5B2B7E2D6600004FC7 /* AllToDoViewController.swift */; };
+		C2E7FE622B7F288300004FC7 /* ReminderMainRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE612B7F288300004FC7 /* ReminderMainRepository.swift */; };
+		C2E7FE672B7F416100004FC7 /* MainCollectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE662B7F416100004FC7 /* MainCollectionEnum.swift */; };
 		C2E7FE692B7F438100004FC7 /* NewToDoEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE682B7F438100004FC7 /* NewToDoEnum.swift */; };
-		C2E7FE6B2B7F8BEA00004FC7 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE6A2B7F8BEA00004FC7 /* ListTableViewCell.swift */; };
+		C2E7FE6B2B7F8BEA00004FC7 /* AllToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE6A2B7F8BEA00004FC7 /* AllToDoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,12 +62,12 @@
 		C29969F02B7C8E5C0067D397 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C29969F32B7C8E5C0067D397 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C29969F52B7C8E5C0067D397 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersViewController.swift; sourceTree = "<group>"; };
+		C29969FB2B7C8EF10067D397 /* MainRemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRemindersViewController.swift; sourceTree = "<group>"; };
 		C29969FF2B7C8F200067D397 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersCollectionViewCell.swift; sourceTree = "<group>"; };
+		C2996A062B7C90C00067D397 /* MainRemindersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRemindersCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2996A082B7C91810067D397 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C2996A0B2B7C94F80067D397 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
-		C2CAC02C2B80F0B9001AD512 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		C2CAC02C2B80F0B9001AD512 /* LeftBarButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftBarButtonCustom.swift; sourceTree = "<group>"; };
 		C2CAC02E2B80F0D1001AD512 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C2CAC0362B8333AE001AD512 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C2CAC0392B8342DB001AD512 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
@@ -75,11 +75,11 @@
 		C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFirstTableViewCell.swift; sourceTree = "<group>"; };
 		C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSecondTableViewCell.swift; sourceTree = "<group>"; };
 		C2CAC0472B848F04001AD512 /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
-		C2CAC0492B84978E001AD512 /* MyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListTableViewCell.swift; sourceTree = "<group>"; };
-		C2CAC04B2B84A29B001AD512 /* ListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRepository.swift; sourceTree = "<group>"; };
+		C2CAC0492B84978E001AD512 /* MainMyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMyListTableViewCell.swift; sourceTree = "<group>"; };
+		C2CAC04B2B84A29B001AD512 /* MyListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListRepository.swift; sourceTree = "<group>"; };
 		C2CAC04D2B84AA2D001AD512 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
-		C2CAC04F2B84ABB0001AD512 /* DetailListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListTableViewCell.swift; sourceTree = "<group>"; };
-		C2CAC0512B84AC91001AD512 /* DetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewController.swift; sourceTree = "<group>"; };
+		C2CAC04F2B84ABB0001AD512 /* DetailMyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMyListTableViewCell.swift; sourceTree = "<group>"; };
+		C2CAC0512B84AC91001AD512 /* DetailMyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMyListViewController.swift; sourceTree = "<group>"; };
 		C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoViewController.swift; sourceTree = "<group>"; };
 		C2E7FE392B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoSecondTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE3B2B7CCFE300004FC7 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,12 +87,12 @@
 		C2E7FE3F2B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoFirstTableViewCell.swift; sourceTree = "<group>"; };
 		C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
 		C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityViewController.swift; sourceTree = "<group>"; };
-		C2E7FE542B7E23F500004FC7 /* ReminderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderModel.swift; sourceTree = "<group>"; };
-		C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		C2E7FE612B7F288300004FC7 /* ToDoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRepository.swift; sourceTree = "<group>"; };
-		C2E7FE662B7F416100004FC7 /* CellUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellUI.swift; sourceTree = "<group>"; };
+		C2E7FE542B7E23F500004FC7 /* ReminderMainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderMainModel.swift; sourceTree = "<group>"; };
+		C2E7FE5B2B7E2D6600004FC7 /* AllToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllToDoViewController.swift; sourceTree = "<group>"; };
+		C2E7FE612B7F288300004FC7 /* ReminderMainRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderMainRepository.swift; sourceTree = "<group>"; };
+		C2E7FE662B7F416100004FC7 /* MainCollectionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionEnum.swift; sourceTree = "<group>"; };
 		C2E7FE682B7F438100004FC7 /* NewToDoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoEnum.swift; sourceTree = "<group>"; };
-		C2E7FE6A2B7F8BEA00004FC7 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		C2E7FE6A2B7F8BEA00004FC7 /* AllToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllToDoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,9 +135,9 @@
 				C2CAC0382B8342D1001AD512 /* FileManager */,
 				C29969FE2B7C8F1A0067D397 /* Base */,
 				C2E7FE442B7D074000004FC7 /* Main */,
-				C2CAC0462B848ECC001AD512 /* All */,
+				C2B2BD7E2B84D3C600B0EDFB /* Calendar */,
+				C2CAC0462B848ECC001AD512 /* AllToDo */,
 				C29969FD2B7C8F120067D397 /* NewToDo */,
-				C2E7FE452B7D075F00004FC7 /* Detail */,
 				C2CAC03B2B835262001AD512 /* AddList */,
 				C29969E72B7C8E5A0067D397 /* AppDelegate.swift */,
 				C29969E92B7C8E5A0067D397 /* SceneDelegate.swift */,
@@ -153,11 +153,11 @@
 		C29969FD2B7C8F120067D397 /* NewToDo */ = {
 			isa = PBXGroup;
 			children = (
-				C2CAC0362B8333AE001AD512 /* CalendarViewController.swift */,
-				C2E7FE682B7F438100004FC7 /* NewToDoEnum.swift */,
 				C2E7FE372B7CAC0100004FC7 /* NewTodoViewController.swift */,
+				C2E7FE682B7F438100004FC7 /* NewToDoEnum.swift */,
 				C2E7FE3F2B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift */,
 				C2E7FE392B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift */,
+				C2E7FE452B7D075F00004FC7 /* Detail */,
 			);
 			path = NewToDo;
 			sourceTree = "<group>";
@@ -181,6 +181,49 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		C2B2BD7A2B84CE9F00B0EDFB /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C2CAC0512B84AC91001AD512 /* DetailMyListViewController.swift */,
+				C2CAC04F2B84ABB0001AD512 /* DetailMyListTableViewCell.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C2B2BD7B2B84CF0600B0EDFB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C2CAC0492B84978E001AD512 /* MainMyListTableViewCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		C2B2BD7C2B84D24900B0EDFB /* LeftBarButtonCustom */ = {
+			isa = PBXGroup;
+			children = (
+				C2CAC02C2B80F0B9001AD512 /* LeftBarButtonCustom.swift */,
+			);
+			path = LeftBarButtonCustom;
+			sourceTree = "<group>";
+		};
+		C2B2BD7D2B84D36A00B0EDFB /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C2CAC03C2B8352A2001AD512 /* DetailViewController.swift */,
+				C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */,
+				C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C2B2BD7E2B84D3C600B0EDFB /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				C2CAC0362B8333AE001AD512 /* CalendarViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		C2CAC0382B8342D1001AD512 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,32 +236,29 @@
 			isa = PBXGroup;
 			children = (
 				C2CAC0472B848F04001AD512 /* AddListViewController.swift */,
-				C2CAC0492B84978E001AD512 /* MyListTableViewCell.swift */,
-				C2CAC0512B84AC91001AD512 /* DetailListViewController.swift */,
-				C2CAC04F2B84ABB0001AD512 /* DetailListTableViewCell.swift */,
+				C2B2BD7B2B84CF0600B0EDFB /* Main */,
+				C2B2BD7A2B84CE9F00B0EDFB /* Detail */,
 			);
 			path = AddList;
 			sourceTree = "<group>";
 		};
-		C2CAC0462B848ECC001AD512 /* All */ = {
+		C2CAC0462B848ECC001AD512 /* AllToDo */ = {
 			isa = PBXGroup;
 			children = (
-				C2E7FE5B2B7E2D6600004FC7 /* ListViewController.swift */,
-				C2E7FE6A2B7F8BEA00004FC7 /* ListTableViewCell.swift */,
-				C2CAC03C2B8352A2001AD512 /* DetailViewController.swift */,
-				C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */,
-				C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */,
+				C2E7FE5B2B7E2D6600004FC7 /* AllToDoViewController.swift */,
+				C2E7FE6A2B7F8BEA00004FC7 /* AllToDoTableViewCell.swift */,
+				C2B2BD7D2B84D36A00B0EDFB /* Detail */,
 			);
-			path = All;
+			path = AllToDo;
 			sourceTree = "<group>";
 		};
 		C2E7FE442B7D074000004FC7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				C29969FB2B7C8EF10067D397 /* RemindersViewController.swift */,
-				C2996A062B7C90C00067D397 /* RemindersCollectionViewCell.swift */,
-				C2E7FE662B7F416100004FC7 /* CellUI.swift */,
-				C2CAC02C2B80F0B9001AD512 /* CustomView.swift */,
+				C29969FB2B7C8EF10067D397 /* MainRemindersViewController.swift */,
+				C2996A062B7C90C00067D397 /* MainRemindersCollectionViewCell.swift */,
+				C2E7FE662B7F416100004FC7 /* MainCollectionEnum.swift */,
+				C2B2BD7C2B84D24900B0EDFB /* LeftBarButtonCustom */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -237,10 +277,10 @@
 		C2E7FE532B7E23EA00004FC7 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				C2E7FE542B7E23F500004FC7 /* ReminderModel.swift */,
-				C2E7FE612B7F288300004FC7 /* ToDoRepository.swift */,
+				C2E7FE542B7E23F500004FC7 /* ReminderMainModel.swift */,
 				C2CAC04D2B84AA2D001AD512 /* ListModel.swift */,
-				C2CAC04B2B84A29B001AD512 /* ListRepository.swift */,
+				C2E7FE612B7F288300004FC7 /* ReminderMainRepository.swift */,
+				C2CAC04B2B84A29B001AD512 /* MyListRepository.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -328,40 +368,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2E7FE5C2B7E2D6600004FC7 /* ListViewController.swift in Sources */,
-				C2CAC0522B84AC91001AD512 /* DetailListViewController.swift in Sources */,
+				C2E7FE5C2B7E2D6600004FC7 /* AllToDoViewController.swift in Sources */,
+				C2CAC0522B84AC91001AD512 /* DetailMyListViewController.swift in Sources */,
 				C2996A002B7C8F200067D397 /* BaseViewController.swift in Sources */,
-				C2CAC0502B84ABB0001AD512 /* DetailListTableViewCell.swift in Sources */,
+				C2CAC0502B84ABB0001AD512 /* DetailMyListTableViewCell.swift in Sources */,
 				C2CAC03F2B835633001AD512 /* DetailFirstTableViewCell.swift in Sources */,
 				C2E7FE402B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift in Sources */,
 				C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */,
-				C29969FC2B7C8EF10067D397 /* RemindersViewController.swift in Sources */,
-				C2CAC04A2B84978E001AD512 /* MyListTableViewCell.swift in Sources */,
+				C29969FC2B7C8EF10067D397 /* MainRemindersViewController.swift in Sources */,
+				C2CAC04A2B84978E001AD512 /* MainMyListTableViewCell.swift in Sources */,
 				C2CAC0482B848F04001AD512 /* AddListViewController.swift in Sources */,
 				C2CAC0372B8333AE001AD512 /* CalendarViewController.swift in Sources */,
 				C2CAC04E2B84AA2D001AD512 /* ListModel.swift in Sources */,
 				C2996A0C2B7C94F80067D397 /* Protocol.swift in Sources */,
 				C2E7FE3E2B7CD81E00004FC7 /* DateViewController.swift in Sources */,
-				C2CAC04C2B84A29B001AD512 /* ListRepository.swift in Sources */,
+				C2CAC04C2B84A29B001AD512 /* MyListRepository.swift in Sources */,
 				C2E7FE382B7CAC0100004FC7 /* NewTodoViewController.swift in Sources */,
 				C2CAC03D2B8352A2001AD512 /* DetailViewController.swift in Sources */,
-				C2CAC02D2B80F0B9001AD512 /* CustomView.swift in Sources */,
+				C2CAC02D2B80F0B9001AD512 /* LeftBarButtonCustom.swift in Sources */,
 				C2E7FE3C2B7CCFE300004FC7 /* BaseTableViewCell.swift in Sources */,
-				C2996A072B7C90C00067D397 /* RemindersCollectionViewCell.swift in Sources */,
+				C2996A072B7C90C00067D397 /* MainRemindersCollectionViewCell.swift in Sources */,
 				C29969EC2B7C8E5A0067D397 /* ViewController.swift in Sources */,
 				C29969E82B7C8E5A0067D397 /* AppDelegate.swift in Sources */,
 				C25DE40D2B80D00C00C70125 /* PriorityEnum.swift in Sources */,
 				C29969EA2B7C8E5A0067D397 /* SceneDelegate.swift in Sources */,
 				C2CAC02F2B80F0D1001AD512 /* BaseView.swift in Sources */,
 				C2E7FE3A2B7CCF3600004FC7 /* NewToDoSecondTableViewCell.swift in Sources */,
-				C2E7FE6B2B7F8BEA00004FC7 /* ListTableViewCell.swift in Sources */,
-				C2E7FE552B7E23F500004FC7 /* ReminderModel.swift in Sources */,
+				C2E7FE6B2B7F8BEA00004FC7 /* AllToDoTableViewCell.swift in Sources */,
+				C2E7FE552B7E23F500004FC7 /* ReminderMainModel.swift in Sources */,
 				C2E7FE502B7DFE3D00004FC7 /* TagViewController.swift in Sources */,
 				C2CAC03A2B8342DB001AD512 /* FileManager.swift in Sources */,
 				C2E7FE522B7E0E6600004FC7 /* PriorityViewController.swift in Sources */,
 				C2CAC0432B835EDD001AD512 /* DetailSecondTableViewCell.swift in Sources */,
-				C2E7FE672B7F416100004FC7 /* CellUI.swift in Sources */,
-				C2E7FE622B7F288300004FC7 /* ToDoRepository.swift in Sources */,
+				C2E7FE672B7F416100004FC7 /* MainCollectionEnum.swift in Sources */,
+				C2E7FE622B7F288300004FC7 /* ReminderMainRepository.swift in Sources */,
 				C2E7FE692B7F438100004FC7 /* NewToDoEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

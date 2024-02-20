@@ -14,6 +14,7 @@ enum NewToDoEnum: Int, CaseIterable {
     case tag
     case priority
     case image
+    case list
     
     var cellTitle: String {
         
@@ -28,6 +29,8 @@ enum NewToDoEnum: Int, CaseIterable {
             "우선순위"
         case .image:
             "이미지 추가"
+        case .list:
+            "목록"
         }
     }
 }
