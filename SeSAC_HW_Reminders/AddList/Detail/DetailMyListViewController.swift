@@ -9,33 +9,28 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-class DetailMyListViewController: BaseViewController {
-
+final class DetailMyListViewController: BaseViewController {
+    
     var main: ListModel!
     var listRepository = MyListRepository()
     var list: Results<DetailListModel>!
-//    var list: List<DetailListModel>!
     
     let listTitle: UILabel = {
         let title = UILabel()
         title.font = UIFont.boldSystemFont(ofSize: 30)
-//        title.text = main.title
-        return title
-    }()
+        return title }()
+    
+    let textField: UITextField = {
+        let textfield = UITextField()
+        textfield.backgroundColor = .systemGray6
+        return textfield }()
     
     lazy var saveButton: UIButton = {
         let button = UIButton()
         button.setTitle("저장", for: .normal)
         button.backgroundColor = .orange
         button.addTarget(self, action: #selector(saveButtonClicked), for: .touchUpInside)
-        return button
-    }()
-    
-    let textField: UITextField = {
-        let textfield = UITextField()
-        textfield.backgroundColor = .systemGray6
-        return textfield
-    }()
+        return button }()
     
     lazy var tableView: UITableView = {
         let view = UITableView()
@@ -43,16 +38,11 @@ class DetailMyListViewController: BaseViewController {
         view.dataSource = self
         view.rowHeight = 50
         view.register(DetailMyListTableViewCell.self, forCellReuseIdentifier: DetailMyListTableViewCell.identifier)
-//        view.layer.borderColor = UIColor.red.cgColor
-//        view.layer.borderWidth = 1
-        return view
-    }()
-
+        return view }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        list = main.detail
-
     }
     
     override func configureHierarchy() {
@@ -88,11 +78,9 @@ class DetailMyListViewController: BaseViewController {
             $0.bottom.equalToSuperview()
         }
     }
-
+    
     override func configureView() {
         view.backgroundColor = .white
-//        navigationItem.title = main.title
-//        print(main.title)
         listTitle.text = main.title
     }
     
@@ -102,9 +90,7 @@ class DetailMyListViewController: BaseViewController {
         listRepository.createDetailList(main: main, data: data)
         textField.text = ""
         tableView.reloadData()
-        
     }
-
 }
 
 extension DetailMyListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -114,12 +100,8 @@ extension DetailMyListViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailMyListTableViewCell.identifier, for: indexPath) as! DetailMyListTableViewCell
-        
         cell.listContents.text = main.detail[indexPath.row].title
         
-        
         return cell
-    }
-    
-    
+    }    
 }

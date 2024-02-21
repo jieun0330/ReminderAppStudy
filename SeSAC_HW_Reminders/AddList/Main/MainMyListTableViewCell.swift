@@ -7,26 +7,21 @@
 
 import UIKit
 
-class MainMyListTableViewCell: BaseTableViewCell, ReusableProtocol {
+final class MainMyListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let icon: UIButton = {
         let icon = UIButton()
         icon.setImage(UIImage(systemName: "list.bullet.circle.fill"), for: .normal)
-        return icon
-    }()
-
-    var title: UILabel = {
+        return icon }()
+    
+    let title: UILabel = {
         let text = UILabel()
-//        text.text = "미리 알림"
-        return text
-    }()
+        return text }()
     
     let listCount: UILabel = {
         let count = UILabel()
-//        count.text = "3"
         count.textColor = .lightGray
-        return count
-    }()
+        return count }()
     
     let moreButton: UIButton = {
         let button = UIButton()
@@ -34,7 +29,7 @@ class MainMyListTableViewCell: BaseTableViewCell, ReusableProtocol {
         button.tintColor = .lightGray
         return button
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -68,12 +63,7 @@ class MainMyListTableViewCell: BaseTableViewCell, ReusableProtocol {
         }
     }
     
-//    override func configureView() {
-//        <#code#>
-//    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class AllToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
+final class AllToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    var checkButton: UIButton = {
+    let checkButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "circle"), for: .normal)
         return button }()
@@ -43,18 +43,15 @@ class AllToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
         label.textColor = .systemBlue
         return label }()
     
-    
     let image: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill
         img.clipsToBounds = true
-        return img
-    }()
+        return img }()
     
     let flagLabel: UIButton = {
         let flag = UIButton()
-        return flag
-    }()
+        return flag }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -67,6 +64,7 @@ class AllToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
     }
     
     override func configureConstraints() {
+        
         checkButton.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(20)
             $0.top.equalToSuperview().offset(10)

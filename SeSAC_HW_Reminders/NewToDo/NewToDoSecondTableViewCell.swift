@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class NewToDoSecondTableViewCell: BaseTableViewCell, ReusableProtocol {
+final class NewToDoSecondTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    var title: UILabel = {
+    let title: UILabel = {
         let todo = UILabel()
         todo.textColor = .black
         return todo }()
@@ -22,10 +22,8 @@ class NewToDoSecondTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let receivedImg: UIImageView = {
         let img = UIImageView()
-//        img.backgroundColor = .orange
         img.layer.cornerRadius = 5
-        return img
-    } ()
+        return img } ()
     
     let moreButton: UIButton = {
         let button = UIButton()

@@ -9,22 +9,21 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-class AllToDoViewController: BaseViewController {
+final class AllToDoViewController: BaseViewController {
     
     let repository = ReminderMainRepository()
     var list: Results<ReminderMainModel>!
     var receivedFlag = false
     
-    lazy var rightBarButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
-        return button}()
-    
     let searchBar: UISearchBar = {
         let search = UISearchBar()
         search.backgroundImage = UIImage() // searchBar 모양이 못생기긴했는데 흰색 뒷배경을 없애려면 UIImage()를 줘야한다
-        return search
-    }()
+        return search }()
     
+    lazy var rightBarButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
+        return button}()
+
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.delegate = self
@@ -116,24 +115,12 @@ extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-//        print(indexPath)
-        
         let vc = DetailViewController()
-//        vc.
-//        list[indexPath.row].title
-//        print("title", list[indexPath.row].title)
-        
-        
-        
-        
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
         let delete = UIContextualAction(style: .normal, title: "삭제") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.repository.deleteRecord(self.list[indexPath.row])
             print("삭제 클릭")

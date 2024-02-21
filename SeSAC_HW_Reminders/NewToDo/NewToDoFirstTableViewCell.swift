@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class NewToDoFirstTableViewCell: BaseTableViewCell, ReusableProtocol {
+final class NewToDoFirstTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     lazy var titleTextField: UITextField = {
         let title = UITextField()

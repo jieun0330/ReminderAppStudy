@@ -9,41 +9,24 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-// 추가 버튼 클릭 시 메인화면 reload delegate
-protocol ReloadDataDelegate {
-    func reloadData()
-}
-
-class MainRemindersViewController: BaseViewController {
+final class MainRemindersViewController: BaseViewController {
     
     let toDoRepository = ReminderMainRepository()
     var toDolist: Results<ReminderMainModel>!
-    
     let listRepository = MyListRepository()
     var myList: Results<ListModel>!
-//    var detailList: Results<DetailListModel>!
-    
-    lazy var leftBarButtonItem: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(leftBarButtonItemClicked))
-        return button
-    }()
-    
-    lazy var rightBarButtonItem: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
-        return button }()
-    
+
     let allText: UILabel = {
         let entire = UILabel()
         entire.text = "전체"
         entire.font = UIFont.boldSystemFont(ofSize: 20)
         return entire }()
     
-    var collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
         view.backgroundColor = .systemGray6
         view.register(MainRemindersCollectionViewCell.self, forCellWithReuseIdentifier: MainRemindersCollectionViewCell.identifier)
-//        view.layer.borderColor = UIColor.red.cgColor
-//        view.layer.borderWidth = 1
+        
         return view }()
     
     let myListText: UILabel = {
@@ -52,6 +35,14 @@ class MainRemindersViewController: BaseViewController {
         myList.font = UIFont.boldSystemFont(ofSize: 20)
         return myList }()
     
+    lazy var leftCalendarButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(leftCalendarButtonClicked))
+        return button }()
+    
+    lazy var rightBarButtonItem: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
+        return button }()
+    
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.register(MainMyListTableViewCell.self, forCellReuseIdentifier: MainMyListTableViewCell.identifier)
@@ -59,8 +50,7 @@ class MainRemindersViewController: BaseViewController {
         view.dataSource = self
         view.rowHeight = 50
         view.backgroundColor = .systemGray6
-        return view
-    }()
+        return view }()
     
     lazy var leftToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
@@ -84,8 +74,6 @@ class MainRemindersViewController: BaseViewController {
         super.viewDidLoad()
         
         myList = listRepository.readList()
-//        print(myList)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,7 +81,6 @@ class MainRemindersViewController: BaseViewController {
         
         collectionView.reloadData()
         tableView.reloadData()
-        
     }
     
     override func configureHierarchy() {
@@ -103,7 +90,6 @@ class MainRemindersViewController: BaseViewController {
     }
     
     override func configureConstraints() {
-
         
         allText.snp.makeConstraints {
             $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
@@ -130,22 +116,17 @@ class MainRemindersViewController: BaseViewController {
     
     override func configureView() {
         view.backgroundColor = .systemGray6
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-        navigationItem.rightBarButtonItem = rightBarButtonItem
         collectionView.delegate = self
         collectionView.dataSource = self
         configureToolBar()
-        
     }
     
-    @objc func leftBarButtonItemClicked() {
+    @objc func leftCalendarButtonClicked() {
         let vc = CalendarViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func rightBarButtonItemClicked() {
-
-    }
+    @objc func rightBarButtonItemClicked() { }
     
     /*
      UIToolBar
@@ -154,6 +135,9 @@ class MainRemindersViewController: BaseViewController {
      3. 버튼 사이 space를 주고싶다면 중간에 넣어준다
      */
     func configureToolBar() {
+        navigationItem.leftBarButtonItem = leftCalendarButton
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+        
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         var items = [UIBarButtonItem]()
         self.navigationController?.isToolbarHidden = false
@@ -174,9 +158,6 @@ class MainRemindersViewController: BaseViewController {
     
     @objc func rightToolBarButtonClicked() {
         let vc = AddListViewController()
-        
-        
-        
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true)
     }
@@ -226,7 +207,6 @@ extension MainRemindersViewController: UICollectionViewDelegate, UICollectionVie
         let vc = AllToDoViewController()
         
         switch cellUI.allCases[indexPath.item] {
-            
         case .today:
             vc.list = toDoRepository.todayScheduleFilter()
         case .schedule:
@@ -239,7 +219,6 @@ extension MainRemindersViewController: UICollectionViewDelegate, UICollectionVie
             vc.list = toDoRepository.readRecordCompletedFilter()
         }
         navigationController?.pushViewController(vc, animated: true)
-
     }
 }
 
@@ -259,24 +238,16 @@ extension MainRemindersViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MainMyListTableViewCell.identifier, for: indexPath) as! MainMyListTableViewCell
-//        print(indexPath)
-//        
-//        let row = myList[indexPath.row]
-//        
         cell.title.text = myList[indexPath.row].title
-//        print(myList[indexPath.row].title)
         cell.listCount.text = "\(myList[indexPath.row].detail.count)"
-//        print()
         cell.selectionStyle = .none
-
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       let vc = DetailMyListViewController()
+        let vc = DetailMyListViewController()
         vc.main = myList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
-    
 }

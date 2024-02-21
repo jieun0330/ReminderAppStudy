@@ -8,22 +8,7 @@
 import UIKit
 import SnapKit
 
-class TagViewController: BaseViewController {
-    
-    // 🚨태그UI
-    
-    //    let tagBox: UIView = {
-    //        let view = UIView()
-    //        view.backgroundColor = .lightGray
-    //        return view
-    //    }()
-    //
-    //    let tagWord: UIButton = {
-    //        let button = UIButton()
-    //        button.setTitle("#ㅎㅎ", for: .normal)
-    //        button.backgroundColor = .systemBlue
-    //        return button
-    //    }()
+final class TagViewController: BaseViewController {
     
     lazy var textField: UITextField = {
         let field = UITextField()
@@ -41,31 +26,12 @@ class TagViewController: BaseViewController {
         [textField].forEach {
             view.addSubview($0)
         }
-        
-        //        [tagWord].forEach {
-        //            tagBox.addSubview($0)
-        //        }
-        
     }
     
     override func configureConstraints() {
         
-        //        tagBox.snp.makeConstraints {
-        //            $0.horizontalEdges.equalToSuperview().inset(20)
-        //            $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
-        //            $0.height.equalTo(50)
-        //        }
-        //
-        //        tagWord.snp.makeConstraints {
-        //            $0.leading.equalToSuperview().inset(10)
-        //            $0.centerY.equalToSuperview()
-        //
-        //            $0.height.equalTo(30)
-        //        }
-        
         textField.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
-            //            $0.top.equalTo(tagBox.snp.bottom).offset(20)
             $0.top.equalTo(view.safeAreaLayoutGuide).offset(20)
             $0.height.equalTo(40)
         }

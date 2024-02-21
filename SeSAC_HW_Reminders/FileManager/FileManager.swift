@@ -11,7 +11,7 @@ extension UIViewController {
     // 이미지를 앱 도큐먼트에 저장하는 경로
     // 이미지를 -> 파일 이름 정하고 -> document에 저장해야되니까
     func saveImageToDocument(image: UIImage, fileName: String) {
-       // 1. 도큐먼트 파일 위치 얻는 코드
+        // 1. 도큐먼트 파일 위치 얻는 코드
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         // 2. 그 파일에 이미지 파일 이름 지정
         let fileURL = documentDirectory.appendingPathComponent("\(fileName).jpg")
@@ -24,7 +24,7 @@ extension UIViewController {
             print(error)
         }
     }
-
+    
     func loadImageFromDocument(fileName: String) -> UIImage? {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return nil }
         

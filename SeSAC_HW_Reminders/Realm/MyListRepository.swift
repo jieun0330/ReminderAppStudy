@@ -18,7 +18,7 @@ class MyListRepository {
         do {
             try realm.write {
                 realm.add(data)
-                print(realm.configuration.fileURL)
+                //                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
@@ -38,7 +38,5 @@ class MyListRepository {
     // C"R"UD
     func readList() -> Results<ListModel> {
         return realm.objects(ListModel.self)
-    }
-    
-    
+    }    
 }

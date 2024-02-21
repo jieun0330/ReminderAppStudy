@@ -9,34 +9,22 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-class AddListViewController: BaseViewController {
+final class AddListViewController: BaseViewController {
     
     let toDoRepository = ReminderMainRepository()
     let listRepository = MyListRepository()
     var delegate: ReloadDataDelegate?
     
-    lazy var cancelButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
-        return button
-    }()
-    
-    lazy var doneButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(doneButtonClicked))
-        return button
-    }()
-    
     let listNameView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
-        return view
-    }()
+        return view }()
     
     let listIcon: UIImageView = {
         let icon = UIImageView()
         icon.image = UIImage(systemName: "list.bullet.circle.fill")
-        return icon
-    }()
+        return icon }()
     
     let listNameTextField: UITextField = {
         let textField = UITextField()
@@ -44,12 +32,19 @@ class AddListViewController: BaseViewController {
         textField.textAlignment = .center
         textField.backgroundColor = .systemGray6
         textField.layer.cornerRadius = 15
-        return textField
-    }()
-
+        return textField }()
+    
+    lazy var cancelButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
+        return button }()
+    
+    lazy var doneButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(doneButtonClicked))
+        return button }()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func configureHierarchy() {
@@ -60,7 +55,6 @@ class AddListViewController: BaseViewController {
         [listIcon, listNameTextField].forEach {
             listNameView.addSubview($0)
         }
-        
     }
     
     override func configureConstraints() {
@@ -81,7 +75,6 @@ class AddListViewController: BaseViewController {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(60)
         }
-        
     }
     
     override func configureView() {
@@ -89,9 +82,6 @@ class AddListViewController: BaseViewController {
         view.backgroundColor = .systemGray6
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = doneButton
-        
-        
-        
     }
     
     @objc func cancelButtonClicked() {
@@ -99,18 +89,14 @@ class AddListViewController: BaseViewController {
     }
     
     @objc func doneButtonClicked() {
-        let data = ListModel(title: listNameTextField.text!, registDate: Date())
         
+        let data = ListModel(title: listNameTextField.text!, registDate: Date())
         listRepository.createRecord(data)
         dismiss(animated: true)
-        
         delegate?.reloadData()
         // RemindersViewController에 있는 TableView가 reload 되야해용
         // 1. doneButton 클릭
         // 2. RemindersViewController로 이동
         // 3. RemindersViewController - TableView Reload
-        
     }
-
-
 }

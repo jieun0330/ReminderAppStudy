@@ -9,21 +9,19 @@ import UIKit
 import SnapKit
 import RealmSwift
 
-class DetailViewController: BaseViewController {
+final class DetailViewController: BaseViewController {
     
     var list: Results<ReminderMainModel>!
     var repository = ReminderMainRepository()
     var receivedTitle = ""
-
+    
     lazy var cancelButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
-        return button
-    }()
+        return button }()
     
     lazy var doneButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(doneButtonClicked))
-        return button
-    }()
+        return button }()
     
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
@@ -32,12 +30,11 @@ class DetailViewController: BaseViewController {
         view.dataSource = self
         view.register(DetailFirstTableViewCell.self, forCellReuseIdentifier: DetailFirstTableViewCell.identifier)
         view.register(DetailSecondTableViewCell.self, forCellReuseIdentifier: DetailSecondTableViewCell.identifier)
-        return view
-    }()
-
+        return view }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         list = repository.readRecordAllFilter()
     }
     
@@ -54,7 +51,6 @@ class DetailViewController: BaseViewController {
     }
     
     override func configureView() {
-//        view.backgroundColor = .white
         navigationItem.title = "세부사항"
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = doneButton
@@ -64,10 +60,8 @@ class DetailViewController: BaseViewController {
         dismiss(animated: true)
     }
     
-    @objc func doneButtonClicked() {
-        
-    }
-
+    @objc func doneButtonClicked() { }
+    
 }
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -81,65 +75,8 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DetailSecondTableViewCell.identifier, for: indexPath) as! DetailSecondTableViewCell
         
-//        if indexPath.section == NewToDoEnum.title.rawValue {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: DetailFirstTableViewCell.identifier, for: indexPath) as! DetailFirstTableViewCell
-        
-        
-        print(list[indexPath.row].title)
-            
-//            if indexPath.row == 0 {
-//                
-//                cell.textField.text = "여기 왜 터져? "
-//
-//
-//
-//            } else{
-//                cell.textField.placeholder = "메모"
-//            }
-
-//            return cell
-//        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: DetailSecondTableViewCell.identifier, for: indexPath) as! DetailSecondTableViewCell
-        
-        
-//        print(list)
-//        cell.icon.setImage(UIImage(named: list), for: <#T##UIControl.State#>)
-//                cell.image.image = UIImage(named: "\(list[indexPath.row].id)")
-
-//        cell.title.text = list[indexPath.row].title
-//
-        
-//        cell.image.image =
-//        cell.image.image = loadImageFromDocument(fileName: "\(list[indexPath.row].id)")
-
-           
-//            switch NewToDoEnum.allCases[indexPath.row] {
-//                
-//            case .title:
-//                cell.title.text = ""
-//            case .date:
-//                cell.icon.setImage(UIImage(systemName: "calendar"), for: .normal)
-//                cell.title.text = "날짜"
-//            case .tag:
-//                cell.icon.setImage(UIImage(systemName: "tag.square.fill"), for: .normal)
-//                cell.title.text = "태그"
-//            case .priority:
-//                cell.icon.setImage(UIImage(systemName: "exclamationmark.square.fill"), for: .normal)
-//                cell.title.text = "우선순위"
-//            case .image:
-//                cell.icon.setImage(UIImage(systemName: "photo.fill"), for: .normal)
-//                cell.title.text = "이미지"
-//            }
-
-            
-            
-            return cell
-//            
-//            
-//            
-//        }
-//        
-
+        return cell
     }
 }

@@ -8,30 +8,22 @@
 import UIKit
 import SnapKit
 
-class DetailSecondTableViewCell: BaseTableViewCell, ReusableProtocol {
+final class DetailSecondTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    var icon: UIButton = {
+    let icon: UIButton = {
         let icon = UIButton()
-        return icon
-    }()
+        return icon }()
     
-    var image: UIImageView = {
+    let image: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(systemName: "questionmark")
-        return image
-    }()
+        return image }()
     
-    var title: UILabel = {
+    let title: UILabel = {
         let text = UILabel()
         text.textColor = .black
-        return text
-    }()
+        return text }()
     
-//    var toggle: UISwitch = {
-//        let toggle = UISwitch()
-//        return toggle
-//    }()
-//    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -60,11 +52,6 @@ class DetailSecondTableViewCell: BaseTableViewCell, ReusableProtocol {
             $0.leading.equalTo(icon.snp.trailing).offset(5)
             $0.height.equalTo(20)
         }
-        
-//        toggle.snp.makeConstraints {
-//            $0.centerY.equalToSuperview()
-//            $0.trailing.equalToSuperview().inset(20)
-//        }
     }
     
     override func configureView() {

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class PriorityViewController: BaseViewController {
+final class PriorityViewController: BaseViewController {
     
     var segmentValue: (([String]) -> Void)?
     
@@ -21,8 +21,7 @@ class PriorityViewController: BaseViewController {
         control.selectedSegmentIndex = 0
         control.addTarget(self, action: #selector(segmentSelected), for: .valueChanged)
         
-        return control
-    }()
+        return control }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

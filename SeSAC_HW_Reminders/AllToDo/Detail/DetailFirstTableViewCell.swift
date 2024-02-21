@@ -8,14 +8,13 @@
 import UIKit
 import SnapKit
 
-class DetailFirstTableViewCell: BaseTableViewCell, ReusableProtocol {
+final class DetailFirstTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let textField: UITextField = {
         let text = UITextField()
         text.textAlignment = .left
-        return text
-    }()
-
+        return text }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -40,5 +39,4 @@ class DetailFirstTableViewCell: BaseTableViewCell, ReusableProtocol {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }

@@ -9,16 +9,15 @@ import UIKit
 import FSCalendar
 import SnapKit
 
-class CalendarViewController: BaseViewController {
+final class CalendarViewController: BaseViewController {
     
     let calendar: FSCalendar = {
         let calendar = FSCalendar()
-        return calendar
-    }()
-
+        return calendar }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func configureHierarchy() {
@@ -32,7 +31,6 @@ class CalendarViewController: BaseViewController {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.top.equalTo(view.safeAreaLayoutGuide)
             $0.height.equalTo(300)
-
         }
     }
     

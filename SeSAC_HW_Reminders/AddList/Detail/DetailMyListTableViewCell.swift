@@ -8,28 +8,17 @@
 import UIKit
 import SnapKit
 
-class DetailMyListTableViewCell: BaseTableViewCell, ReusableProtocol {
-    
-//    var main: ListModel!
+final class DetailMyListTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     let checkCircle: UIButton = {
         let check = UIButton()
         check.setImage(UIImage(systemName: "circle"), for: .normal)
-        return check
-    }()
+        return check }()
     
     let listContents: UILabel = {
         let content = UILabel()
-//        content.text = "미리 알림"
-//
-        return content
-    }()
-//
-//    let listTitle: UILabel = {
-//        let title = UILabel()
-//        return title
-//    }()
-
+        return content }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
     }
@@ -38,10 +27,10 @@ class DetailMyListTableViewCell: BaseTableViewCell, ReusableProtocol {
         [checkCircle, listContents].forEach {
             contentView.addSubview($0)
         }
-        
     }
     
     override func configureConstraints() {
+        
         checkCircle.snp.makeConstraints {
             $0.leading.top.equalTo(contentView).offset(20)
             $0.size.equalTo(20)
@@ -55,14 +44,7 @@ class DetailMyListTableViewCell: BaseTableViewCell, ReusableProtocol {
         }
     }
     
-//    override func configureView() {
-//        
-//    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-
 }

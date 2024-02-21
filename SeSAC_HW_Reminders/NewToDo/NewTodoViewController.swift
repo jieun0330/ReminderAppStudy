@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class NewTodoViewController: BaseViewController, UITextFieldDelegate {
+final class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     
     let repository = ReminderMainRepository()
     var receivedTitle = ""
@@ -39,13 +39,6 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
         view.register(NewToDoFirstTableViewCell.self, forCellReuseIdentifier: NewToDoFirstTableViewCell.identifier)
         return view }()
     
-
-//    lazy var tapGestureRecognizer: UITapGestureRecognizer = {
-//        let tap = UITapGestureRecognizer()
-//        tap.delegate = self
-//        return tap
-//    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,7 +52,6 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
                                                object: nil)
         
         addButton.isEnabled = false
-//        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     override func configureHierarchy() {
@@ -75,14 +67,11 @@ class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     }
     
     override func configureView() {
-//        view.backgroundColor = .systemGray6
         navigationItem.title = "새로운 할 일"
         navigationItem.rightBarButtonItem = self.addButton
         navigationItem.leftBarButtonItem = self.cancleButton
-//        receivedImage.layer.cornerRadius = 5
     }
     
-
     /*
      NSNotification.userinfo에 저장된 딕셔너리 값을 가져오기 위해
      value는 Any?값이 된다 -> 타입캐스팅을 해준다
@@ -156,7 +145,6 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.receivedValue.text = receivedSegmentValue[0]
             } else if indexPath.section == NewToDoEnum.image.rawValue {
                 cell.receivedImg.image = receivedImage.image
-                
             }
             return cell
         }
@@ -177,7 +165,6 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         
         if indexPath.section == NewToDoEnum.date.rawValue {
             let vc = DateViewController()
@@ -202,18 +189,7 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
             let vc = UIImagePickerController()
             vc.allowsEditing = true
             vc.delegate = self
-//            let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//            actionSheet.addAction(UIAlertAction(title: "사진 찍기", style: .default, handler: { _ in
-//                vc.sourceType = .camera
-//            }))
-//            actionSheet.addAction(UIAlertAction(title: "사진 보관함", style: .default, handler: { _ in
-//                vc.sourceType = .photoLibrary
-//            }))
             present(vc, animated: true)
-            
-
-            
-            
         }
     }
     
@@ -227,13 +203,6 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
-//extension NewTodoViewController: UIGestureRecognizerDelegate {
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-//        return true
-//    }
-//}
-
 extension NewTodoViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)
@@ -244,14 +213,7 @@ extension NewTodoViewController: UIImagePickerControllerDelegate & UINavigationC
         if let pickedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             receivedImage.image = pickedImage
             tableView.reloadData()
-
-            
         }
-//        print("받아왔나")
-
         dismiss(animated: true)
-
-
-        
     }
 }

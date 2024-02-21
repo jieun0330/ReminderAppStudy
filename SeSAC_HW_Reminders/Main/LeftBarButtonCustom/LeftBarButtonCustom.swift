@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class LeftBarButtonCustom: BaseView {
+final class LeftBarButtonCustom: BaseView {
     
     let customButton: UIButton = {
         let button = UIButton()

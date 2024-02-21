@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MainRemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
+final class MainRemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol {
     
     let circleIcon: UIImageView = {
         let icon = UIImageView()
@@ -19,7 +19,7 @@ class MainRemindersCollectionViewCell: BaseCollectionViewCell, ReusableProtocol 
         title.font = UIFont.systemFont(ofSize: 12)
         return title }()
     
-    var countLabel: UILabel = {
+    let countLabel: UILabel = {
         let number = UILabel()
         return number }()
     
