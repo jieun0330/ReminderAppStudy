@@ -11,8 +11,8 @@ import RealmSwift
 
 class AddListViewController: BaseViewController {
     
-    let toDoRepository = ToDoRepository()
-    let listRepository = ListRepository()
+    let toDoRepository = ReminderMainRepository()
+    let listRepository = MyListRepository()
     var delegate: ReloadDataDelegate?
     
     lazy var cancelButton: UIBarButtonItem = {

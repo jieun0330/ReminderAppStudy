@@ -12,7 +12,7 @@ import RealmSwift
 class DetailMyListViewController: BaseViewController {
 
     var main: ListModel!
-    var listRepository = ListRepository()
+    var listRepository = MyListRepository()
     var list: Results<DetailListModel>!
 //    var list: List<DetailListModel>!
     
