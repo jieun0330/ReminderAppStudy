@@ -8,12 +8,18 @@
 import UIKit
 import SnapKit
 import RealmSwift
+import DGCharts
 
 final class AllToDoViewController: BaseViewController {
     
     let repository = ReminderMainRepository()
     var list: Results<ReminderMainModel>!
     var receivedFlag = false
+    
+//    let chartView: HorizontalBarChartView = {
+//        let view = HorizontalBarChartView()
+//        view.backgroundColor = .systemGray6
+//        return view }()
     
     let searchBar: UISearchBar = {
         let search = UISearchBar()
@@ -55,13 +61,25 @@ final class AllToDoViewController: BaseViewController {
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
+        
+//        chartView.snp.makeConstraints {
+//            $0.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+//            $0.bottom.equalTo(view.safeAreaLayoutGuide)
+//            $0.height.equalTo(350)
+//        }
     }
     
     override func configureView() {
         view.backgroundColor = .white
         navigationItem.rightBarButtonItem = rightBarButton
         tableView.rowHeight = 80
-        // 🚨 tableView 자동 높이 설정해주기
+        
+//        let entry = [BarChartDataEntry(x: 1, y: 800),
+//                     BarChartDataEntry(x: 2, y: 400),
+//                     BarChartDataEntry(x: 3, y: 180)]
+//        let set = BarChartDataSet(entries: entry, label: "우선순위별")
+//        set.stackLabels = ["!", "!!", "!!!"]
+//        chartView.data = BarChartData(dataSet: set)
     }
     
     @objc func rightBarButtonClicked() {
@@ -94,6 +112,9 @@ extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: AllToDoTableViewCell.identifier, for: indexPath) as! AllToDoTableViewCell
         cell.mainLabel.text = list[indexPath.row].title
+        
+        print(indexPath)
+        
         cell.subtitleLabel.text = list[indexPath.row].memo
         cell.dateLabel.text = list[indexPath.row].date
         cell.selectionStyle = .none
@@ -116,6 +137,9 @@ extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
+        
+        vc.receivedTitle = list[indexPath.row].title ?? ""
+//        print(list[indexPath.row].title)
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true)
     }

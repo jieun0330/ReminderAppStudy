@@ -121,12 +121,12 @@ final class MainRemindersViewController: BaseViewController {
         configureToolBar()
     }
     
-    @objc func leftCalendarButtonClicked() {
+    @objc private func leftCalendarButtonClicked() {
         let vc = CalendarViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @objc func rightBarButtonItemClicked() { }
+    @objc private func rightBarButtonItemClicked() { }
     
     /*
      UIToolBar
@@ -134,7 +134,7 @@ final class MainRemindersViewController: BaseViewController {
      2. ToolBar는 UINavigationController에 속해있고 기본적으로 숨겨져있어서 -> false
      3. 버튼 사이 space를 주고싶다면 중간에 넣어준다
      */
-    func configureToolBar() {
+    private func configureToolBar() {
         navigationItem.leftBarButtonItem = leftCalendarButton
         navigationItem.rightBarButtonItem = rightBarButtonItem
         
@@ -147,7 +147,7 @@ final class MainRemindersViewController: BaseViewController {
         self.toolbarItems = items
     }
     
-    @objc func leftToolBarButtonClicked() {
+    @objc private func leftToolBarButtonClicked() {
         // 추가 버튼 클릭 시 메인화면 reload delegate
         let vc = NewTodoViewController()
         vc.delegate = self
@@ -156,7 +156,7 @@ final class MainRemindersViewController: BaseViewController {
         present(nav, animated: true)
     }
     
-    @objc func rightToolBarButtonClicked() {
+    @objc private func rightToolBarButtonClicked() {
         let vc = AddListViewController()
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true)

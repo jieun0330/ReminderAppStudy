@@ -10,13 +10,12 @@ import SnapKit
 
 final class DetailSecondTableViewCell: BaseTableViewCell, ReusableProtocol {
     
-    let icon: UIButton = {
-        let icon = UIButton()
+    let icon: UILabel = {
+        let icon = UILabel()
         return icon }()
     
     let image: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(systemName: "questionmark")
         return image }()
     
     let title: UILabel = {

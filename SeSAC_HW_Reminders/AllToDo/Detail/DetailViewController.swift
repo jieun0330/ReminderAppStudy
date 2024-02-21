@@ -66,9 +66,9 @@ final class DetailViewController: BaseViewController {
 
 extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -76,6 +76,17 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DetailSecondTableViewCell.identifier, for: indexPath) as! DetailSecondTableViewCell
+        
+        print(receivedTitle)
+        
+//        print(cell.title.text)
+//        print(list[indexPath.row].title)
+        
+        cell.title.text = receivedTitle
+//        print(list[indexPath.row].title)
+//        print(indexPath)
+//        cell.icon.text = list[indexPath.row].priority
+//        print(list[indexPath.row].priority)
         
         return cell
     }
