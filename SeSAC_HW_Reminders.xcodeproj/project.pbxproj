@@ -27,8 +27,7 @@
 		C2CAC0372B8333AE001AD512 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0362B8333AE001AD512 /* CalendarViewController.swift */; };
 		C2CAC03A2B8342DB001AD512 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0392B8342DB001AD512 /* FileManager.swift */; };
 		C2CAC03D2B8352A2001AD512 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC03C2B8352A2001AD512 /* DetailViewController.swift */; };
-		C2CAC03F2B835633001AD512 /* DetailFirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */; };
-		C2CAC0432B835EDD001AD512 /* DetailSecondTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */; };
+		C2CAC0432B835EDD001AD512 /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0422B835EDD001AD512 /* DetailTableViewCell.swift */; };
 		C2CAC0482B848F04001AD512 /* AddListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0472B848F04001AD512 /* AddListViewController.swift */; };
 		C2CAC04A2B84978E001AD512 /* MainMyListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC0492B84978E001AD512 /* MainMyListTableViewCell.swift */; };
 		C2CAC04C2B84A29B001AD512 /* MyListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2CAC04B2B84A29B001AD512 /* MyListRepository.swift */; };
@@ -52,6 +51,7 @@
 		C2E7FE6B2B7F8BEA00004FC7 /* AllToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7FE6A2B7F8BEA00004FC7 /* AllToDoTableViewCell.swift */; };
 		C2FF22562B85E76700AB0CD5 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = C2FF22552B85E76700AB0CD5 /* DGCharts */; };
 		C2FF22582B85E76700AB0CD5 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = C2FF22572B85E76700AB0CD5 /* DGChartsDynamic */; };
+		C2FF225D2B86018D00AB0CD5 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FF225C2B86018D00AB0CD5 /* Then.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,8 +74,7 @@
 		C2CAC0362B8333AE001AD512 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C2CAC0392B8342DB001AD512 /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		C2CAC03C2B8352A2001AD512 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFirstTableViewCell.swift; sourceTree = "<group>"; };
-		C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSecondTableViewCell.swift; sourceTree = "<group>"; };
+		C2CAC0422B835EDD001AD512 /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		C2CAC0472B848F04001AD512 /* AddListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListViewController.swift; sourceTree = "<group>"; };
 		C2CAC0492B84978E001AD512 /* MainMyListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMyListTableViewCell.swift; sourceTree = "<group>"; };
 		C2CAC04B2B84A29B001AD512 /* MyListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListRepository.swift; sourceTree = "<group>"; };
@@ -95,6 +94,7 @@
 		C2E7FE662B7F416100004FC7 /* MainCollectionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionEnum.swift; sourceTree = "<group>"; };
 		C2E7FE682B7F438100004FC7 /* NewToDoEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoEnum.swift; sourceTree = "<group>"; };
 		C2E7FE6A2B7F8BEA00004FC7 /* AllToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllToDoTableViewCell.swift; sourceTree = "<group>"; };
+		C2FF225C2B86018D00AB0CD5 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				C2996A0B2B7C94F80067D397 /* Protocol.swift */,
+				C2FF225C2B86018D00AB0CD5 /* Then.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -214,8 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				C2CAC03C2B8352A2001AD512 /* DetailViewController.swift */,
-				C2CAC03E2B835633001AD512 /* DetailFirstTableViewCell.swift */,
-				C2CAC0422B835EDD001AD512 /* DetailSecondTableViewCell.swift */,
+				C2CAC0422B835EDD001AD512 /* DetailTableViewCell.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -379,7 +379,6 @@
 				C2CAC0522B84AC91001AD512 /* DetailMyListViewController.swift in Sources */,
 				C2996A002B7C8F200067D397 /* BaseViewController.swift in Sources */,
 				C2CAC0502B84ABB0001AD512 /* DetailMyListTableViewCell.swift in Sources */,
-				C2CAC03F2B835633001AD512 /* DetailFirstTableViewCell.swift in Sources */,
 				C2E7FE402B7CDEAB00004FC7 /* NewToDoFirstTableViewCell.swift in Sources */,
 				C2996A092B7C91810067D397 /* BaseCollectionViewCell.swift in Sources */,
 				C29969FC2B7C8EF10067D397 /* MainRemindersViewController.swift in Sources */,
@@ -404,9 +403,10 @@
 				C2E7FE6B2B7F8BEA00004FC7 /* AllToDoTableViewCell.swift in Sources */,
 				C2E7FE552B7E23F500004FC7 /* ReminderMainModel.swift in Sources */,
 				C2E7FE502B7DFE3D00004FC7 /* TagViewController.swift in Sources */,
+				C2FF225D2B86018D00AB0CD5 /* Then.swift in Sources */,
 				C2CAC03A2B8342DB001AD512 /* FileManager.swift in Sources */,
 				C2E7FE522B7E0E6600004FC7 /* PriorityViewController.swift in Sources */,
-				C2CAC0432B835EDD001AD512 /* DetailSecondTableViewCell.swift in Sources */,
+				C2CAC0432B835EDD001AD512 /* DetailTableViewCell.swift in Sources */,
 				C2E7FE672B7F416100004FC7 /* MainCollectionEnum.swift in Sources */,
 				C2E7FE622B7F288300004FC7 /* ReminderMainRepository.swift in Sources */,
 				C2E7FE692B7F438100004FC7 /* NewToDoEnum.swift in Sources */,

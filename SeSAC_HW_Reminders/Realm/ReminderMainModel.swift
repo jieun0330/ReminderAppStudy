@@ -19,14 +19,14 @@ class ReminderMainModel: Object {
     @Persisted var complete: Bool
     @Persisted var flag: Bool
     
-    convenience init(title: String, memo: String, date: String, tag: String, priority: String, complete: Bool, flag: Bool) {
+    convenience init(title: String, memo: String, date: String, tag: String, priority: String) {
         self.init() // 이거 없으면 오류 뜨는데 내가 알아서 만들게~~~~ 하는 의미라서 이거 넣으면 오류 싹~ 사라져여~
         self.title = title
         self.memo = memo
         self.date = date
         self.tag = tag
         self.priority = priority
-        self.complete = complete
-        self.flag = flag
+        self.complete = false
+        self.flag = false
     }
 }

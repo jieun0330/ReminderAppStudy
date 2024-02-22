@@ -16,32 +16,32 @@ final class MainRemindersViewController: BaseViewController {
     let listRepository = MyListRepository()
     var myList: Results<ListModel>!
 
-    let allText: UILabel = {
-        let entire = UILabel()
-        entire.text = "전체"
-        entire.font = UIFont.boldSystemFont(ofSize: 20)
-        return entire }()
+    let allText = UILabel().then {
+        $0.text = "전체"
+        $0.font = UIFont.boldSystemFont(ofSize: 20)
+    }
     
-    let collectionView: UICollectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout())
-        view.backgroundColor = .systemGray6
-        view.register(MainRemindersCollectionViewCell.self, forCellWithReuseIdentifier: MainRemindersCollectionViewCell.identifier)
-        
-        return view }()
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureCollectionViewLayout()).then {
+        $0.backgroundColor = .systemGray6
+        $0.register(MainRemindersCollectionViewCell.self, forCellWithReuseIdentifier: MainRemindersCollectionViewCell.identifier)
+    }
     
     let myListText: UILabel = {
         let myList = UILabel()
         myList.text = "나의 목록"
         myList.font = UIFont.boldSystemFont(ofSize: 20)
-        return myList }()
+        return myList
+    }()
     
     lazy var leftCalendarButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(leftCalendarButtonClicked))
-        return button }()
+        return button
+    }()
     
     lazy var rightBarButtonItem: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonItemClicked))
-        return button }()
+        return button
+    }()
     
     lazy var tableView: UITableView = {
         let view = UITableView()
@@ -50,12 +50,14 @@ final class MainRemindersViewController: BaseViewController {
         view.dataSource = self
         view.rowHeight = 50
         view.backgroundColor = .systemGray6
-        return view }()
+        return view
+    }()
     
     lazy var leftToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
         button = UIBarButtonItem(customView: customButton)
-        return button }()
+        return button
+    }()
     
     lazy var customButton: UIButton = {
         let button = UIButton()
@@ -63,12 +65,14 @@ final class MainRemindersViewController: BaseViewController {
         button.setTitle(" 새로운 할 일", for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(leftToolBarButtonClicked), for: .touchUpInside)
-        return button }()
+        return button
+    }()
     
     lazy var rightToolBarButton: UIBarButtonItem = {
         var button = UIBarButtonItem()
         button = UIBarButtonItem(title: "목록 추가", style: .plain, target: self, action: #selector(rightToolBarButtonClicked))
-        return button }()
+        return button
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

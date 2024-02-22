@@ -13,45 +13,53 @@ final class AllToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
     let checkButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "circle"), for: .normal)
-        return button }()
+        return button
+    }()
     
     let priorityLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.textColor = .systemBlue
-        return label }()
+        return label
+    }()
     
     let mainLabel: UILabel = {
         let label = UILabel()
-        return label }()
+        return label
+    }()
     
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
-        return label }()
+        return label
+    }()
     
     let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .lightGray
-        return label }()
+        return label
+    }()
     
     let tagLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .systemBlue
-        return label }()
+        return label
+    }()
     
     let image: UIImageView = {
         let img = UIImageView()
         img.contentMode = .scaleAspectFill
         img.clipsToBounds = true
-        return img }()
+        return img
+    }()
     
     let flagLabel: UIButton = {
         let flag = UIButton()
-        return flag }()
+        return flag
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -104,7 +112,7 @@ final class AllToDoTableViewCell: BaseTableViewCell, ReusableProtocol {
         image.snp.makeConstraints {
             $0.trailing.equalTo(flagLabel.snp.leading).offset(-10)
             $0.top.equalToSuperview().offset(10)
-            $0.centerY.equalToSuperview()
+            $0.top.equalTo(mainLabel.snp.top)
             $0.size.equalTo(40)
         }
         

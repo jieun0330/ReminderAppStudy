@@ -18,7 +18,7 @@ class ReminderMainRepository {
         do {
             try realm.write {
                 realm.add(data)
-                //                print(realm.configuration.fileURL)
+                                print(realm.configuration.fileURL)
             }
         } catch {
             print(error)
@@ -89,6 +89,31 @@ class ReminderMainRepository {
             
         }
     }
+    
+    func updateTodoTitle(_ item: ReminderMainModel, text: String) {
+        do {
+            try realm.write {
+                item.title = text
+//                realm.create(ReminderMainModel.self,
+//                             value: ["id": id,
+//                                     "title": title],
+//                             update: .modified)
+            }
+        } catch {
+            print(error)
+        }
+    }
+
+    
+//    try! realm.write {
+//        list[indexPath.row].category = "커피"
+//        list[indexPath.row].favorite.toggle()
+//        list[indexPath.row].money = Int.random(in: 100...1000)
+//    }
+//    
+//    repository.updateFavorite(list[indexPath.row])
+    
+    
     
     // CRU"D"
     func deleteRecord(_ item: ReminderMainModel) {

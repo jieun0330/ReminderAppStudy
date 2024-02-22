@@ -13,18 +13,20 @@ final class AddListViewController: BaseViewController {
     
     let toDoRepository = ReminderMainRepository()
     let listRepository = MyListRepository()
-    var delegate: ReloadDataDelegate?
+//    var delegate: ReloadDataDelegate?
     
     let listNameView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 10
-        return view }()
+        return view
+    }()
     
     let listIcon: UIImageView = {
         let icon = UIImageView()
         icon.image = UIImage(systemName: "list.bullet.circle.fill")
-        return icon }()
+        return icon
+    }()
     
     let listNameTextField: UITextField = {
         let textField = UITextField()
@@ -32,15 +34,18 @@ final class AddListViewController: BaseViewController {
         textField.textAlignment = .center
         textField.backgroundColor = .systemGray6
         textField.layer.cornerRadius = 15
-        return textField }()
+        return textField
+    }()
     
     lazy var cancelButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
-        return button }()
+        return button
+    }()
     
     lazy var doneButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "완료", style: .plain, target: self, action: #selector(doneButtonClicked))
-        return button }()
+        return button
+    }()
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,13 +95,24 @@ final class AddListViewController: BaseViewController {
     
     @objc func doneButtonClicked() {
         
-        let data = ListModel(title: listNameTextField.text!, registDate: Date())
-        listRepository.createRecord(data)
-        dismiss(animated: true)
-        delegate?.reloadData()
+        
+//        let data = ReminderMainModel(title: <#T##String#>, memo: <#T##String#>, date: <#T##String#>, tag: <#T##String#>, priority: <#T##String#>)
+        
+//        let data = ListModel(title: listNameTextField.text!, registDate: Date())
+//        listRepository.createRecord(data)
+//        dismiss(animated: true)
+//        delegate?.reloadData()
         // RemindersViewController에 있는 TableView가 reload 되야해용
         // 1. doneButton 클릭
         // 2. RemindersViewController로 이동
         // 3. RemindersViewController - TableView Reload
+        
+//        try! realm.write {
+//            list[indexPath.row].category = "커피"
+//            list[indexPath.row].favorite.toggle()
+//            list[indexPath.row].money = Int.random(in: 100...1000)
+//        }
+//        
+//        repository.updateFavorite(list[indexPath.row])
     }
 }

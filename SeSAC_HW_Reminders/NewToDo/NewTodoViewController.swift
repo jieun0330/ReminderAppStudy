@@ -23,11 +23,13 @@ final class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     
     lazy var cancleButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "취소", style: .plain, target: self, action: #selector(cancelButtonClicked))
-        return button }()
+        return button
+    }()
     
     lazy var addButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(addButtonClicked))
-        return button }()
+        return button
+    }()
     
     lazy var tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
@@ -37,7 +39,8 @@ final class NewTodoViewController: BaseViewController, UITextFieldDelegate {
         view.dataSource = self
         view.register(NewToDoSecondTableViewCell.self, forCellReuseIdentifier: NewToDoSecondTableViewCell.identifier)
         view.register(NewToDoFirstTableViewCell.self, forCellReuseIdentifier: NewToDoFirstTableViewCell.identifier)
-        return view }()
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +92,7 @@ final class NewTodoViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @objc func addButtonClicked() {
-        let data = ReminderMainModel(title: receivedTitle, memo: receivedMemo, date: receivedDate, tag: receivedTag, priority: receivedSegmentValue[1], complete: false, flag: false)
+        let data = ReminderMainModel(title: receivedTitle, memo: receivedMemo, date: receivedDate, tag: receivedTag, priority: receivedSegmentValue[1])
         repository.createRecord(data)
         
         if let image = receivedImage.image {

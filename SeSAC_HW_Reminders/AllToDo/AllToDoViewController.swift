@@ -10,37 +10,42 @@ import SnapKit
 import RealmSwift
 import DGCharts
 
-final class AllToDoViewController: BaseViewController {
+final class AllToDoViewController: BaseViewController, ReloadDataDelegate {
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
     
     let repository = ReminderMainRepository()
     var list: Results<ReminderMainModel>!
-    var receivedFlag = false
-    
-//    let chartView: HorizontalBarChartView = {
-//        let view = HorizontalBarChartView()
-//        view.backgroundColor = .systemGray6
-//        return view }()
+//    var receivedFlag = false
     
     let searchBar: UISearchBar = {
         let search = UISearchBar()
         search.backgroundImage = UIImage() // searchBar 모양이 못생기긴했는데 흰색 뒷배경을 없애려면 UIImage()를 줘야한다
-        return search }()
+        return search
+    }()
     
     lazy var rightBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle.fill"), style: .plain, target: self, action: #selector(rightBarButtonClicked))
-        return button}()
+        return button
+    }()
 
     lazy var tableView: UITableView = {
         let view = UITableView()
         view.delegate = self
         view.dataSource = self
         view.register(AllToDoTableViewCell.self, forCellReuseIdentifier: AllToDoTableViewCell.identifier)
-        return view }()
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        list = repository.readRecordAllFilter()
+        
     }
+
     
     override func configureHierarchy() {
         [searchBar, tableView].forEach {
@@ -111,10 +116,8 @@ extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: AllToDoTableViewCell.identifier, for: indexPath) as! AllToDoTableViewCell
+        
         cell.mainLabel.text = list[indexPath.row].title
-        
-        print(indexPath)
-        
         cell.subtitleLabel.text = list[indexPath.row].memo
         cell.dateLabel.text = list[indexPath.row].date
         cell.selectionStyle = .none
@@ -125,6 +128,9 @@ extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
         cell.image.image = loadImageFromDocument(fileName: "\(list[indexPath.row].id)")
         cell.flagLabel.setImage(list[indexPath.row].flag == true ? UIImage(systemName: "flag.fill") : UIImage(systemName: ""), for: .normal)
         cell.flagLabel.tintColor = .orange
+        
+        let indexPath = indexPath
+        print("all", indexPath)
         
         return cell
     }
@@ -137,9 +143,11 @@ extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DetailViewController()
+        vc.receivedIndex = indexPath.row
+        vc.delegate = self
+        print("receivedIndex", vc.receivedIndex)
+//        vc.viewWillDisappear(<#T##animated: Bool##Bool#>)
         
-        vc.receivedTitle = list[indexPath.row].title ?? ""
-//        print(list[indexPath.row].title)
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true)
     }
@@ -169,3 +177,12 @@ extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [delete, flag, detail])
     }
 }
+
+//extension AllToDoViewController: ReloadDataDelegate {
+//    func reloadData() {
+//        tableView.reloadData()
+//        print("reload")
+//    }
+//    
+//    
+//}
