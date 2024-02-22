@@ -11,14 +11,13 @@ import RealmSwift
 import DGCharts
 
 final class AllToDoViewController: BaseViewController, ReloadDataDelegate {
+    
     func reloadData() {
         tableView.reloadData()
     }
     
-    
     let repository = ReminderMainRepository()
     var list: Results<ReminderMainModel>!
-//    var receivedFlag = false
     
     let searchBar: UISearchBar = {
         let search = UISearchBar()
@@ -45,7 +44,6 @@ final class AllToDoViewController: BaseViewController, ReloadDataDelegate {
         list = repository.readRecordAllFilter()
         
     }
-
     
     override func configureHierarchy() {
         [searchBar, tableView].forEach {
@@ -129,9 +127,6 @@ extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
         cell.flagLabel.setImage(list[indexPath.row].flag == true ? UIImage(systemName: "flag.fill") : UIImage(systemName: ""), for: .normal)
         cell.flagLabel.tintColor = .orange
         
-        let indexPath = indexPath
-        print("all", indexPath)
-        
         return cell
     }
     
@@ -145,9 +140,7 @@ extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = DetailViewController()
         vc.receivedIndex = indexPath.row
         vc.delegate = self
-        print("receivedIndex", vc.receivedIndex)
-//        vc.viewWillDisappear(<#T##animated: Bool##Bool#>)
-        
+
         let nav = UINavigationController(rootViewController: vc)
         present(nav, animated: true)
     }
@@ -163,7 +156,6 @@ extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
         
         let flag = UIContextualAction(style: .normal, title: "깃발") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
             self.repository.updateFlag(self.list[indexPath.row])
-            
             tableView.reloadData()
         }
         flag.backgroundColor = .orange
@@ -177,12 +169,3 @@ extension AllToDoViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [delete, flag, detail])
     }
 }
-
-//extension AllToDoViewController: ReloadDataDelegate {
-//    func reloadData() {
-//        tableView.reloadData()
-//        print("reload")
-//    }
-//    
-//    
-//}

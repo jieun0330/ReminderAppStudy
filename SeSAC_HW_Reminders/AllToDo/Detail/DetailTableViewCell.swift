@@ -16,17 +16,19 @@ final class DetailTableViewCell: BaseTableViewCell, ReusableProtocol {
     
     lazy var titleTextField: UITextField = {
         let text = UITextField()
-//        text.delegate = self
-        
         return text
     }()
+    
+    let image = UIImageView().then {
+        $0.image = UIImage(systemName: "pencil")
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super .init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     override func configureHierarchy() {
-        [titleTextField].forEach {
+        [titleTextField, image].forEach {
             contentView.addSubview($0)
         }
     }
@@ -34,17 +36,22 @@ final class DetailTableViewCell: BaseTableViewCell, ReusableProtocol {
     override func configureConstraints() {
         
         titleTextField.snp.makeConstraints {
-            $0.centerY.equalTo(contentView)
-            $0.leading.equalTo(contentView).offset(10)
+            $0.top.equalTo(contentView).offset(20)
+            $0.leading.equalTo(contentView).offset(20)
             $0.height.equalTo(20)
         }
         
-        //        image.snp.makeConstraints {
-        //            $0.leading.equalTo(title.snp.leading)
-        //            $0.top.equalTo(title.snp.bottom).offset(10)
-        //            $0.trailing.equalTo(contentView.snp.trailing).offset(-10)
-        //            $0.height.equalTo(150)
-        //        }
+        image.snp.makeConstraints {
+            $0.trailing.equalTo(contentView.snp.trailing).offset(-20)
+            $0.top.equalTo(titleTextField.snp.top)
+            $0.leading.equalTo(titleTextField.snp.trailing).offset(50)
+            $0.size.equalTo(50)
+        }
+        
+//        $0.trailing.equalTo(flagLabel.snp.leading).offset(-10)
+//        $0.top.equalToSuperview().offset(10)
+//        $0.top.equalTo(mainLabel.snp.top)
+//        $0.size.equalTo(40)
         
     }
     
@@ -57,17 +64,3 @@ final class DetailTableViewCell: BaseTableViewCell, ReusableProtocol {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-//extension DetailTableViewCell: UITextFieldDelegate {
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        
-//        repository.updateTodoTitle(list[0], text: textField.text!)
-        
-
-//        print("list", list)
-//        print("1번")
-//        print("repository", repository.updateTodoTitle(list[0], text: textField.text!))
-//        print("all", repository.readRecordAllFilter())
-        
-//    }
-//}
