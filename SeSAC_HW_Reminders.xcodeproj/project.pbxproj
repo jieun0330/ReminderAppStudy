@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C231A6842B878E4300D87CC6 /* DetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C231A6832B878E4300D87CC6 /* DetailListViewController.swift */; };
 		C25DE40D2B80D00C00C70125 /* PriorityEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C25DE40C2B80D00C00C70125 /* PriorityEnum.swift */; };
 		C29969E82B7C8E5A0067D397 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29969E72B7C8E5A0067D397 /* AppDelegate.swift */; };
 		C29969EA2B7C8E5A0067D397 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29969E92B7C8E5A0067D397 /* SceneDelegate.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C231A6832B878E4300D87CC6 /* DetailListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListViewController.swift; sourceTree = "<group>"; };
 		C25DE40C2B80D00C00C70125 /* PriorityEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityEnum.swift; sourceTree = "<group>"; };
 		C29969E42B7C8E5A0067D397 /* SeSAC_HW_Reminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSAC_HW_Reminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29969E72B7C8E5A0067D397 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				C2E7FE4F2B7DFE3D00004FC7 /* TagViewController.swift */,
 				C2E7FE512B7E0E6600004FC7 /* PriorityViewController.swift */,
 				C25DE40C2B80D00C00C70125 /* PriorityEnum.swift */,
+				C231A6832B878E4300D87CC6 /* DetailListViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				C2CAC02D2B80F0B9001AD512 /* LeftBarButtonCustom.swift in Sources */,
 				C2E7FE3C2B7CCFE300004FC7 /* BaseTableViewCell.swift in Sources */,
 				C2996A072B7C90C00067D397 /* MainRemindersCollectionViewCell.swift in Sources */,
+				C231A6842B878E4300D87CC6 /* DetailListViewController.swift in Sources */,
 				C29969EC2B7C8E5A0067D397 /* ViewController.swift in Sources */,
 				C29969E82B7C8E5A0067D397 /* AppDelegate.swift in Sources */,
 				C25DE40D2B80D00C00C70125 /* PriorityEnum.swift in Sources */,

@@ -188,11 +188,15 @@ extension NewTodoViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.reloadData()
             }
         }
-        else {
+        else if indexPath.section == NewToDoEnum.image.rawValue {
             let vc = UIImagePickerController()
             vc.allowsEditing = true
             vc.delegate = self
             present(vc, animated: true)
+        } else {
+            let vc = DetailListViewController()
+            navigationController?.pushViewController(vc, animated: true)
+//            present(nav, animated: true)
         }
     }
     
